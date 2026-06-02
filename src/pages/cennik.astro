@@ -1,0 +1,521 @@
+---
+import Base from '@/layouts/Base.astro';
+const title = 'Cennik zajęć pływania Wrocław | Solen Swim — od 55 zł';
+const description = 'Ceny zajęć pływania dla dzieci we Wrocławiu. Niemowlęta (6 mies.–4 lat): 55 zł/30 min. Nauka i doskonalenie (5–10 lat): 65 zł/45 min. Płatność w 3 ratach.';
+const path = '/cennik/';
+const pageType = 'service' as const;
+const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cennik/" }];
+---
+<Base title={title} description={description} path={path} pageType={pageType} breadcrumbs={breadcrumbs}>
+<!-- HERO -->
+<div class="cn-hero">
+  <span class="cn-eyebrow">Solen Swim · Wrocław</span>
+  <h1 class="cn-title">Cennik</h1>
+  <p class="cn-hero-sub">cena za jedne zajęcia</p>
+</div>
+
+<!-- MAIN -->
+<div class="cn-main">
+
+  <!-- KARTY -->
+  <div class="cn-karty-grid">
+
+    <!-- Karta 1 -->
+    <div class="cn-karta">
+      <div class="cn-karta-top">
+        <span class="cn-karta-tag">Rodzic + Dziecko</span>
+        <div class="cn-karta-cena"><sup></sup>55<sub> zł</sub></div>
+        <span class="cn-karta-czas">30 minut</span>
+      </div>
+      <div class="cn-karta-body">
+        <h2 class="cn-karta-nazwa">Pływanie niemowląt<br>i dzieci do lat 4</h2>
+        <span class="cn-karta-wiek">6 msc – 4 lata</span>
+        <div class="cn-karta-divider"></div>
+        <span class="cn-harm-label">Harmonogram</span>
+        <ul class="cn-harm-lista">
+          <li>Czwartek 15:30 – 18:30</li>
+          <li>Sobota 9:00 – 15:00</li>
+          <li>Niedziela 10:00 – 12:00</li>
+        </ul>
+        <span class="cn-karta-note">Rodzic uczestniczy razem z dzieckiem</span>
+      </div>
+    </div>
+
+    <!-- Karta 2 -->
+    <div class="cn-karta">
+      <div class="cn-karta-top">
+        <span class="cn-karta-tag">Od podstaw · Doskonalenie</span>
+        <div class="cn-karta-cena"><sup></sup>65<sub> zł</sub></div>
+        <span class="cn-karta-czas">45 minut</span>
+      </div>
+      <div class="cn-karta-body">
+        <h2 class="cn-karta-nazwa">Nauka i doskonalenie<br>pływania dla dzieci</h2>
+        <span class="cn-karta-wiek">5 – 10 lat</span>
+        <div class="cn-karta-divider"></div>
+        <span class="cn-harm-label">Nauka od podstaw</span>
+        <ul class="cn-harm-lista">
+          <li>Czwartek 15:30 – 18:30</li>
+          <li>Sobota 9:00 – 15:00</li>
+        </ul>
+        <span class="cn-harm-label" style="margin-top:8px;">Doskonalenie</span>
+        <ul class="cn-harm-lista">
+          <li>Sobota 9:00 – 15:00</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PŁATNOŚĆ + INFO -->
+  <div class="cn-dolna">
+
+    <div class="cn-platnosc">
+      <span class="cn-platnosc-eyebrow">Płatność za zajęcia</span>
+      <h2 class="cn-platnosc-title">Karnet semestralny</h2>
+      <p class="cn-platnosc-tekst">
+        Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły ustalamy telefonicznie przy zapisie.
+      </p>
+      <div class="cn-konto">
+        <span class="cn-konto-label">Numer konta bankowego</span>
+        <p class="cn-konto-numer">05 1090 2529 0000 0001 6453 7999</p>
+      </div>
+    </div>
+
+    <div class="cn-info">
+      <div>
+        <span class="cn-info-eyebrow">Dlaczego warto</span>
+        <h2 class="cn-info-title">Co jest wliczone w cenę?</h2>
+      </div>
+      <ul class="cn-info-lista">
+        <li>Opieka doświadczonego instruktora przez cały czas zajęć</li>
+        <li>Kameralna grupa — maksymalnie 8 dzieci</li>
+        <li>Korzystanie z basenu krytego z podgrzewaną wodą</li>
+        <li>Indywidualne podejście do każdego dziecka</li>
+        <li>Bezpłatny parking przy obiekcie</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- LOKALIZACJA -->
+  <div class="cn-lokalizacja">
+    <span class="cn-lok-ikona">📍</span>
+    <div class="cn-lok-tekst">
+      <p class="cn-lok-tytul">ul. Aleksandra Ostrowskiego 3, Wrocław Grabiszyn</p>
+      <p class="cn-lok-opis">Baseny kryte · bezpłatny parking · zapisy przez formularz kontaktowy lub telefonicznie: 505 912 389 · 793 790 711</p>
+    </div>
+  </div>
+
+</div>
+</Base>
+
+<style is:global>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Blokada auto-linkowania przez iOS/Android */
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+}
+
+body {
+  background: #FFF9F6;
+  font-family: 'Space Mono', monospace;
+  color: #293434;
+}
+
+/* ─── HERO ─── */
+.cn-hero {
+  background: #293434;
+  padding: 72px 6%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cn-hero::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  background: rgba(182,222,221,0.07);
+  top: -140px; right: -80px;
+}
+
+.cn-hero::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,131,87,0.08);
+  bottom: -60px; left: -40px;
+}
+
+.cn-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.7;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cn-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(42px, 8vw, 80px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  margin-bottom: 16px;
+}
+
+.cn-hero-sub {
+  font-size: 13px;
+  color: #FFF9F6;
+  opacity: 0.55;
+  letter-spacing: 2px;
+}
+
+/* ─── KARTY CEN ─── */
+.cn-main {
+  padding: 72px 6%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cn-karty-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 56px;
+}
+
+.cn-karta {
+  background: #FFF9F6;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(41,52,52,0.09);
+}
+
+/* TOP karty */
+.cn-karta-top {
+  padding: 40px 36px 32px;
+  background: #B6DEDD;
+  position: relative;
+}
+
+.cn-karta:nth-child(2) .cn-karta-top { background: #FF8357; }
+
+.cn-karta-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.6;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.cn-karta:nth-child(2) .cn-karta-tag { color: #FFF9F6; opacity: 0.75; }
+
+.cn-karta-cena {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 88px;
+  color: #293434;
+  line-height: 1;
+}
+
+.cn-karta:nth-child(2) .cn-karta-cena { color: #FFF9F6; }
+
+.cn-karta-cena sup {
+  font-size: 30px;
+  vertical-align: super;
+}
+
+.cn-karta-cena sub {
+  font-size: 20px;
+  font-weight: 400;
+  vertical-align: baseline;
+  opacity: 0.65;
+}
+
+.cn-karta-czas {
+  display: inline-block;
+  margin-top: 16px;
+  background: rgba(41,52,52,0.12);
+  color: #293434;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 100px;
+}
+
+.cn-karta:nth-child(2) .cn-karta-czas {
+  background: rgba(255,249,246,0.2);
+  color: #FFF9F6;
+}
+
+/* BODY karty */
+.cn-karta-body {
+  padding: 32px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cn-karta-nazwa {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #293434;
+  line-height: 1.3;
+}
+
+.cn-karta-wiek {
+  display: inline-block;
+  background: #B6DEDD;
+  color: #293434;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 5px 16px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.cn-karta:nth-child(2) .cn-karta-wiek { background: #FFB094; }
+
+.cn-karta-divider {
+  height: 1px;
+  background: rgba(41,52,52,0.08);
+}
+
+.cn-harm-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.45;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cn-harm-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cn-harm-lista li {
+  font-size: 13px;
+  color: #293434;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.cn-harm-lista li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FF8357;
+  flex-shrink: 0;
+}
+
+.cn-karta-note {
+  font-size: 11px;
+  color: #86C6C4;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ─── PLATNOSC + INFO ─── */
+.cn-dolna {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.cn-platnosc {
+  background: #293434;
+  border-radius: 24px;
+  padding: 36px 32px;
+}
+
+.cn-platnosc-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.cn-platnosc-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #FFF9F6;
+  margin-bottom: 16px;
+}
+
+.cn-platnosc-tekst {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #B6DEDD;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.cn-konto {
+  background: rgba(182,222,221,0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  border: 1px solid rgba(182,222,221,0.2);
+}
+
+.cn-konto-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cn-konto-numer {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #FFF9F6;
+  letter-spacing: 1px;
+}
+
+/* INFO */
+.cn-info {
+  background: #B6DEDD;
+  border-radius: 24px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cn-info-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cn-info-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #293434;
+  margin-bottom: 4px;
+}
+
+.cn-info-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cn-info-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+  color: #293434;
+  line-height: 1.6;
+}
+
+.cn-info-lista li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FF8357;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* ─── LOKALIZACJA ─── */
+.cn-lokalizacja {
+  background: #FFF9F6;
+  border-radius: 20px;
+  padding: 28px 32px;
+  box-shadow: 0 2px 24px rgba(41,52,52,0.07);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cn-lok-ikona { font-size: 30px; flex-shrink: 0; }
+
+.cn-lok-tekst {}
+
+.cn-lok-tytul {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #293434;
+  margin-bottom: 4px;
+}
+
+.cn-lok-opis {
+  font-size: 12px;
+  color: #293434;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* ── TABLET ── */
+@media (max-width: 760px) {
+  .cn-hero { padding: 56px 5%; }
+  .cn-main { padding: 52px 5%; }
+  .cn-karty-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .cn-karta-top { padding: 28px 24px 22px; }
+  .cn-karta-body { padding: 24px 24px 28px; }
+  .cn-karta-cena { font-size: 64px; }
+  .cn-karta-nazwa { font-size: 17px; }
+  .cn-dolna { grid-template-columns: 1fr; }
+  .cn-lokalizacja { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .cn-hero { padding: 44px 4%; }
+  .cn-title { font-size: 38px; letter-spacing: 3px; }
+  .cn-main { padding: 36px 4%; }
+  .cn-karty-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+  .cn-karta { border-radius: 20px; }
+  .cn-karta-top { padding: 20px 16px 16px; }
+  .cn-karta-body { padding: 16px 16px 20px; gap: 12px; }
+  .cn-karta-cena { font-size: 46px; }
+  .cn-karta-cena sub { font-size: 14px; }
+  .cn-karta-tag { font-size: 7px; letter-spacing: 1px; margin-bottom: 10px; }
+  .cn-karta-nazwa { font-size: 13px; }
+  .cn-karta-wiek { font-size: 9px; padding: 3px 10px; }
+  .cn-harm-lista, .cn-karta-note { display: none; }
+  .cn-platnosc { padding: 28px 22px; }
+  .cn-info { padding: 28px 22px; }
+  .cn-konto-numer { font-size: 11px; }
+  .cn-lokalizacja { padding: 22px 18px; border-radius: 16px; }
+}
+</style>

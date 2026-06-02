@@ -1,0 +1,42 @@
+---
+import Base from '@/layouts/Base.astro';
+const breadcrumbs = [{ name: 'Start', href: '/' }];
+---
+<Base
+  title="404 — strona nie istnieje | Solen Swim"
+  description="Nie znaleźliśmy tej strony. Wróć na stronę główną Solen Swim."
+  path="/404"
+  pageType={'home'}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="not-found">
+    <h1>404</h1>
+    <p>Tej strony nie ma w naszym basenie</p>
+    <a href="/" class="back-btn">Wróć na stronę główną</a>
+  </section>
+</Base>
+
+<style is:global>
+  .not-found {
+    min-height: 60vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px;
+    background: var(--cream);
+  }
+  .not-found h1 {
+    font-family: var(--font-heading); font-size: clamp(80px, 14vw, 140px);
+    color: var(--coral); line-height: 1; margin-bottom: 16px;
+  }
+  .not-found p {
+    font-family: var(--font-body); font-size: 14px;
+    color: var(--dark); opacity: .7; margin-bottom: 32px;
+  }
+  .back-btn {
+    display: inline-block; background: var(--coral); color: #fff;
+    font-family: var(--font-heading); font-weight: 700;
+    padding: 16px 44px; border-radius: 50px; font-size: 15px;
+    transition: opacity .2s;
+  }
+  .back-btn:hover { opacity: .85; }
+</style>

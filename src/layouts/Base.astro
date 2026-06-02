@@ -1,0 +1,53 @@
+---
+import '@/styles/global.css';
+import { site } from '@/data/site';
+import SEO from '@/components/SEO.astro';
+import SchemaOrg from '@/components/SchemaOrg.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  pageType?: 'home' | 'service' | 'contact' | 'faq' | 'about' | 'location';
+  faq?: { q: string; a: string }[];
+  breadcrumbs?: { name: string; href: string }[];
+}
+
+const { title, description, path, image, pageType, faq, breadcrumbs } = Astro.props;
+const lang = site.locale.split('_')[0];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" type="image/png" href="/assets/logo-kwadrat.webp" />
+    <link rel="apple-touch-icon" href="/assets/logo-kwadrat.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" />
+    <SEO {title} {description} {path} {image} />
+    <SchemaOrg {pageType} {faq} {breadcrumbs} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main" class="skip">Przejdź do treści</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      .skip {
+        position: absolute; left: -9999px; top: 0;
+        background: var(--coral); color: #fff; padding: 8px 16px;
+        font-family: var(--font-heading); font-weight: 700;
+        border-radius: 0 0 12px 0; z-index: 1000;
+      }
+      .skip:focus { left: 0; }
+    </style>
+  </body>
+</html>

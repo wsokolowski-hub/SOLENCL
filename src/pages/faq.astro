@@ -1,0 +1,192 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const faq = [
+  {
+    q: 'Jak wyglądają pierwsze zajęcia?',
+    a: 'Pierwsze spotkanie to oswojenie z wodą w spokojnej, zabawowej formie. Dzieci nigdy nie są zmuszane — zaufanie i radość rozwijają się stopniowo, w swoim własnym tempie.',
+  },
+  {
+    q: 'Ile dzieci jest w jednej grupie?',
+    a: 'Zajęcia odbywają się w kameralnych grupach do 8 dzieci, co pozwala instruktorowi poświęcić indywidualną uwagę każdemu maluchowi.',
+  },
+  {
+    q: 'Czy rodzice biorą udział w zajęciach?',
+    a: 'Tak — rodzice wchodzą do wody razem z dziećmi w wieku od 6 miesięcy do 4 lat. Starsze dzieci w wieku 5–10 lat ćwiczą samodzielnie pod okiem instruktora.',
+  },
+  {
+    q: 'Od jakiego wieku dziecko może rozpocząć naukę pływania?',
+    a: 'Przyjmujemy dzieci już od 6. miesiąca życia. Najmłodsze maluchy uczestniczą w zajęciach razem z rodzicem w formie zabawy w wodzie.',
+  },
+  {
+    q: 'Jak długo trwają zajęcia?',
+    a: 'Zajęcia dla niemowląt i dzieci do 4 lat trwają 30 minut. Dla dzieci w wieku 5–10 lat zajęcia trwają 45 minut.',
+  },
+  {
+    q: 'Ile kosztują zajęcia pływania?',
+    a: 'Zajęcia dla niemowląt i dzieci do 4 lat kosztują 55 zł za 30 minut (rodzic + dziecko). Nauka i doskonalenie pływania dla dzieci w wieku 5–10 lat to 65 zł za 45 minut. Płatność odbywa się za cały semestr w 3 ratach.',
+  },
+  {
+    q: 'Gdzie odbywają się zajęcia pływania?',
+    a: 'Zajęcia odbywają się na basenie krytym przy ul. Aleksandra Ostrowskiego 3 w dzielnicy Grabiszyn we Wrocławiu. Przy obiekcie dostępny jest bezpłatny parking.',
+  },
+  {
+    q: 'Jakie style pływania są nauczane?',
+    a: 'Uczymy kraulem (styl dowolny), żabką, na grzbiecie i motylkiem — program dostosowany do wieku i poziomu dziecka.',
+  },
+  {
+    q: 'Czy pływanie niemowląt jest bezpieczne?',
+    a: 'Tak, pod warunkiem prowadzenia zajęć przez wykwalifikowanych instruktorów. Głębokość basenu wynosi 0,9–1,35 m, a temperatura wody jest odpowiednio dostosowana do potrzeb najmłodszych uczestników.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'FAQ', href: '/faq/' },
+];
+---
+<Base
+  title="FAQ — Często zadawane pytania | Solen Swim Wrocław"
+  description="Odpowiedzi na pytania o zajęcia pływania dla dzieci we Wrocławiu. Wiek, bezpieczeństwo, co zabrać, ceny, zapisy. Szkoła pływania Solen Swim — Grabiszyn."
+  path="/faq/"
+  pageType={'faq'}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="faq-hero">
+    <span class="faq-eyebrow">Często zadawane pytania</span>
+    <h1 class="faq-title">Masz<br/><span>pytania?</span></h1>
+    <p class="faq-sub">Zebraliśmy odpowiedzi na najczęstsze pytania rodziców. Jeśli nie znajdziesz tego, czego szukasz — zadzwoń lub napisz, chętnie pomożemy.</p>
+  </section>
+
+  <section class="faq-list">
+    {faq.map((item, i) => (
+      <details class="faq-item" open={i === 0}>
+        <summary>
+          <span class="faq-q">{item.q}</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p class="faq-a">{item.a}</p>
+      </details>
+    ))}
+
+    <div class="faq-cta">
+      <p class="faq-cta-text">Nie znalazłeś odpowiedzi?</p>
+      <a href="/kontakt/" class="faq-cta-btn">Napisz do nas</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .faq-hero {
+    background: var(--mint);
+    padding: 72px 6%;
+    position: relative;
+    overflow: hidden;
+  }
+  .faq-hero::before {
+    content: ''; position: absolute;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: rgba(255,131,87,0.10);
+    top: -140px; right: -100px;
+  }
+  .faq-hero::after {
+    content: ''; position: absolute;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(41,52,52,0.06);
+    bottom: -60px; left: -50px;
+  }
+  .faq-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--dark); opacity: 0.5; margin-bottom: 16px; display: block;
+    position: relative;
+  }
+  .faq-title {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(32px, 6vw, 62px); color: var(--dark);
+    line-height: 1.1; margin-bottom: 16px; position: relative;
+  }
+  .faq-title span { color: var(--coral); }
+  .faq-sub {
+    font-size: 13px; color: var(--dark); opacity: 0.6;
+    line-height: 1.8; max-width: 520px; letter-spacing: 0.5px;
+    position: relative;
+  }
+
+  .faq-list {
+    max-width: 760px; margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  .faq-item {
+    background: #fff;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 24px rgba(41,52,52,.06);
+    overflow: hidden;
+    transition: box-shadow .25s;
+  }
+  .faq-item[open] { box-shadow: 0 8px 32px rgba(41,52,52,.10); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-q {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 15px;
+    color: var(--dark); letter-spacing: .2px;
+  }
+  .faq-icon {
+    position: relative;
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+  }
+  .faq-icon::before, .faq-icon::after {
+    content: ''; position: absolute;
+    background: var(--coral); border-radius: 2px;
+    transition: transform .25s;
+  }
+  .faq-icon::before { top: 10px; left: 0; width: 22px; height: 2px; }
+  .faq-icon::after  { top: 0; left: 10px; width: 2px; height: 22px; }
+  .faq-item[open] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+
+  .faq-a {
+    padding: 0 26px 24px;
+    font-size: 13px; line-height: 1.8;
+    color: var(--dark); opacity: .75;
+  }
+
+  .faq-cta {
+    margin-top: 48px;
+    text-align: center;
+    padding: 36px 24px;
+    background: var(--mint);
+    border-radius: 22px;
+  }
+  .faq-cta-text {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 17px;
+    color: var(--dark); margin-bottom: 18px;
+  }
+  .faq-cta-btn {
+    display: inline-block; background: var(--coral); color: #fff;
+    padding: 14px 38px; border-radius: 100px;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: opacity .2s;
+  }
+  .faq-cta-btn:hover { opacity: .88; }
+
+  @media (max-width: 760px) {
+    .faq-hero { padding: 56px 5%; }
+    .faq-list { padding: 48px 18px 72px; }
+    .faq-item summary { padding: 18px 20px; }
+    .faq-q { font-size: 14px; }
+    .faq-a { padding: 0 20px 20px; font-size: 12.5px; }
+  }
+</style>

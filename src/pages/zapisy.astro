@@ -1,0 +1,451 @@
+---
+import Base from '@/layouts/Base.astro';
+const title = 'Zapisy na pływanie Wrocław | Solen Swim — Kursy dla dzieci';
+const description = 'Zapisz dziecko na zajęcia pływania we Wrocławiu. Niemowlęta od 55 zł, nauka pływania od 65 zł. Basen ul. Ostrowskiego 3, Grabiszyn. Zadzwoń: 505 912 389.';
+const path = '/zapisy/';
+const pageType = 'service' as const;
+const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Zapisy", href: "/zapisy/" }];
+---
+<Base title={title} description={description} path={path} pageType={pageType} breadcrumbs={breadcrumbs}>
+<!-- HERO -->
+<div class="zap-hero">
+  <span class="zap-badge">✅ Zapisy otwarte — II semestr</span>
+  <h1 class="zap-title">Wystartowały<br><span>zapisy!</span></h1>
+  <p class="zap-hero-sub">Aby zapisać dziecko prosimy o kontakt telefoniczny lub SMS — dobierzemy odpowiednią grupę pod względem wieku i poziomu.</p>
+</div>
+
+<!-- SEMESTRY -->
+<div class="zap-semestry">
+  <span class="zap-sekcja-eyebrow">Harmonogram semestrów</span>
+  <h2 class="zap-sekcja-title">Kiedy odbywają się zajęcia?</h2>
+
+  <div class="zap-semestry-grid">
+
+    <div class="zap-semestr zamkniety">
+      <div class="zap-semestr-ikona">🔒</div>
+      <div class="zap-semestr-info">
+        <span class="zap-semestr-label">I semestr</span>
+        <p class="zap-semestr-nazwa">15.11.2025 – 31.01.2026</p>
+        <p class="zap-semestr-daty">Zapisy zamknięte</p>
+      </div>
+      <span class="zap-semestr-status">Zamknięte</span>
+    </div>
+
+    <div class="zap-semestr otwarty">
+      <div class="zap-semestr-ikona">🌊</div>
+      <div class="zap-semestr-info">
+        <span class="zap-semestr-label">II semestr</span>
+        <p class="zap-semestr-nazwa">19.02.2026 – 28.06.2026</p>
+        <p class="zap-semestr-daty">Zapisy otwarte</p>
+      </div>
+      <span class="zap-semestr-status">Otwarte!</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- INFO + PŁATNOŚĆ -->
+<div class="zap-info">
+  <div class="zap-info-inner">
+
+    <!-- KONTAKT -->
+    <div>
+      <span class="zap-info-eyebrow">Jak się zapisać</span>
+      <h2 class="zap-info-title">Zadzwoń lub napisz SMS</h2>
+      <p class="zap-info-tekst">
+        W celu zapisania dziecka prosimy o kontakt telefoniczny lub SMS-owy — dobierzemy odpowiednią grupę dla dziecka pod względem wieku i poziomu.
+      </p>
+      <div class="zap-tel-lista">
+
+        <!-- 505 — PIERWSZY, KLIKALNY -->
+        <a class="zap-tel-item" href="tel:+48505912389" target="_blank">
+          📞 505 912 389
+          <span>główny</span>
+        </a>
+
+        <!-- 793 — DRUGI, KLIKALNY -->
+        <a class="zap-tel-item" href="tel:+48793790711" target="_blank">
+          📞 793 790 711
+          <span>dodatkowy</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- PŁATNOŚĆ -->
+    <div class="zap-platnosc">
+      <span class="zap-platnosc-eyebrow">Płatność za zajęcia</span>
+      <h3 class="zap-platnosc-title">Karnet semestralny</h3>
+      <p class="zap-platnosc-tekst">
+        Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły ustalamy telefonicznie przy zapisie.
+      </p>
+      <div class="zap-konto">
+        <span class="zap-konto-label">Numer konta bankowego</span>
+        <p class="zap-konto-numer">05 1090 2529 0000 0001 6453 7999</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</Base>
+
+<style is:global>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Blokada auto-linkowania przez iOS/Android */
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+}
+
+body {
+  background: #FFF9F6;
+  font-family: 'Space Mono', monospace;
+  color: #293434;
+}
+
+/* ─── HERO ─── */
+.zap-hero {
+  background: #FF8357;
+  padding: 72px 6%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.zap-hero::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: rgba(255,249,246,0.08);
+  top: -160px; right: -100px;
+}
+
+.zap-hero::after {
+  content: '';
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(41,52,52,0.08);
+  bottom: -70px; left: -60px;
+}
+
+.zap-badge {
+  display: inline-block;
+  background: #293434;
+  color: #B6DEDD;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.zap-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 7vw, 72px);
+  color: #FFF9F6;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.zap-title span { color: #293434; }
+
+.zap-hero-sub {
+  font-size: 14px;
+  color: #FFF9F6;
+  opacity: 0.85;
+  line-height: 1.8;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ─── SEMESTRY ─── */
+.zap-semestry {
+  padding: 64px 6%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.zap-sekcja-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 12px;
+  display: block;
+  text-align: center;
+}
+
+.zap-sekcja-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #293434;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.zap-semestry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.zap-semestr {
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.zap-semestr.zamkniety {
+  background: #FFF9F6;
+  box-shadow: 0 2px 24px rgba(41,52,52,0.07);
+}
+
+.zap-semestr.otwarty {
+  background: #293434;
+}
+
+.zap-semestr-ikona {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.zamkniety .zap-semestr-ikona { background: rgba(41,52,52,0.07); }
+.otwarty  .zap-semestr-ikona  { background: #FF8357; }
+
+.zap-semestr-info {}
+
+.zap-semestr-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.zamkniety .zap-semestr-label { color: #293434; opacity: 0.45; }
+.otwarty  .zap-semestr-label  { color: #B6DEDD; opacity: 0.7; }
+
+.zap-semestr-nazwa {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.zamkniety .zap-semestr-nazwa { color: #293434; }
+.otwarty  .zap-semestr-nazwa  { color: #FFF9F6; }
+
+.zap-semestr-daty {
+  font-size: 12px;
+}
+
+.zamkniety .zap-semestr-daty { color: #293434; opacity: 0.55; }
+.otwarty  .zap-semestr-daty  { color: #B6DEDD; opacity: 0.8; }
+
+.zap-semestr-status {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.zamkniety .zap-semestr-status {
+  background: rgba(41,52,52,0.08);
+  color: #293434;
+  opacity: 0.5;
+}
+
+.otwarty .zap-semestr-status {
+  background: #FF8357;
+  color: #FFF9F6;
+}
+
+/* ─── INFO O ZAPISACH ─── */
+.zap-info {
+  background: #B6DEDD;
+  padding: 64px 6%;
+}
+
+.zap-info-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.zap-info-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.55;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.zap-info-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #293434;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.zap-info-tekst {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #293434;
+  opacity: 0.8;
+  margin-bottom: 28px;
+}
+
+.zap-tel-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* KLIKALNY przycisk telefonu */
+.zap-tel-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #293434;
+  color: #FFF9F6;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.zap-tel-item:hover {
+  background: #FF8357;
+  transform: translateY(-2px);
+}
+
+.zap-tel-item:active {
+  transform: translateY(0);
+}
+
+.zap-tel-item span {
+  font-size: 11px;
+  opacity: 0.6;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: auto;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ─── PŁATNOŚĆ ─── */
+.zap-platnosc {
+  background: #FFF9F6;
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 32px rgba(41,52,52,0.08);
+}
+
+.zap-platnosc-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.zap-platnosc-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #293434;
+  margin-bottom: 16px;
+}
+
+.zap-platnosc-tekst {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #293434;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.zap-konto {
+  background: #293434;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.zap-konto-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.zap-konto-numer {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFF9F6;
+  letter-spacing: 1px;
+}
+
+/* ── TABLET ── */
+@media (max-width: 760px) {
+  .zap-hero { padding: 56px 5%; }
+  .zap-semestry { padding: 52px 5%; }
+  .zap-semestry-grid { grid-template-columns: 1fr; gap: 16px; }
+  .zap-info { padding: 52px 5%; }
+  .zap-info-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .zap-hero { padding: 44px 4%; }
+  .zap-title { font-size: 34px; }
+  .zap-hero-sub { font-size: 13px; }
+  .zap-semestry { padding: 40px 4%; }
+  .zap-sekcja-title { font-size: 24px; }
+  .zap-semestr { padding: 22px 18px; flex-wrap: wrap; }
+  .zap-semestr-status { margin-left: 0; margin-top: 8px; }
+  .zap-info { padding: 40px 4%; }
+  .zap-info-title { font-size: 22px; }
+  .zap-platnosc { padding: 24px 20px; }
+  .zap-konto-numer { font-size: 12px; }
+  .zap-tel-item { font-size: 14px; padding: 14px 16px; }
+  .zap-tel-item span { display: none; }
+}
+</style>

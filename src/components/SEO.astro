@@ -1,0 +1,50 @@
+---
+import { site } from '@/data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path = '/',
+  image = '/assets/logo-kwadrat.webp',
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, site.url).toString();
+const ogImage = new URL(image, site.url).toString();
+const fullTitle = title.toLowerCase().includes('solen') ? title : `${title} | ${site.name}`;
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={site.locale} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<meta name="theme-color" content="#FF8357" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="author" content={site.owner} />
+<meta name="geo.region" content="PL-DS" />
+<meta name="geo.placename" content={site.city} />
+<meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
+<meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />

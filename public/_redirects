@@ -1,0 +1,12 @@
+# Wix legacy paths
+/strona-glowna   /   301
+/home            /   301
+/index.html      /   301
+
+# Old .html extensions (in case of cached/bookmarked links)
+/o-nas.html          /o-nas/          301
+/gdzie-plywamy.html  /gdzie-plywamy/  301
+/zapisy.html         /zapisy/         301
+/cennik.html         /cennik/         301
+/kontakt.html        /kontakt/        301
+/faq.html            /faq/            301

@@ -1,0 +1,45 @@
+---
+import { nav, site } from '@/data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+---
+<header class="hdr">
+  <a href="/" class="hdr-logo-link" aria-label={`${site.short} — strona główna`}>
+    <img src="/assets/logo-cropped.webp" alt={`Szkoła Pływania ${site.short} ${site.city}`} class="hdr-logo" width="420" height="140" />
+  </a>
+  <nav class="hdr-nav" aria-label="Nawigacja główna">
+    {nav.map((item) => (
+      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+    ))}
+  </nav>
+  <div class="hdr-right">
+    <a href={site.social.facebook} class="hdr-social" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href={site.social.instagram} class="hdr-social" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <button class="hdr-burger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="hdr-mobile" id="mobile-nav" aria-label="Menu mobilne">
+    {nav.map((item) => (
+      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+    ))}
+  </nav>
+</header>
+<nav class="hdr-nav-strip" aria-label="Nawigacja pozioma">
+  {nav.map((item) => (
+    <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+  ))}
+</nav>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-nav');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

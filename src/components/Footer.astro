@@ -1,0 +1,31 @@
+---
+import { site } from '@/data/site';
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <img src="/assets/logo.png" alt={site.short} class="ftr-logo" width="200" height="70" />
+  <div class="ftr-grid">
+    <div class="ftr-col">
+      <h3>Nawigacja</h3>
+      <a href="/zapisy/">Zapisy</a>
+      <a href="/cennik/">Cennik</a>
+      <a href="/o-nas/">O nas</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/gdzie-plywamy/">Gdzie pływamy</a>
+      <a href="/kontakt/">Kontakt</a>
+    </div>
+    <div class="ftr-col">
+      <h3>Kontakt</h3>
+      <a href={`tel:${site.phone}`}>{site.phoneHuman}</a>
+      <a href={`tel:${site.phone2}`}>{site.phone2Human}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <p>{site.address.street}<br/>{site.address.postal} {site.address.city}, {site.district}</p>
+    </div>
+    <div class="ftr-col">
+      <h3>Social media</h3>
+      <a href={site.social.facebook} target="_blank" rel="noopener">Facebook</a>
+      <a href={site.social.instagram} target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="ftr-bottom">© {year} {site.name} · {site.city} {site.district} · {site.tagline}</div>
+</footer>
