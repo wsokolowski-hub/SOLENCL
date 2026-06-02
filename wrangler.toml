@@ -1,6 +1,6 @@
 # Cloudflare Workers — Static Assets deployment
 # Build: npm run build (Astro -> dist/), deploy: npx wrangler deploy
-name = "solen-swim"
+name = "solencl"
 compatibility_date = "2025-05-01"
 
 [assets]
