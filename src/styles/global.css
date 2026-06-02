@@ -43,7 +43,7 @@ a[x-apple-data-detectors] {
   padding: 14px 20px;
   position: relative;
 }
-.hdr-logo { height: 75px; display: block; }
+.hdr-logo { height: 88px; width: auto; display: block; image-rendering: -webkit-optimize-contrast; }
 
 /* Desktop nav inside .hdr is hidden — shown via .hdr-nav-strip instead */
 .hdr-nav { display: none; gap: 26px; }
@@ -114,8 +114,8 @@ a[x-apple-data-detectors] {
 .hdr-mobile a:hover { color: var(--coral); }
 
 @media (min-width: 900px) {
-  .hdr { padding: 16px 48px; justify-content: center; }
-  .hdr-logo { height: 140px; }
+  .hdr { padding: 20px 48px; justify-content: center; }
+  .hdr-logo { height: 200px; }
   .hdr-right {
     position: absolute;
     right: 48px;
