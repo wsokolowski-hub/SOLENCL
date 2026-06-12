@@ -1,0 +1,96 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Polityka prywatności', href: '/polityka-prywatnosci/' },
+];
+const updated = '2 czerwca 2026';
+---
+<Base
+  title="Polityka prywatności | Solen Swim Wrocław"
+  description="Polityka prywatności szkoły pływania Solen Swim — informacje o przetwarzaniu danych osobowych zgodnie z RODO."
+  path="/polityka-prywatnosci/"
+  pageType={'about'}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="legal">
+    <p class="legal-eyebrow">Ostatnia aktualizacja: {updated}</p>
+    <h1>Polityka prywatności</h1>
+
+    <h2>1. Administrator danych</h2>
+    <p>Administratorem Twoich danych osobowych jest <strong>{site.name}</strong>, prowadzona przez {site.owner}, z siedzibą przy {site.address.street}, {site.address.postal} {site.address.city}.</p>
+    <p>Kontakt w sprawach związanych z ochroną danych:<br/>
+      e-mail: <a href={`mailto:${site.email}`}>{site.email}</a><br/>
+      tel.: <a href={`tel:${site.phone}`}>{site.phoneHuman}</a>
+    </p>
+
+    <h2>2. Jakie dane zbieramy</h2>
+    <ul>
+      <li>Dane podane w formularzu kontaktowym lub przez telefon: imię i nazwisko rodzica/opiekuna, imię dziecka, wiek dziecka, numer telefonu, adres e-mail.</li>
+      <li>Dane techniczne (adres IP, typ przeglądarki, czas wizyty) – automatycznie, w celach statystycznych i bezpieczeństwa.</li>
+      <li>Pliki cookie – szczegóły w <a href="/polityka-cookies/">Polityce plików cookie</a>.</li>
+    </ul>
+
+    <h2>3. Cele i podstawy prawne przetwarzania</h2>
+    <ul>
+      <li><strong>Zapis dziecka na zajęcia, kontakt zwrotny</strong> – art. 6 ust. 1 lit. b RODO (wykonanie umowy / podjęcie działań przed zawarciem umowy).</li>
+      <li><strong>Wystawianie dokumentów księgowych</strong> – art. 6 ust. 1 lit. c RODO (obowiązek prawny).</li>
+      <li><strong>Marketing własnych usług, statystyka strony</strong> – art. 6 ust. 1 lit. f RODO (uzasadniony interes administratora).</li>
+    </ul>
+
+    <h2>4. Komu udostępniamy dane</h2>
+    <p>Dane mogą być powierzone podmiotom obsługującym infrastrukturę techniczną strony (hosting Cloudflare), obsługę księgową oraz operatorom poczty elektronicznej. Nie sprzedajemy danych podmiotom trzecim.</p>
+
+    <h2>5. Czas przechowywania danych</h2>
+    <p>Dane kontaktowe przechowujemy przez okres trwania umowy oraz 5 lat po jej zakończeniu (wymóg prawa podatkowego). Dane zebrane w celach marketingowych — do momentu wycofania zgody.</p>
+
+    <h2>6. Twoje prawa</h2>
+    <p>Masz prawo do:</p>
+    <ul>
+      <li>dostępu do swoich danych i otrzymania ich kopii,</li>
+      <li>sprostowania, usunięcia lub ograniczenia przetwarzania,</li>
+      <li>przenoszenia danych,</li>
+      <li>wniesienia sprzeciwu wobec przetwarzania,</li>
+      <li>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).</li>
+    </ul>
+
+    <h2>7. Pliki cookie</h2>
+    <p>Szczegółowe informacje znajdziesz w odrębnej <a href="/polityka-cookies/">Polityce plików cookie</a>.</p>
+  </article>
+</Base>
+
+<style is:global>
+  .legal {
+    max-width: 760px; margin: 0 auto;
+    padding: 72px 24px 96px;
+    background: var(--cream);
+  }
+  .legal-eyebrow {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dark); opacity: .55; margin-bottom: 12px;
+  }
+  .legal h1 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--coral); margin-bottom: 28px; line-height: 1.1;
+  }
+  .legal h2 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 18px;
+    color: var(--dark);
+    margin: 36px 0 14px;
+  }
+  .legal p, .legal li {
+    font-family: var(--font-body); font-size: 13.5px; line-height: 1.85;
+    color: var(--dark); opacity: .85;
+  }
+  .legal ul { padding-left: 22px; margin: 8px 0 12px; }
+  .legal li { margin-bottom: 4px; }
+  .legal a { color: var(--coral); border-bottom: 1px solid rgba(255,131,87,.35); }
+  .legal a:hover { opacity: .75; }
+  .legal strong { font-weight: 700; }
+  @media (max-width: 760px) {
+    .legal { padding: 48px 18px 64px; }
+  }
+</style>

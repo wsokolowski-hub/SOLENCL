@@ -1,0 +1,53 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Polityka plików cookie', href: '/polityka-cookies/' },
+];
+const updated = '2 czerwca 2026';
+---
+<Base
+  title="Polityka plików cookie | Solen Swim Wrocław"
+  description="Polityka plików cookie szkoły pływania Solen Swim — rodzaje ciasteczek, do czego są używane, jak je wyłączyć."
+  path="/polityka-cookies/"
+  pageType={'about'}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="legal">
+    <p class="legal-eyebrow">Ostatnia aktualizacja: {updated}</p>
+    <h1>Polityka plików cookie</h1>
+
+    <h2>1. Czym są pliki cookie</h2>
+    <p>Pliki cookie („ciasteczka”) to małe pliki tekstowe zapisywane w urządzeniu użytkownika podczas korzystania ze strony internetowej. Pozwalają one na rozpoznanie urządzenia użytkownika i odpowiednie wyświetlenie strony.</p>
+
+    <h2>2. Do czego używamy cookies</h2>
+    <ul>
+      <li><strong>Cookies niezbędne</strong> – zapewniają poprawne działanie strony (sesja, preferencje wyświetlania). Nie wymagają zgody.</li>
+      <li><strong>Cookies analityczne</strong> – pomagają nam zrozumieć, jak odwiedzający korzystają ze strony (anonimowe statystyki). Wymagają Twojej zgody.</li>
+      <li><strong>Cookies zewnętrzne</strong> – używane przez Google Maps, Facebook lub Instagram, jeśli korzystasz z osadzonych w stronie elementów tych serwisów. Wymagają Twojej zgody.</li>
+    </ul>
+
+    <h2>3. Jak zarządzać cookies</h2>
+    <p>W każdej chwili możesz zmienić ustawienia plików cookie w swojej przeglądarce — zablokować je w całości, akceptować tylko wybrane lub usuwać już zapisane. Instrukcje dla najpopularniejszych przeglądarek znajdziesz w ich oficjalnej dokumentacji:</p>
+    <ul>
+      <li>Google Chrome — <em>Ustawienia → Prywatność i bezpieczeństwo → Pliki cookie</em></li>
+      <li>Mozilla Firefox — <em>Opcje → Prywatność i bezpieczeństwo → Ciasteczka</em></li>
+      <li>Safari — <em>Preferencje → Prywatność</em></li>
+      <li>Microsoft Edge — <em>Ustawienia → Pliki cookie i uprawnienia witryny</em></li>
+    </ul>
+    <p class="legal-note">Blokowanie cookies może spowodować, że niektóre elementy strony (np. mapa Google) nie będą działać poprawnie.</p>
+
+    <h2>4. Cookies podmiotów trzecich</h2>
+    <p>Na stronie wykorzystywane są usługi zewnętrzne, które mogą zapisywać własne pliki cookie:</p>
+    <ul>
+      <li>Google Maps (lokalizacja basenu)</li>
+      <li>Google Fonts (typografia)</li>
+      <li>Facebook / Instagram (odnośniki do social media)</li>
+    </ul>
+    <p>Polityki prywatności tych dostawców regulują sposób przetwarzania danych po stronie ich serwisów.</p>
+
+    <h2>5. Kontakt</h2>
+    <p>Pytania związane z polityką plików cookie kieruj na: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </article>
+</Base>

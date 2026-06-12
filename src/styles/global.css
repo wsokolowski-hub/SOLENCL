@@ -197,9 +197,24 @@ a[x-apple-data-detectors] {
   color: rgba(255,255,255,.65);
 }
 .ftr-col a:hover { color: var(--coral); }
-.ftr-bottom {
+
+.ftr-legal {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 28px 56px;
+  padding: 28px 24px 22px;
   border-top: 1px solid rgba(255,255,255,.1);
-  padding-top: 22px; text-align: center;
+  text-align: center;
+}
+.ftr-legal a {
+  font-family: var(--font-heading);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--coral);
+  transition: opacity .2s;
+}
+.ftr-legal a:hover { opacity: .75; }
+
+.ftr-bottom {
+  padding-top: 14px; text-align: center;
   font-size: 11px; color: rgba(255,255,255,.3);
 }
 @media (min-width: 768px) {

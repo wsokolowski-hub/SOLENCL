@@ -1,0 +1,45 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Warunki korzystania', href: '/regulamin/' },
+];
+const updated = '2 czerwca 2026';
+---
+<Base
+  title="Warunki korzystania ze strony | Solen Swim Wrocław"
+  description="Regulamin korzystania ze strony internetowej solenswim.com — zasady, prawa autorskie, odpowiedzialność."
+  path="/regulamin/"
+  pageType={'about'}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="legal">
+    <p class="legal-eyebrow">Ostatnia aktualizacja: {updated}</p>
+    <h1>Warunki korzystania ze strony internetowej</h1>
+
+    <h2>1. Postanowienia ogólne</h2>
+    <p>Niniejszy regulamin określa zasady korzystania ze strony internetowej dostępnej pod adresem <strong>{site.url.replace('https://','')}</strong>, zwanej dalej „Stroną”. Operatorem Strony jest <strong>{site.name}</strong> ({site.owner}), z siedzibą przy {site.address.street}, {site.address.postal} {site.address.city}.</p>
+
+    <h2>2. Zakres usług</h2>
+    <p>Strona służy prezentacji oferty szkoły pływania Solen Swim, w tym informacji o kursach, cennikach, harmonogramie i kontakcie. Strona nie świadczy bezpośrednio sprzedaży zajęć online — zapisy realizowane są drogą telefoniczną lub mailową.</p>
+
+    <h2>3. Prawa autorskie</h2>
+    <p>Wszystkie treści zamieszczone na Stronie — w tym teksty, grafiki, logotyp i układ graficzny — są chronione prawem autorskim. Kopiowanie, modyfikowanie lub komercyjne wykorzystanie ich bez pisemnej zgody Operatora jest zabronione.</p>
+
+    <h2>4. Odpowiedzialność</h2>
+    <p>Operator dokłada starań, aby treści były aktualne i zgodne ze stanem faktycznym. Operator nie ponosi odpowiedzialności za ewentualne szkody powstałe wskutek korzystania z informacji zamieszczonych na Stronie ani za czasowe niedostępności wynikłe z przyczyn technicznych.</p>
+
+    <h2>5. Linki zewnętrzne</h2>
+    <p>Strona może zawierać odnośniki do serwisów zewnętrznych (Facebook, Instagram, Google Maps). Operator nie odpowiada za treści ani politykę prywatności tych serwisów.</p>
+
+    <h2>6. Reklamacje</h2>
+    <p>Wszelkie uwagi dotyczące działania Strony można zgłaszać na adres <a href={`mailto:${site.email}`}>{site.email}</a>. Odpowiedź udzielana jest w terminie do 14 dni roboczych.</p>
+
+    <h2>7. Zmiany regulaminu</h2>
+    <p>Operator zastrzega sobie prawo do zmian w regulaminie. Aktualna wersja jest publikowana na tej stronie wraz z datą ostatniej aktualizacji.</p>
+
+    <h2>8. Postanowienia końcowe</h2>
+    <p>W sprawach nieuregulowanych zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego oraz ustawy o świadczeniu usług drogą elektroniczną.</p>
+  </article>
+</Base>
