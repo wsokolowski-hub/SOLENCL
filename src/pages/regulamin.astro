@@ -5,41 +5,61 @@ const breadcrumbs = [
   { name: 'Start', href: '/' },
   { name: 'Warunki korzystania', href: '/regulamin/' },
 ];
-const updated = '2 czerwca 2026';
+const domain = site.url.replace('https://', '').replace(/\/$/, '');
+const updated = '16.10.2025';
 ---
 <Base
   title="Warunki korzystania ze strony | Solen Swim Wrocław"
-  description="Regulamin korzystania ze strony internetowej solenswim.com — zasady, prawa autorskie, odpowiedzialność."
+  description="Warunki korzystania ze strony internetowej Solen Swim — zasady, cel strony, prawa autorskie, odpowiedzialność i kontakt."
   path="/regulamin/"
   pageType={'about'}
   breadcrumbs={breadcrumbs}
 >
   <article class="legal">
-    <p class="legal-eyebrow">Ostatnia aktualizacja: {updated}</p>
     <h1>Warunki korzystania ze strony internetowej</h1>
+    <p class="legal-lead"><strong>{site.companyLegal}</strong><br/>NIP: {site.nip}<br/>E-mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    <p class="legal-eyebrow">Data aktualizacji: {updated}</p>
 
     <h2>1. Postanowienia ogólne</h2>
-    <p>Niniejszy regulamin określa zasady korzystania ze strony internetowej dostępnej pod adresem <strong>{site.url.replace('https://','')}</strong>, zwanej dalej „Stroną”. Operatorem Strony jest <strong>{site.name}</strong> ({site.owner}), z siedzibą przy {site.address.street}, {site.address.postal} {site.address.city}.</p>
+    <p>Niniejsze Warunki określają zasady korzystania ze strony internetowej {domain}, prowadzonej przez {site.companyLegal}.</p>
+    <p>Korzystając ze strony, użytkownik akceptuje niniejsze warunki i zobowiązuje się do przestrzegania zasad opisanych w tym dokumencie.</p>
 
-    <h2>2. Zakres usług</h2>
-    <p>Strona służy prezentacji oferty szkoły pływania Solen Swim, w tym informacji o kursach, cennikach, harmonogramie i kontakcie. Strona nie świadczy bezpośrednio sprzedaży zajęć online — zapisy realizowane są drogą telefoniczną lub mailową.</p>
+    <h2>2. Cel strony</h2>
+    <p>Strona {domain} ma charakter informacyjny i promocyjny. Jej celem jest przedstawienie oferty zajęć pływania dla dzieci, informacji o kursach, instruktorach oraz ułatwienie kontaktu z administratorem (np. w celu zapisania się na zajęcia).</p>
+    <p>Strona nie prowadzi sprzedaży internetowej ani płatności online.</p>
 
-    <h2>3. Prawa autorskie</h2>
-    <p>Wszystkie treści zamieszczone na Stronie — w tym teksty, grafiki, logotyp i układ graficzny — są chronione prawem autorskim. Kopiowanie, modyfikowanie lub komercyjne wykorzystanie ich bez pisemnej zgody Operatora jest zabronione.</p>
+    <h2>3. Korzystanie ze strony</h2>
+    <p>Każdy użytkownik może korzystać ze strony w sposób zgodny z jej przeznaczeniem i obowiązującym prawem.</p>
+    <p>Użytkownik zobowiązuje się nie podejmować działań, które mogłyby zakłócić działanie strony lub naruszyć bezpieczeństwo danych.</p>
+    <p>Zabrania się publikowania w formularzach treści o charakterze obraźliwym, bezprawnym lub reklamowym niezwiązanym z działalnością Solen Swim.</p>
 
-    <h2>4. Odpowiedzialność</h2>
-    <p>Operator dokłada starań, aby treści były aktualne i zgodne ze stanem faktycznym. Operator nie ponosi odpowiedzialności za ewentualne szkody powstałe wskutek korzystania z informacji zamieszczonych na Stronie ani za czasowe niedostępności wynikłe z przyczyn technicznych.</p>
+    <h2>4. Formularz kontaktowy i zapisy</h2>
+    <p>Strona umożliwia kontakt poprzez formularz oraz zapis telefoniczny.</p>
+    <p>Dane przekazywane za pomocą formularza (imię, numer telefonu, adres e-mail, treść wiadomości) są przetwarzane wyłącznie w celu udzielenia odpowiedzi lub realizacji zapisu na zajęcia.</p>
+    <p>Szczegółowe informacje dotyczące przetwarzania danych osobowych znajdują się w <a href="/polityka-prywatnosci/">Polityce prywatności</a>.</p>
 
-    <h2>5. Linki zewnętrzne</h2>
-    <p>Strona może zawierać odnośniki do serwisów zewnętrznych (Facebook, Instagram, Google Maps). Operator nie odpowiada za treści ani politykę prywatności tych serwisów.</p>
+    <h2>5. Własność intelektualna</h2>
+    <p>Wszystkie treści zamieszczone na stronie, w tym teksty, zdjęcia, grafiki i logotypy, stanowią własność {site.companyLegal} lub są wykorzystywane za zgodą autorów.</p>
+    <p>Zabrania się kopiowania, modyfikowania lub rozpowszechniania materiałów ze strony bez zgody właściciela.</p>
+    <p>Nazwa Solen Swim, logo i grafiki są chronione prawem autorskim.</p>
 
-    <h2>6. Reklamacje</h2>
-    <p>Wszelkie uwagi dotyczące działania Strony można zgłaszać na adres <a href={`mailto:${site.email}`}>{site.email}</a>. Odpowiedź udzielana jest w terminie do 14 dni roboczych.</p>
+    <h2>6. Odpowiedzialność</h2>
+    <p>Administrator dokłada starań, by wszystkie informacje na stronie były aktualne i prawidłowe.</p>
+    <p>Administrator nie ponosi odpowiedzialności za:</p>
+    <ul>
+      <li>czasowe przerwy w dostępności strony,</li>
+      <li>działania użytkowników niezgodne z prawem,</li>
+      <li>treści stron zewnętrznych, do których odsyłają linki (np. Facebook, Instagram).</li>
+    </ul>
+    <p>Strona może być czasowo aktualizowana lub modyfikowana bez wcześniejszego powiadomienia.</p>
 
-    <h2>7. Zmiany regulaminu</h2>
-    <p>Operator zastrzega sobie prawo do zmian w regulaminie. Aktualna wersja jest publikowana na tej stronie wraz z datą ostatniej aktualizacji.</p>
+    <h2>7. Zmiany warunków</h2>
+    <p>Administrator zastrzega sobie prawo do wprowadzenia zmian w niniejszych Warunkach w dowolnym czasie. Aktualna wersja dokumentu jest zawsze dostępna na stronie {domain}/regulamin.</p>
 
-    <h2>8. Postanowienia końcowe</h2>
-    <p>W sprawach nieuregulowanych zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego oraz ustawy o świadczeniu usług drogą elektroniczną.</p>
+    <h2>8. Prawo właściwe</h2>
+    <p>W sprawach nieuregulowanych niniejszymi Warunkami zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego oraz przepisów o ochronie danych osobowych.</p>
+
+    <h2>9. Kontakt</h2>
+    <p>W przypadku pytań dotyczących działania strony lub niniejszych Warunków, prosimy o kontakt:<br/>E-mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
   </article>
 </Base>

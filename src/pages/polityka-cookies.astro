@@ -5,49 +5,68 @@ const breadcrumbs = [
   { name: 'Start', href: '/' },
   { name: 'Polityka plików cookie', href: '/polityka-cookies/' },
 ];
-const updated = '2 czerwca 2026';
+const domain = site.url.replace('https://', '').replace(/\/$/, '');
+const updated = '16.10.2025';
 ---
 <Base
   title="Polityka plików cookie | Solen Swim Wrocław"
-  description="Polityka plików cookie szkoły pływania Solen Swim — rodzaje ciasteczek, do czego są używane, jak je wyłączyć."
+  description="Polityka plików cookies szkoły pływania Solen Swim — czym są ciasteczka, do czego ich używamy, rodzaje, zarządzanie i narzędzia zewnętrzne."
   path="/polityka-cookies/"
   pageType={'about'}
   breadcrumbs={breadcrumbs}
 >
   <article class="legal">
-    <p class="legal-eyebrow">Ostatnia aktualizacja: {updated}</p>
-    <h1>Polityka plików cookie</h1>
+    <h1>Polityka plików cookies</h1>
+    <p class="legal-lead"><strong>{site.companyLegal}</strong></p>
+    <p class="legal-eyebrow">Data aktualizacji: {updated}</p>
 
-    <h2>1. Czym są pliki cookie</h2>
-    <p>Pliki cookie („ciasteczka”) to małe pliki tekstowe zapisywane w urządzeniu użytkownika podczas korzystania ze strony internetowej. Pozwalają one na rozpoznanie urządzenia użytkownika i odpowiednie wyświetlenie strony.</p>
+    <h2>1. Czym są pliki cookies?</h2>
+    <p>Pliki cookies (tzw. „ciasteczka”) to niewielkie pliki tekstowe zapisywane na urządzeniu użytkownika podczas korzystania ze strony internetowej.</p>
+    <p>Pozwalają one m.in. na prawidłowe działanie strony, zapamiętywanie preferencji użytkownika, a także analizowanie sposobu korzystania z witryny.</p>
 
-    <h2>2. Do czego używamy cookies</h2>
+    <h2>2. W jakim celu używamy plików cookies?</h2>
+    <p>Strona {domain} wykorzystuje pliki cookies w następujących celach:</p>
     <ul>
-      <li><strong>Cookies niezbędne</strong> – zapewniają poprawne działanie strony (sesja, preferencje wyświetlania). Nie wymagają zgody.</li>
-      <li><strong>Cookies analityczne</strong> – pomagają nam zrozumieć, jak odwiedzający korzystają ze strony (anonimowe statystyki). Wymagają Twojej zgody.</li>
-      <li><strong>Cookies zewnętrzne</strong> – używane przez Google Maps, Facebook lub Instagram, jeśli korzystasz z osadzonych w stronie elementów tych serwisów. Wymagają Twojej zgody.</li>
+      <li><strong>Zapewnienie prawidłowego działania strony</strong> – np. utrzymanie sesji użytkownika, dostosowanie wyświetlania treści.</li>
+      <li><strong>Statystyki i analiza ruchu</strong> – korzystamy z narzędzia Google Analytics, które pomaga nam zrozumieć, jak użytkownicy korzystają z naszej strony (anonimowo, bez identyfikacji osoby).</li>
+      <li><strong>Integracja z mediami społecznościowymi</strong> – na stronie znajdują się linki do naszych profili w serwisach Facebook i Instagram, które mogą stosować własne pliki cookies.</li>
+      <li><strong>Ułatwienie kontaktu</strong> – w formularzu kontaktowym mogą być używane cookies, które zapamiętują dane wpisane w pola formularza, by ułatwić ponowne wysłanie wiadomości.</li>
     </ul>
 
-    <h2>3. Jak zarządzać cookies</h2>
-    <p>W każdej chwili możesz zmienić ustawienia plików cookie w swojej przeglądarce — zablokować je w całości, akceptować tylko wybrane lub usuwać już zapisane. Instrukcje dla najpopularniejszych przeglądarek znajdziesz w ich oficjalnej dokumentacji:</p>
+    <h2>3. Rodzaje plików cookies</h2>
+    <p>Na naszej stronie mogą być stosowane:</p>
     <ul>
-      <li>Google Chrome — <em>Ustawienia → Prywatność i bezpieczeństwo → Pliki cookie</em></li>
-      <li>Mozilla Firefox — <em>Opcje → Prywatność i bezpieczeństwo → Ciasteczka</em></li>
-      <li>Safari — <em>Preferencje → Prywatność</em></li>
-      <li>Microsoft Edge — <em>Ustawienia → Pliki cookie i uprawnienia witryny</em></li>
+      <li><strong>Cookies sesyjne</strong> – tymczasowe, które są usuwane po zamknięciu przeglądarki.</li>
+      <li><strong>Cookies trwałe</strong> – pozostają na urządzeniu przez określony czas lub do momentu ich usunięcia.</li>
+      <li><strong>Cookies zewnętrzne</strong> – pochodzące od partnerów takich jak Google (Google Analytics) lub Meta (Facebook, Instagram).</li>
     </ul>
-    <p class="legal-note">Blokowanie cookies może spowodować, że niektóre elementy strony (np. mapa Google) nie będą działać poprawnie.</p>
 
-    <h2>4. Cookies podmiotów trzecich</h2>
-    <p>Na stronie wykorzystywane są usługi zewnętrzne, które mogą zapisywać własne pliki cookie:</p>
+    <h2>4. Zarządzanie plikami cookies</h2>
+    <p>Każdy użytkownik może samodzielnie zmienić ustawienia dotyczące cookies w swojej przeglądarce internetowej. Można je całkowicie zablokować, ograniczyć lub usunąć. Należy jednak pamiętać, że wyłączenie niektórych plików cookies może wpłynąć na prawidłowe działanie strony.</p>
+    <p>Instrukcje dotyczące zarządzania cookies znajdziesz na stronach producentów przeglądarek:</p>
     <ul>
-      <li>Google Maps (lokalizacja basenu)</li>
-      <li>Google Fonts (typografia)</li>
-      <li>Facebook / Instagram (odnośniki do social media)</li>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/pl/kb/ciasteczka" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.microsoft.com/pl-pl/microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      <li><a href="https://support.apple.com/pl-pl/guide/safari/welcome/mac" target="_blank" rel="noopener">Safari</a></li>
     </ul>
-    <p>Polityki prywatności tych dostawców regulują sposób przetwarzania danych po stronie ich serwisów.</p>
 
-    <h2>5. Kontakt</h2>
-    <p>Pytania związane z polityką plików cookie kieruj na: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    <h2>5. Narzędzia zewnętrzne</h2>
+    <p>Na naszej stronie mogą być używane zewnętrzne usługi, które wykorzystują pliki cookies, takie jak:</p>
+    <ul>
+      <li>Google Analytics (usługa analizy ruchu w sieci Google LLC, USA)</li>
+      <li>Facebook / Instagram (Meta Platforms Ireland Ltd.)</li>
+    </ul>
+    <p>Każda z tych firm posiada własną politykę prywatności dotyczącą przetwarzania danych. Zachęcamy do zapoznania się z nimi:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Polityka prywatności Google</a></li>
+      <li><a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Polityka prywatności Meta (Facebook, Instagram)</a></li>
+    </ul>
+
+    <h2>6. Zmiany w polityce cookies</h2>
+    <p>Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce plików cookies, zgodnie z obowiązującymi przepisami prawa lub w celu dostosowania do zmian technologicznych. Aktualna wersja dokumentu jest zawsze dostępna na stronie {domain}/polityka-plikow-cookie.</p>
+
+    <h2>7. Kontakt</h2>
+    <p>W razie pytań dotyczących korzystania z plików cookies możesz skontaktować się z nami:<br/>E-mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
   </article>
 </Base>

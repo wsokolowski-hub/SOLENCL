@@ -12,6 +12,8 @@ export const site = {
   country: 'PL',
   founded: '2024-11',
   owner: 'Kamila Falkowska',
+  companyLegal: 'Solen Swim Kamila Falkowska',
+  nip: '8943270496',
   address: {
     street: 'ul. Aleksandra Ostrowskiego 3',
     postal: '54-411',
