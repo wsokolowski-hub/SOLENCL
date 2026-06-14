@@ -166,7 +166,7 @@ const breadcrumbs = [];
 
   {site.reviews.featurableWidgetId ? (
     <div class="opinie-widget">
-      <div id={`featurable-${site.reviews.featurableWidgetId}`} data-featurable-async data-location-code="pl"></div>
+      <div id={`featurable-${site.reviews.featurableWidgetId}`} data-featurable-async></div>
     </div>
   ) : (
     <p class="opinie-placeholder">Zobacz, co piszą o nas rodzice — przeczytaj wszystkie opinie bezpośrednio w Google.</p>
@@ -177,7 +177,7 @@ const breadcrumbs = [];
   </a>
 </section>
 {site.reviews.featurableWidgetId && (
-  <script is:inline defer src="https://cdn.featurable.com/widget/v2/embed.js" charset="UTF-8"></script>
+  <script is:inline defer src="https://featurable.com/assets/bundle.js" charset="UTF-8"></script>
 )}
 <!-- ===== KONTAKT (ciemna sekcja) ===== -->
 <div style="background:#293434;"><div class="kontakt">
