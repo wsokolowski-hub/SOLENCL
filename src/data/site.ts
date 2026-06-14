@@ -46,7 +46,7 @@ export const site = {
   reviews: {
     // ID widgetu z featurable.com (UUID) — wklej po utworzeniu widgetu.
     // Dopóki puste, sekcja opinii pokazuje przycisk do opinii w Google.
-    featurableWidgetId: '',
+    featurableWidgetId: '55d67da2-5ca1-452f-89aa-49df6c882761',
     googleProfileUrl: 'https://g.page/r/CQ_aXznUvIdKEAE',
     googleWriteReviewUrl: 'https://g.page/r/CQ_aXznUvIdKEAE/review',
   },
