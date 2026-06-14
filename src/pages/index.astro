@@ -79,41 +79,23 @@ const breadcrumbs = [];
   <a href="/zapisy/" class="cta-btn">Zapisz się</a>
 </div>
 <!-- ===== CO ZABRAĆ ===== -->
-<div style="background:#B6DEDD;"><div class="section">
-  <p class="section-label">przygotowanie</p>
-  <h2 class="section-title">Co zabrać na basen?</h2>
-
-  <div class="checklist">
-    <div class="check-item">
-      <div class="check-icon">🏊</div>
-      <span class="check-text">Kąpielówki lub strój kąpielowy</span>
+<section class="zabrac">
+  <div class="zabrac-wrap">
+    <div class="zabrac-foto">
+      <img src="/assets/hero-dziecko.webp" alt="Dziecko w okularkach pływackich na basenie Solen Swim" width="600" height="399" loading="lazy" />
     </div>
-    <div class="check-item">
-      <div class="check-icon">🥽</div>
-      <span class="check-text">Okularki do pływania</span>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">🩴</div>
-      <span class="check-text">Klapki basenowe</span>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">🛁</div>
-      <span class="check-text">Ręcznik kąpielowy</span>
-    </div>
-    <div class="check-item highlight">
-      <div class="check-icon">👶</div>
-      <span class="check-text">Pielucha wodoodporna<br><small style="opacity:0.8; font-size:11px;">tylko dla maluszków</small></span>
+    <div class="zabrac-tresc">
+      <h2 class="zabrac-title">Co zabrać<br>na basen?</h2>
+      <ul class="zabrac-lista">
+        <li>ręcznik kąpielowy</li>
+        <li>klapki basenowe</li>
+        <li>kąpielówki lub strój kąpielowy</li>
+        <li>okularki do pływania</li>
+        <li>pielucha wodoodporna dla malucha</li>
+      </ul>
     </div>
   </div>
-
-  <div class="note-box">
-    <span class="note-emoji">📍</span>
-    <div class="note-content">
-      <p class="note-title">Gdzie pływamy?</p>
-      <p class="note-text">Zajęcia odbywają się na basenie krytym przy ul. Ostrowskiego 3, Wrocław Grabiszyn. Bezpłatny parking dla uczestników zajęć.</p>
-    </div>
-  </div>
-</div></div>
+</section>
 <!-- ===== CENNIK ===== -->
 <section class="cennik">
 
@@ -371,7 +353,8 @@ const breadcrumbs = [];
       background-color: var(--coral);
       background-image: url('/assets/pattern-slonce.webp');
       background-repeat: repeat;
-      background-size: 480px 480px;
+      /* 4 suns per row, same as Wix rendering (2000px source downscaled to panel width) */
+      background-size: 100% auto;
       background-position: top left;
     }
 
@@ -394,10 +377,10 @@ const breadcrumbs = [];
 
     .hero-goggles {
       position: absolute;
-      width: 300px;
-      left: calc(50% - 220px);
+      width: clamp(360px, 33vw, 530px);
+      left: 21vw;
       top: 50%;
-      transform: translateY(-45%);
+      transform: translateY(-48%);
       z-index: 10;
       right: auto;
     }
@@ -569,98 +552,73 @@ const breadcrumbs = [];
   }
 }
 /* === CO ZABRAĆ === */
-.section {
-    padding: 80px 24px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.zabrac {
+  background: var(--cream);
+  padding: 72px 6%;
+}
+.zabrac-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.zabrac-foto {
+  width: 100%;
+}
+.zabrac-foto img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.zabrac-tresc {
+  width: 100%;
+}
+.zabrac-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(30px, 6vw, 52px);
+  color: var(--mint);
+  line-height: 1.1;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.zabrac-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.zabrac-lista li {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--coral);
+  line-height: 1.5;
+  padding-left: 22px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.zabrac-lista li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--coral);
+  font-size: 1.2em;
+  line-height: 1;
+}
 
-  .section-label {
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--coral);
-    text-align: center;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(28px, 5vw, 44px);
-    color: var(--dark);
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .checklist {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .check-item {
-    background: var(--cream);
-    border-radius: 18px;
-    padding: 20px 24px;
-    display: flex;
+@media (min-width: 768px) {
+  .zabrac { padding: 96px 6%; }
+  .zabrac-wrap {
+    flex-direction: row;
+    gap: 64px;
     align-items: center;
-    gap: 16px;
-    transition: transform 0.15s;
   }
-  .check-item:hover { transform: translateX(4px); }
-
-  .check-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: var(--mint);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  .check-text {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--dark);
-    line-height: 1.4;
-  }
-
-  /* Specjalne wyróżnienie dla ostatniego elementu (pielucha) */
-  .check-item.highlight {
-    background: var(--salmon);
-  }
-  .check-item.highlight .check-icon { background: rgba(255,249,246,0.4); }
-  .check-item.highlight .check-text { color: var(--cream); }
-
-  .note-box {
-    margin-top: 40px;
-    background: var(--cream);
-    border-radius: 20px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .note-emoji { font-size: 32px; flex-shrink: 0; }
-  .note-content {}
-  .note-title {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--coral);
-    margin-bottom: 6px;
-  }
-  .note-text {
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--dark);
-    opacity: 0.75;
-    line-height: 1.6;
-  }
+  .zabrac-foto { width: 50%; }
+  .zabrac-tresc { width: 50%; }
+}
 /* === CENNIK === */
 .cennik {
   padding: 80px 6%;
