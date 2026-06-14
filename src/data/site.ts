@@ -43,6 +43,13 @@ export const site = {
     facebook: 'https://www.facebook.com/profile.php?id=61581816024136',
     instagram: 'https://www.instagram.com/szkolaplywania.solenswim/',
   },
+  reviews: {
+    // ID widgetu z featurable.com (UUID) — wklej po utworzeniu widgetu.
+    // Dopóki puste, sekcja opinii pokazuje przycisk do opinii w Google.
+    featurableWidgetId: '',
+    googleProfileUrl: 'https://g.page/r/CQ_aXznUvIdKEAE',
+    googleWriteReviewUrl: 'https://g.page/r/CQ_aXznUvIdKEAE/review',
+  },
 } as const;
 
 export type NavItem = { href: string; label: string };

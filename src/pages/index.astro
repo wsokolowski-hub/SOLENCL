@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
 const title = 'Szkoła Pływania Wrocław | Solen Swim | Dzieci od 6 miesiąca';
 const description = 'Szkoła pływania dla dzieci i niemowląt we Wrocławiu (Grabiszyn). Zajęcia od 6. miesiąca życia. Małe grupy, certyfikowani instruktorzy. 4,9/5 (21 opinii). Zapisz się online.';
 const path = '/';
@@ -162,24 +163,22 @@ const breadcrumbs = [];
   <h2 class="opinie-title">Opinie</h2>
   <div class="opinie-stars" aria-label="Ocena 4,9 na 5">★★★★★</div>
   <p class="opinie-rating">4,9 / 5 · 21 opinii w Google</p>
-  <div class="opinie-scroll">
-    <div class="opinia">
-      <div class="opinia-top"><span class="opinia-av">R</span><div><b>Rafał</b><span>Październik 2025</span></div></div>
-      <div class="opinia-gw">★★★★★</div>
-      <p>Profesjonalne, cierpliwe podejście. Dzieci czują się bezpiecznie i chętnie chodzą na zajęcia. Polecam!</p>
+
+  {site.reviews.featurableWidgetId ? (
+    <div class="opinie-widget">
+      <div id={`featurable-${site.reviews.featurableWidgetId}`} data-featurable-async></div>
     </div>
-    <div class="opinia">
-      <div class="opinia-top"><span class="opinia-av mint">A</span><div><b>Anna</b><span>Październik 2025</span></div></div>
-      <div class="opinia-gw">★★★★★</div>
-      <p>Kameralna atmosfera, ogrzewana woda, doświadczeni instruktorzy. Córka robi ogromne postępy.</p>
-    </div>
-    <div class="opinia">
-      <div class="opinia-top"><span class="opinia-av">N</span><div><b>Natalia</b><span>Wrzesień 2025</span></div></div>
-      <div class="opinia-gw">★★★★★</div>
-      <p>Świetne zajęcia dla niemowląt! Instruktorki są cudowne, maluszek absolutnie uwielbia wodę.</p>
-    </div>
-  </div>
+  ) : (
+    <p class="opinie-placeholder">Zobacz, co piszą o nas rodzice — przeczytaj wszystkie opinie bezpośrednio w Google.</p>
+  )}
+
+  <a class="opinie-cta" href={site.reviews.googleProfileUrl} target="_blank" rel="noopener">
+    Zobacz opinie w Google
+  </a>
 </section>
+{site.reviews.featurableWidgetId && (
+  <script is:inline async src="https://featurable.com/assets/bundle.js" charset="utf-8"></script>
+)}
 <!-- ===== KONTAKT (ciemna sekcja) ===== -->
 <div style="background:#293434;"><div class="kontakt">
 
