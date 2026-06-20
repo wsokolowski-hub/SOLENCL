@@ -1,0 +1,35 @@
+---
+import NaukaPage from '@/components/NaukaPage.astro';
+---
+<NaukaPage
+  title="Nauka pływania dla dzieci od podstaw — Wrocław | Solen Swim"
+  description="Nauka pływania dla dzieci w wieku 5–10 lat we Wrocławiu. Małe grupy do 8 osób, 45 minut zajęć, nauka 4 stylów: kraul, żabka, grzbiet, motylek. 65 zł / 45 min, basen Grabiszyn."
+  path="/nauka-plywania/dzieci-od-podstaw/"
+  eyebrow="Dzieci od podstaw"
+  h1={`Pierwsze samodzielne<br/><span>tempo na wodzie</span>`}
+  lead="Zajęcia dla dzieci 5–10 lat, które dopiero zaczynają przygodę z pływaniem. Dziecko ćwiczy samodzielnie pod okiem instruktora — uczymy podstaw, oddechu, czterech stylów."
+  serviceName="Nauka pływania dla dzieci od podstaw"
+  price="65"
+  priceUnit="zł / 45 min"
+  ageRange="5 – 10 lat"
+  groupSize="max 8 dzieci"
+  duration="45 minut"
+  parentInPool={false}
+  badge="Najpopularniejsze"
+  schedule={[
+    { day: 'Czwartek', hours: '15:30 – 18:30' },
+    { day: 'Sobota',   hours: '09:00 – 15:00' },
+  ]}
+  features={[
+    { icon: '🐠', title: 'Cztery style pływania',   desc: 'Uczymy kraulem (styl dowolny), żabką, na grzbiecie i motylkiem — program dostosowany do poziomu dziecka.' },
+    { icon: '👨‍🏫', title: 'Doświadczeni instruktorzy', desc: 'Każda grupa prowadzona przez wykwalifikowanego instruktora — z indywidualnym podejściem do każdego dziecka.' },
+    { icon: '🧒', title: 'Małe grupy',              desc: 'Maksymalnie 8 dzieci w grupie — instruktor ma czas dla każdego ucznia, dzieci szybciej robią postępy.' },
+    { icon: '🏊', title: 'Sprawdzone metody',       desc: 'Łączymy naukę z zabawą — dzieci uczą się bez stresu, w atmosferze bezpieczeństwa i wsparcia.' },
+  ]}
+  steps={[
+    { title: 'Zapis przez telefon',  desc: 'Dzwonisz pod 505 912 389, rozmawiamy o wieku i poziomie dziecka. Ustalamy dzień i godzinę.' },
+    { title: 'Próbne zajęcia',       desc: 'Dziecko przychodzi z kąpielówkami, ręcznikiem i okularkami. Instruktor sprawdza poziom i dobiera ćwiczenia.' },
+    { title: 'Stała grupa',          desc: 'Dziecko trafia do grupy o podobnym poziomie. Ten sam instruktor, ten sam dzień, cały semestr.' },
+    { title: 'Postępy semestralne',  desc: 'Po semestrze widać konkretne efekty — dziecko swobodnie pływa kraulem lub żabką.' },
+  ]}
+/>

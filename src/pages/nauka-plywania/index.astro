@@ -1,0 +1,226 @@
+---
+import Base from '@/layouts/Base.astro';
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Nauka pływania', href: '/nauka-plywania/' },
+];
+
+const opcje = [
+  {
+    href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/',
+    tag: 'Dla najmłodszych',
+    nazwa: 'Pływanie niemowląt\ni dzieci do lat 4',
+    wiek: '6 miesięcy – 4 lata',
+    czas: '30 minut',
+    cena: '55 zł',
+    opis: 'Zajęcia rodzic + dziecko — oswajanie z wodą w formie zabawy. Grupy do 10 par.',
+    color: 'mint',
+  },
+  {
+    href: '/nauka-plywania/dzieci-od-podstaw/',
+    tag: 'Od podstaw',
+    nazwa: 'Nauka pływania dla\ndzieci od podstaw',
+    wiek: '5 – 10 lat',
+    czas: '45 minut',
+    cena: '65 zł',
+    opis: 'Dzieci samodzielnie pod okiem instruktora. Nauka 4 stylów, max 8 osób w grupie.',
+    color: 'coral',
+  },
+  {
+    href: '/nauka-plywania/doskonalenie/',
+    tag: 'Doskonalenie',
+    nazwa: 'Doskonalenie\npływania dla dzieci',
+    wiek: '5 – 10 lat',
+    czas: '45 minut',
+    cena: '65 zł',
+    opis: 'Dla dzieci, które już pływają — szlif techniki, kraul, żabka, grzbiet, motylek.',
+    color: 'salmon',
+  },
+  {
+    href: '/nauka-plywania/indywidualnie/',
+    tag: 'Indywidualnie',
+    nazwa: 'Zajęcia\nindywidualne',
+    wiek: 'Każdy wiek',
+    czas: 'Indywidualnie',
+    cena: 'na zapytanie',
+    opis: '1 na 1 z instruktorem — pełne tempo dopasowane do Ciebie. Termin ustalany indywidualnie.',
+    color: 'teal',
+  },
+];
+---
+<Base
+  title="Nauka pływania we Wrocławiu — Szkoła Solen Swim"
+  description="Nauka pływania we Wrocławiu (Grabiszyn) — od niemowląt po dorosłych. Cztery formaty zajęć: pływanie niemowląt, nauka od podstaw, doskonalenie i lekcje indywidualne. Małe grupy, certyfikowani instruktorzy."
+  path="/nauka-plywania/"
+  pageType={'service'}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="np-hero">
+    <span class="np-eyebrow">Nauka pływania</span>
+    <h1 class="np-title">Wybierz format<br/><span>dla siebie lub dziecka</span></h1>
+    <p class="np-sub">Cztery różne ścieżki — od pierwszego kontaktu z wodą po doskonalenie techniki. Każda grupa prowadzona przez doświadczonego instruktora.</p>
+  </section>
+
+  <section class="np-grid">
+    {opcje.map((o) => (
+      <a href={o.href} class={`np-card np-card-${o.color}`}>
+        <span class="np-card-tag">{o.tag}</span>
+        <h2 class="np-card-nazwa" set:html={o.nazwa.replace(/\n/g, '<br/>')}></h2>
+        <ul class="np-card-meta">
+          <li><strong>Wiek:</strong> {o.wiek}</li>
+          <li><strong>Czas:</strong> {o.czas}</li>
+          <li><strong>Cena:</strong> {o.cena}</li>
+        </ul>
+        <p class="np-card-opis">{o.opis}</p>
+        <span class="np-card-cta">Zobacz szczegóły →</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="np-cta">
+    <h2>Nie wiesz który format wybrać?</h2>
+    <p>Zadzwoń — pomożemy dopasować zajęcia do wieku i poziomu Twojego dziecka.</p>
+    <a href="/kontakt/" class="np-cta-btn">Skontaktuj się z nami</a>
+  </section>
+</Base>
+
+<style is:global>
+  .np-hero {
+    background: var(--mint);
+    padding: 80px 6% 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .np-hero::before {
+    content: ''; position: absolute;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,131,87,.12);
+    top: -120px; right: -80px;
+  }
+  .np-hero::after {
+    content: ''; position: absolute;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(41,52,52,.05);
+    bottom: -60px; left: -40px;
+  }
+  .np-eyebrow {
+    position: relative;
+    display: inline-block;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--dark); opacity: .55; margin-bottom: 18px;
+  }
+  .np-title {
+    position: relative;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(32px, 6vw, 58px);
+    color: var(--dark); line-height: 1.1; margin-bottom: 18px;
+  }
+  .np-title span { color: var(--coral); }
+  .np-sub {
+    position: relative;
+    font-family: var(--font-body); font-size: 14px; line-height: 1.8;
+    color: var(--dark); opacity: .7;
+    max-width: 600px; margin: 0 auto;
+  }
+
+  .np-grid {
+    background: var(--cream);
+    padding: 72px 6%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 720px)  { .np-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .np-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .np-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 28px 26px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 4px 24px rgba(41,52,52,.06);
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .np-card::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 5px;
+  }
+  .np-card-mint::before   { background: var(--mint); }
+  .np-card-coral::before  { background: var(--coral); }
+  .np-card-salmon::before { background: var(--salmon); }
+  .np-card-teal::before   { background: var(--teal); }
+
+  .np-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(41,52,52,.12);
+  }
+  .np-card-tag {
+    display: inline-block;
+    font-family: var(--font-body); font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 14px;
+  }
+  .np-card-nazwa {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 19px; line-height: 1.25;
+    color: var(--dark); margin-bottom: 18px;
+  }
+  .np-card-meta {
+    list-style: none; padding: 0; margin: 0 0 18px;
+    border-top: 1px solid rgba(41,52,52,.08);
+    border-bottom: 1px solid rgba(41,52,52,.08);
+    padding: 14px 0;
+  }
+  .np-card-meta li {
+    font-family: var(--font-body); font-size: 12px;
+    color: var(--dark); opacity: .8;
+    padding: 3px 0;
+  }
+  .np-card-meta strong { font-weight: 700; color: var(--dark); opacity: 1; margin-right: 4px; }
+  .np-card-opis {
+    font-family: var(--font-body); font-size: 12.5px; line-height: 1.7;
+    color: var(--dark); opacity: .7;
+    margin-bottom: 20px; flex: 1;
+  }
+  .np-card-cta {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 12px; letter-spacing: .5px;
+    color: var(--coral);
+    transition: gap .2s;
+  }
+  .np-card:hover .np-card-cta { color: var(--dark); }
+
+  .np-cta {
+    background: var(--mint);
+    padding: 64px 6%;
+    text-align: center;
+  }
+  .np-cta h2 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(24px, 4vw, 36px);
+    color: var(--dark); margin-bottom: 14px;
+  }
+  .np-cta p {
+    font-family: var(--font-body); font-size: 14px;
+    color: var(--dark); opacity: .75;
+    margin-bottom: 28px;
+  }
+  .np-cta-btn {
+    display: inline-block;
+    background: var(--coral); color: var(--cream);
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 14px; letter-spacing: 1px;
+    padding: 16px 44px; border-radius: 100px;
+    box-shadow: 0 8px 28px rgba(255,131,87,.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .np-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(255,131,87,.4);
+    color: var(--cream);
+  }
+</style>

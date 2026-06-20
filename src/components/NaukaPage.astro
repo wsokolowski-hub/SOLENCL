@@ -1,0 +1,388 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
+
+interface ScheduleItem { day: string; hours: string }
+interface FeatureItem { icon: string; title: string; desc: string }
+interface StepItem { title: string; desc: string }
+
+interface Props {
+  title: string;            // SEO title
+  description: string;      // SEO description
+  path: string;             // /nauka-plywania/xxx/
+  eyebrow: string;          // small tag above H1
+  h1: string;               // page H1 (HTML allowed)
+  lead: string;             // hero subtitle
+  serviceName: string;      // for schema.org
+  price: string;            // "55"
+  priceUnit: string;        // "/ 30 min"
+  ageRange: string;         // "6 miesięcy – 4 lata"
+  groupSize: string;        // "do 10 par"
+  duration: string;         // "30 min"
+  parentInPool: boolean;    // czy rodzic w wodzie?
+  schedule: ScheduleItem[];
+  features: FeatureItem[];  // dla kogo / co dostajesz
+  steps?: StepItem[];       // opcjonalne: jak to działa
+  badge?: string;           // np "Najpopularniejsze"
+}
+
+const p = Astro.props as Props;
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Nauka pływania', href: '/nauka-plywania/' },
+  { name: p.eyebrow, href: p.path },
+];
+---
+<Base
+  title={p.title}
+  description={p.description}
+  path={p.path}
+  pageType={'service'}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="npg-hero">
+    <span class="npg-eyebrow">{p.eyebrow}</span>
+    <h1 class="npg-h1" set:html={p.h1}></h1>
+    <p class="npg-lead">{p.lead}</p>
+    <div class="npg-hero-cta">
+      <a href="/zapisy/" class="npg-btn-primary">Zapisz dziecko</a>
+      <a href="#cennik" class="npg-btn-ghost">Szczegóły i cena ↓</a>
+    </div>
+  </section>
+
+  <section id="cennik" class="npg-pricecard">
+    <div class="npg-card">
+      {p.badge && <span class="npg-card-badge">{p.badge}</span>}
+      <h2 class="npg-card-name">{p.serviceName}</h2>
+      <div class="npg-card-price">
+        <span class="npg-card-amount">{p.price}</span>
+        <span class="npg-card-unit">{p.priceUnit}</span>
+      </div>
+      <ul class="npg-card-meta">
+        <li><span>Wiek:</span> {p.ageRange}</li>
+        <li><span>Czas zajęć:</span> {p.duration}</li>
+        <li><span>Wielkość grupy:</span> {p.groupSize}</li>
+        <li><span>Rodzic w wodzie:</span> {p.parentInPool ? 'tak — z dzieckiem' : 'nie — dziecko samodzielnie'}</li>
+        <li><span>Lokalizacja:</span> ul. Ostrowskiego 3, Wrocław Grabiszyn</li>
+      </ul>
+      <a href="/zapisy/" class="npg-card-cta">Zapisz się na zajęcia</a>
+    </div>
+
+    <div class="npg-schedule">
+      <h3>Harmonogram zajęć</h3>
+      <ul>
+        {p.schedule.map((s) => (
+          <li><strong>{s.day}</strong><span>{s.hours}</span></li>
+        ))}
+      </ul>
+      <p class="npg-note">Dokładny dzień i godzinę ustalamy telefonicznie pod numerem <a href={`tel:${site.phone}`}>{site.phoneHuman}</a>.</p>
+    </div>
+  </section>
+
+  <section class="npg-features">
+    <span class="npg-section-eyebrow">Co zyskujesz</span>
+    <h2 class="npg-section-title">Dlaczego warto wybrać te zajęcia</h2>
+    <div class="npg-features-grid">
+      {p.features.map((f) => (
+        <div class="npg-feature">
+          <div class="npg-feature-icon" aria-hidden="true">{f.icon}</div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {p.steps && p.steps.length > 0 && (
+    <section class="npg-steps">
+      <span class="npg-section-eyebrow">Jak to działa</span>
+      <h2 class="npg-section-title">Krok po kroku</h2>
+      <ol class="npg-steps-list">
+        {p.steps.map((s, i) => (
+          <li>
+            <span class="npg-step-num">{i + 1}</span>
+            <div>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  <section class="npg-cta-band">
+    <h2>Gotowy na pierwsze zajęcia?</h2>
+    <p>Zadzwoń lub napisz — odpowiemy w ciągu 24h i pomożemy dopasować termin.</p>
+    <div class="npg-cta-buttons">
+      <a href={`tel:${site.phone}`} class="npg-btn-primary">{site.phoneHuman}</a>
+      <a href="/zapisy/" class="npg-btn-ghost">Formularz zapisu</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  /* HERO */
+  .npg-hero {
+    background: var(--mint);
+    padding: 72px 6% 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .npg-hero::before {
+    content: ''; position: absolute;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: rgba(255,131,87,.10);
+    top: -130px; right: -100px;
+  }
+  .npg-eyebrow {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-body); font-size: 10px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--dark); opacity: .55; margin-bottom: 18px;
+  }
+  .npg-h1 {
+    position: relative;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(30px, 5.5vw, 54px);
+    color: var(--dark); line-height: 1.15; margin-bottom: 20px;
+  }
+  .npg-h1 span { color: var(--coral); }
+  .npg-lead {
+    position: relative;
+    font-family: var(--font-body); font-size: 14px; line-height: 1.8;
+    color: var(--dark); opacity: .72;
+    max-width: 620px; margin: 0 auto 28px;
+  }
+  .npg-hero-cta {
+    position: relative;
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* BUTTONS */
+  .npg-btn-primary {
+    display: inline-block;
+    background: var(--coral); color: var(--cream);
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 13px; letter-spacing: 1px;
+    padding: 14px 36px; border-radius: 100px;
+    box-shadow: 0 8px 24px rgba(255,131,87,.28);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .npg-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255,131,87,.4);
+    color: var(--cream);
+  }
+  .npg-btn-ghost {
+    display: inline-block;
+    background: transparent; color: var(--dark);
+    border: 2px solid rgba(41,52,52,.15);
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 13px; letter-spacing: 1px;
+    padding: 12px 32px; border-radius: 100px;
+    transition: border-color .2s, color .2s;
+  }
+  .npg-btn-ghost:hover { border-color: var(--coral); color: var(--coral); }
+
+  /* PRICE CARD + SCHEDULE */
+  .npg-pricecard {
+    background: var(--cream);
+    padding: 72px 6%;
+    display: grid; gap: 32px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  @media (min-width: 860px) {
+    .npg-pricecard { grid-template-columns: 1.2fr 1fr; align-items: start; }
+  }
+
+  .npg-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(41,52,52,.08);
+    position: relative;
+    border-top: 5px solid var(--coral);
+  }
+  .npg-card-badge {
+    position: absolute; top: -12px; right: 28px;
+    background: var(--coral); color: #fff;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+  }
+  .npg-card-name {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 22px; color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .npg-card-price {
+    display: flex; align-items: baseline; gap: 6px;
+    margin-bottom: 24px;
+  }
+  .npg-card-amount {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 56px; color: var(--coral); line-height: 1;
+  }
+  .npg-card-unit {
+    font-family: var(--font-body); font-size: 14px;
+    color: var(--dark); opacity: .65;
+  }
+  .npg-card-meta {
+    list-style: none; padding: 0; margin: 0 0 24px;
+  }
+  .npg-card-meta li {
+    font-family: var(--font-body); font-size: 13px;
+    color: var(--dark); opacity: .85;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(41,52,52,.06);
+    display: flex; justify-content: space-between; gap: 10px;
+  }
+  .npg-card-meta li:last-child { border-bottom: none; }
+  .npg-card-meta li span {
+    font-weight: 700; opacity: .6;
+    flex-shrink: 0;
+  }
+  .npg-card-cta {
+    display: block;
+    background: var(--coral); color: var(--cream);
+    text-align: center;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 13px; letter-spacing: 1px;
+    padding: 16px; border-radius: 100px;
+    transition: opacity .2s;
+  }
+  .npg-card-cta:hover { opacity: .88; color: var(--cream); }
+
+  .npg-schedule h3 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 18px; color: var(--dark);
+    margin-bottom: 18px;
+  }
+  .npg-schedule ul { list-style: none; padding: 0; margin: 0 0 18px; }
+  .npg-schedule li {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(41,52,52,.08);
+    font-family: var(--font-body); font-size: 13px;
+    color: var(--dark);
+  }
+  .npg-schedule li strong { font-weight: 700; }
+  .npg-schedule li span { opacity: .7; }
+  .npg-note {
+    font-family: var(--font-body); font-size: 12px;
+    color: var(--dark); opacity: .65; line-height: 1.7;
+  }
+  .npg-note a { color: var(--coral); font-weight: 700; }
+
+  /* FEATURES */
+  .npg-features {
+    background: var(--mint);
+    padding: 80px 6%;
+    text-align: center;
+  }
+  .npg-section-eyebrow {
+    display: inline-block;
+    font-family: var(--font-body); font-size: 10px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 14px;
+  }
+  .npg-section-title {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(24px, 4vw, 38px);
+    color: var(--dark); margin-bottom: 44px;
+  }
+  .npg-features-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr;
+    max-width: 1100px; margin: 0 auto;
+  }
+  @media (min-width: 640px)  { .npg-features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .npg-features-grid { grid-template-columns: repeat(4, 1fr); } }
+  .npg-feature {
+    background: #fff; border-radius: 20px;
+    padding: 28px 22px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(41,52,52,.06);
+  }
+  .npg-feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 16px;
+    background: var(--mint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 16px;
+  }
+  .npg-feature h3 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 15px; color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .npg-feature p {
+    font-family: var(--font-body); font-size: 12.5px; line-height: 1.65;
+    color: var(--dark); opacity: .72;
+  }
+
+  /* STEPS */
+  .npg-steps {
+    background: var(--cream);
+    padding: 80px 6%;
+    text-align: center;
+  }
+  .npg-steps-list {
+    list-style: none; padding: 0;
+    max-width: 760px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .npg-steps-list li {
+    background: #fff; border-radius: 18px;
+    padding: 22px 26px;
+    display: flex; gap: 20px; align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(41,52,52,.05);
+  }
+  .npg-step-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    background: var(--coral); color: #fff;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .npg-steps-list h3 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 16px; color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .npg-steps-list p {
+    font-family: var(--font-body); font-size: 13px; line-height: 1.7;
+    color: var(--dark); opacity: .75;
+  }
+
+  /* CTA BAND */
+  .npg-cta-band {
+    background: var(--dark); color: var(--cream);
+    padding: 64px 6%;
+    text-align: center;
+  }
+  .npg-cta-band h2 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(24px, 4vw, 36px);
+    color: var(--cream); margin-bottom: 12px;
+  }
+  .npg-cta-band p {
+    font-family: var(--font-body); font-size: 14px;
+    color: rgba(255,249,246,.75);
+    margin-bottom: 28px;
+  }
+  .npg-cta-buttons {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+  .npg-cta-band .npg-btn-ghost {
+    color: var(--cream);
+    border-color: rgba(255,249,246,.3);
+  }
+  .npg-cta-band .npg-btn-ghost:hover { color: var(--coral); border-color: var(--coral); }
+</style>

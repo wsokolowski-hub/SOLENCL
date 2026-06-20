@@ -1,0 +1,33 @@
+---
+import NaukaPage from '@/components/NaukaPage.astro';
+---
+<NaukaPage
+  title="Zajęcia indywidualne z pływania — Wrocław Grabiszyn | Solen Swim"
+  description="Zajęcia indywidualne z pływania we Wrocławiu — 1 na 1 z instruktorem. Pełna elastyczność grafiku, najszybsze postępy, indywidualne podejście. Termin i cena ustalane indywidualnie."
+  path="/nauka-plywania/indywidualnie/"
+  eyebrow="Indywidualnie"
+  h1={`Zajęcia w pełni<br/><span>dopasowane do Ciebie</span>`}
+  lead="Lekcje 1 na 1 z instruktorem — 100% uwagi, elastyczny grafik, najszybsze postępy. Idealne na start, na pokonanie lęku przed wodą lub na precyzyjny szlif konkretnego elementu techniki."
+  serviceName="Zajęcia indywidualne"
+  price="na zapytanie"
+  priceUnit=""
+  ageRange="Każdy wiek — dzieci i dorośli"
+  groupSize="1 osoba (lub para po ustaleniu)"
+  duration="45 minut"
+  parentInPool={false}
+  schedule={[
+    { day: 'Termin', hours: 'ustalany indywidualnie' },
+  ]}
+  features={[
+    { icon: '🎯', title: 'Pełna uwaga instruktora', desc: '100% czasu instruktor poświęca Tobie lub Twojemu dziecku — bez czekania, bez współdzielenia uwagi z grupą.' },
+    { icon: '📅', title: 'Elastyczny grafik',       desc: 'Umawiamy terminy na bieżąco albo na stałe — dostosowujemy się do Twojego planu dnia.' },
+    { icon: '😌', title: 'Dla osób z lękiem',       desc: 'Bez świadków, w komfortowym tempie. Indywidualne zajęcia świetnie sprawdzają się przy pokonywaniu lęku przed wodą.' },
+    { icon: '⚡', title: 'Najszybsze postępy',      desc: 'Konkretne ćwiczenia dopasowane do Twoich celów — najefektywniejszy sposób nauki lub szlifu techniki.' },
+  ]}
+  steps={[
+    { title: 'Rozmowa telefoniczna',      desc: 'Dzwonisz pod 505 912 389. Rozmawiamy o Twoich celach, poziomie i preferencjach co do terminu.' },
+    { title: 'Ustalenie ceny i terminu',  desc: 'Cena lekcji indywidualnej ustalana jest podczas rozmowy — zależnie od liczby uczestników i grafiku.' },
+    { title: 'Pierwsze zajęcia',          desc: 'Przychodzisz na basen Ostrowskiego 3. Instruktor sprawdza poziom i ustala plan kolejnych spotkań.' },
+    { title: 'Stały rytm lub pakiet',     desc: 'Umawiasz pojedyncze lekcje lub kupujesz pakiet kilku zajęć — jak Ci wygodniej.' },
+  ]}
+/>

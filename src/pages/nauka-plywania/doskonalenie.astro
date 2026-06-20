@@ -1,0 +1,33 @@
+---
+import NaukaPage from '@/components/NaukaPage.astro';
+---
+<NaukaPage
+  title="Doskonalenie pływania dla dzieci — Wrocław Grabiszyn | Solen Swim"
+  description="Doskonalenie pływania dla dzieci 5–10 lat, które już pływają. Szlif techniki czterech stylów: kraul, żabka, grzbiet, motylek. Soboty 9:00–15:00. 65 zł / 45 min."
+  path="/nauka-plywania/doskonalenie/"
+  eyebrow="Doskonalenie"
+  h1={`Szlif techniki<br/><span>dla pływających dzieci</span>`}
+  lead="Zajęcia dla dzieci 5–10 lat, które potrafią już utrzymać się na wodzie i znają podstawy. Pracujemy nad techniką, wydłużamy dystans, doskonalimy nawroty i oddech."
+  serviceName="Doskonalenie pływania dla dzieci"
+  price="65"
+  priceUnit="zł / 45 min"
+  ageRange="5 – 10 lat"
+  groupSize="max 8 dzieci"
+  duration="45 minut"
+  parentInPool={false}
+  schedule={[
+    { day: 'Sobota', hours: '09:00 – 15:00' },
+  ]}
+  features={[
+    { icon: '🎯', title: 'Praca nad techniką',      desc: 'Koncentrujemy się na poprawie konkretnych elementów — oddech, ułożenie ciała, praca nóg, nawroty.' },
+    { icon: '⚡', title: 'Szybsze postępy',         desc: 'Dzieci już znają podstawy — możemy pracować nad efektywnością i wydłużaniem dystansu.' },
+    { icon: '🥇', title: 'Cztery style sportowe',    desc: 'Cyzelujemy kraul, żabkę, grzbiet i motylek — każde dziecko buduje pełen repertuar pływaka.' },
+    { icon: '👯', title: 'Grupa równa poziomem',    desc: 'Dzieci w grupie mają zbliżoną technikę — zajęcia idą w jednym tempie, nikt nie czeka i nie odstaje.' },
+  ]}
+  steps={[
+    { title: 'Telefoniczna kwalifikacja',  desc: 'Dzwonisz pod 505 912 389. Pytamy o aktualne umiejętności dziecka i dobieramy odpowiednią grupę.' },
+    { title: 'Test poziomu',               desc: 'Na pierwszych zajęciach instruktor sprawdza technikę i decyduje, czy doskonalenie jest właściwym wyborem.' },
+    { title: 'Soboty 9:00 – 15:00',        desc: 'Grupy doskonalące spotykają się tylko w soboty — wybieramy dogodną godzinę.' },
+    { title: 'Konkretne cele semestralne', desc: 'Po semestrze widać konkretną poprawę — np. nowy styl opanowany do końca, dłuższy dystans, lepsze nawroty.' },
+  ]}
+/>

@@ -7,11 +7,6 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
   <a href="/" class="hdr-logo-link" aria-label={`${site.short} — strona główna`}>
     <img src="/assets/logo-cropped.webp" alt={`Szkoła Pływania ${site.short} ${site.city}`} class="hdr-logo" width="410" height="200" fetchpriority="high" />
   </a>
-  <nav class="hdr-nav" aria-label="Nawigacja główna">
-    {nav.map((item) => (
-      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
-    ))}
-  </nav>
   <div class="hdr-right">
     <a href={site.social.facebook} class="hdr-social" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -23,15 +18,50 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
       <span></span><span></span><span></span>
     </button>
   </div>
+
   <nav class="hdr-mobile" id="mobile-nav" aria-label="Menu mobilne">
     {nav.map((item) => (
-      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      item.children ? (
+        <div class="hdr-mobile-group">
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          <div class="hdr-mobile-sub">
+            {item.children.map((c) => (
+              <a href={c.href} aria-current={path === c.href ? 'page' : undefined}>↳ {c.label}</a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      )
     ))}
   </nav>
 </header>
+
 <nav class="hdr-nav-strip" aria-label="Nawigacja pozioma">
   {nav.map((item) => (
-    <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+    item.children ? (
+      <div class="hdr-dropdown">
+        <a
+          href={item.href}
+          class="hdr-dropdown-trigger"
+          aria-haspopup="true"
+          aria-current={isActive(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+          <svg class="hdr-dropdown-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4l3 3 3-3"/></svg>
+        </a>
+        <div class="hdr-dropdown-menu" role="menu">
+          {item.children.map((c) => (
+            <a href={c.href} role="menuitem" aria-current={path === c.href ? 'page' : undefined}>
+              <span class="hdr-dropdown-label">{c.label}</span>
+              {c.desc && <span class="hdr-dropdown-desc">{c.desc}</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+    )
   ))}
 </nav>
 

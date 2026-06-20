@@ -54,14 +54,25 @@ export const site = {
   },
 } as const;
 
-export type NavItem = { href: string; label: string };
+export type NavChild = { href: string; label: string; desc?: string };
+export type NavItem = { href: string; label: string; children?: NavChild[] };
 
 export const nav: NavItem[] = [
   { href: '/', label: 'GŁÓWNA' },
   { href: '/o-nas/', label: 'O NAS' },
   { href: '/gdzie-plywamy/', label: 'GDZIE PŁYWAMY?' },
-  { href: '/zapisy/', label: 'ZAPISY' },
-  { href: '/cennik/', label: 'CENNIK' },
+  {
+    href: '/nauka-plywania/',
+    label: 'NAUKA PŁYWANIA',
+    children: [
+      { href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/', label: 'Pływanie niemowląt i dzieci do lat 4', desc: '6 mies – 4 lata · rodzic + dziecko · 55 zł / 30 min' },
+      { href: '/nauka-plywania/dzieci-od-podstaw/',             label: 'Nauka pływania dla dzieci od podstaw', desc: '5–10 lat · grupy do 8 · 65 zł / 45 min' },
+      { href: '/nauka-plywania/doskonalenie/',                  label: 'Doskonalenie pływania dla dzieci',     desc: '5–10 lat · soboty · 65 zł / 45 min' },
+      { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: '1 na 1 z instruktorem · termin ustalany indywidualnie' },
+    ],
+  },
+  { href: '/zapisy/',  label: 'ZAPISY' },
+  { href: '/cennik/',  label: 'CENNIK' },
   { href: '/kontakt/', label: 'KONTAKT' },
-  { href: '/faq/', label: 'FAQ' },
+  { href: '/faq/',     label: 'FAQ' },
 ];

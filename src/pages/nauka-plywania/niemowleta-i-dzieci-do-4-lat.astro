@@ -1,0 +1,35 @@
+---
+import NaukaPage from '@/components/NaukaPage.astro';
+---
+<NaukaPage
+  title="Pływanie niemowląt i dzieci do 4 lat — Wrocław Grabiszyn | Solen Swim"
+  description="Zajęcia z pływania dla niemowląt i dzieci do 4. roku życia we Wrocławiu. Razem z rodzicem w wodzie, w ogrzewanej wannie, w atmosferze zabawy. 55 zł / 30 min. Grupy do 10 par."
+  path="/nauka-plywania/niemowleta-i-dzieci-do-4-lat/"
+  eyebrow="Pływanie niemowląt"
+  h1={`Pierwsze pluski<br/><span>w bezpiecznej wodzie</span>`}
+  lead="Zajęcia dla najmłodszych w wieku od 6. miesiąca do 4 lat. Rodzic wchodzi do wody razem z dzieckiem — uczymy zabawą, nie pośpiechem. Małe grupy, ciepła woda, doświadczeni instruktorzy."
+  serviceName="Pływanie niemowląt i dzieci do lat 4"
+  price="55"
+  priceUnit="zł / 30 min"
+  ageRange="6 miesięcy – 4 lata"
+  groupSize="max 10 par (rodzic + dziecko)"
+  duration="30 minut"
+  parentInPool={true}
+  schedule={[
+    { day: 'Czwartek',  hours: '15:30 – 18:30' },
+    { day: 'Sobota',    hours: '09:00 – 15:00' },
+    { day: 'Niedziela', hours: '10:00 – 12:00' },
+  ]}
+  features={[
+    { icon: '👶', title: 'Już od 6 miesiąca',     desc: 'Najmłodsze maluchy uczestniczą w zajęciach razem z rodzicem w formie zabawy w wodzie.' },
+    { icon: '💧', title: 'Ciepła, czysta woda',    desc: 'Basen kryty z podgrzewaną wodą — temperatura dostosowana do potrzeb najmłodszych.' },
+    { icon: '👨‍👩‍👧', title: 'Rodzic w wodzie',      desc: 'Rodzic wchodzi do wody razem z dzieckiem — pełne poczucie bezpieczeństwa.' },
+    { icon: '🤗', title: 'Bez pośpiechu',         desc: 'Dzieci nigdy nie są zmuszane — zaufanie i radość rozwijają się stopniowo, we własnym tempie.' },
+  ]}
+  steps={[
+    { title: 'Konsultacja telefoniczna', desc: 'Dzwonisz pod 505 912 389, dopytujemy o wiek dziecka i ustalamy dogodny dzień zajęć.' },
+    { title: 'Pierwsze zajęcia',         desc: 'Przychodzisz z dzieckiem na basen Ostrowskiego 3. Pierwsze 30 min to oswajanie z wodą bez presji.' },
+    { title: 'Stałe terminy',            desc: 'Po pierwszych zajęciach umawiamy stały dzień i godzinę na cały semestr.' },
+    { title: 'Płatność w 3 ratach',      desc: 'Bez wpisowego. Karnet semestralny rozkładany na 3 raty — szczegóły telefonicznie.' },
+  ]}
+/>

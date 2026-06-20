@@ -72,6 +72,80 @@ a[x-apple-data-detectors] {
 }
 .hdr-nav-strip a:hover { color: var(--coral); }
 
+/* Dropdown (NAUKA PŁYWANIA) */
+.hdr-dropdown { position: relative; display: inline-flex; }
+.hdr-dropdown-trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  cursor: pointer;
+}
+.hdr-dropdown-caret { transition: transform .2s; }
+.hdr-dropdown:hover .hdr-dropdown-caret,
+.hdr-dropdown:focus-within .hdr-dropdown-caret { transform: rotate(180deg); }
+
+.hdr-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 340px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 16px 40px rgba(41,52,52,.15), 0 2px 8px rgba(41,52,52,.06);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 100;
+}
+.hdr-dropdown::before {
+  /* invisible hover bridge so cursor can travel into menu */
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; right: 0; height: 14px;
+}
+.hdr-dropdown:hover .hdr-dropdown-menu,
+.hdr-dropdown:focus-within .hdr-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.hdr-dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  letter-spacing: 0;
+  font-size: 13px;
+  transition: background .15s, color .15s;
+}
+.hdr-dropdown-menu a:hover { background: var(--cream); color: var(--coral); }
+.hdr-dropdown-menu a[aria-current="page"] { background: rgba(255,131,87,.08); color: var(--coral); }
+.hdr-dropdown-label {
+  display: block;
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 13px; color: var(--dark);
+}
+.hdr-dropdown-menu a:hover .hdr-dropdown-label { color: var(--coral); }
+.hdr-dropdown-desc {
+  display: block; margin-top: 4px;
+  font-family: var(--font-body); font-size: 11px;
+  color: rgba(41,52,52,.55);
+  letter-spacing: .02em;
+}
+
+/* Mobile submenu */
+.hdr-mobile-group { display: block; }
+.hdr-mobile-sub {
+  padding: 0 0 12px 16px;
+  border-bottom: 1px solid rgba(255,131,87,.18);
+}
+.hdr-mobile-sub a {
+  padding: 10px 0 !important;
+  font-size: 14px !important;
+  border-bottom: none !important;
+  opacity: .85;
+}
+.hdr-mobile-group > a { border-bottom: none !important; }
+
 .hdr-right { display: flex; align-items: center; gap: 10px; }
 .hdr-social {
   width: 46px; height: 46px;
