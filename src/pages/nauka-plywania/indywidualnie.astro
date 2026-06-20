@@ -1,33 +1,264 @@
 ---
-import NaukaPage from '@/components/NaukaPage.astro';
+import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
+
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Nauka pływania', href: '/nauka-plywania/' },
+  { name: 'Indywidualnie', href: '/nauka-plywania/indywidualnie/' },
+];
+
+const warianty = [
+  {
+    name: '1 osoba',
+    price: '180',
+    perPerson: null,
+    badge: 'Najpopularniejsze',
+    points: [
+      '1 na 1 z instruktorem',
+      'Najszybsze postępy',
+      'Pełna elastyczność grafiku',
+      'Idealne na start lub szlif techniki',
+    ],
+  },
+  {
+    name: '2 osoby',
+    price: '220',
+    perPerson: '110 zł / osoba',
+    badge: null,
+    points: [
+      'Z partnerem, dzieckiem, rodzeństwem',
+      'Niższy koszt na osobę',
+      'Wzajemna motywacja',
+      'Ten sam poziom zaawansowania',
+    ],
+  },
+  {
+    name: '3 osoby',
+    price: '250',
+    perPerson: '≈ 83 zł / osoba',
+    badge: null,
+    points: [
+      'Mała grupa znajomych',
+      'Najlepszy koszt na osobę',
+      'Ten sam poziom zaawansowania',
+      '45 minut zajęć w wodzie',
+    ],
+  },
+];
 ---
-<NaukaPage
-  title="Zajęcia indywidualne z pływania — Wrocław Grabiszyn | Solen Swim"
-  description="Zajęcia indywidualne z pływania we Wrocławiu — 1 na 1 z instruktorem. Pełna elastyczność grafiku, najszybsze postępy, indywidualne podejście. Termin i cena ustalane indywidualnie."
+<Base
+  title="Zajęcia indywidualne z pływania — Wrocław | Solen Swim"
+  description="Indywidualne lekcje pływania we Wrocławiu dla dzieci i dorosłych. 1 na 1 z instruktorem (180 zł), w parze (220 zł = 110/os.) lub trójce (250 zł). Pełna elastyczność grafiku. Basen ul. Kamiennogórska 16."
   path="/nauka-plywania/indywidualnie/"
-  eyebrow="Indywidualnie"
-  h1={`Zajęcia w pełni<br/><span>dopasowane do Ciebie</span>`}
-  lead="Lekcje 1 na 1 z instruktorem — 100% uwagi, elastyczny grafik, najszybsze postępy. Idealne na start, na pokonanie lęku przed wodą lub na precyzyjny szlif konkretnego elementu techniki."
-  serviceName="Zajęcia indywidualne"
-  price="na zapytanie"
-  priceUnit=""
-  ageRange="Każdy wiek — dzieci i dorośli"
-  groupSize="1 osoba (lub para po ustaleniu)"
-  duration="45 minut"
-  parentInPool={false}
-  schedule={[
-    { day: 'Termin', hours: 'ustalany indywidualnie' },
-  ]}
-  features={[
-    { icon: '🎯', title: 'Pełna uwaga instruktora', desc: '100% czasu instruktor poświęca Tobie lub Twojemu dziecku — bez czekania, bez współdzielenia uwagi z grupą.' },
-    { icon: '📅', title: 'Elastyczny grafik',       desc: 'Umawiamy terminy na bieżąco albo na stałe — dostosowujemy się do Twojego planu dnia.' },
-    { icon: '😌', title: 'Dla osób z lękiem',       desc: 'Bez świadków, w komfortowym tempie. Indywidualne zajęcia świetnie sprawdzają się przy pokonywaniu lęku przed wodą.' },
-    { icon: '⚡', title: 'Najszybsze postępy',      desc: 'Konkretne ćwiczenia dopasowane do Twoich celów — najefektywniejszy sposób nauki lub szlifu techniki.' },
-  ]}
-  steps={[
-    { title: 'Rozmowa telefoniczna',      desc: 'Dzwonisz pod 505 912 389. Rozmawiamy o Twoich celach, poziomie i preferencjach co do terminu.' },
-    { title: 'Ustalenie ceny i terminu',  desc: 'Cena lekcji indywidualnej ustalana jest podczas rozmowy — zależnie od liczby uczestników i grafiku.' },
-    { title: 'Pierwsze zajęcia',          desc: 'Przychodzisz na basen Ostrowskiego 3. Instruktor sprawdza poziom i ustala plan kolejnych spotkań.' },
-    { title: 'Stały rytm lub pakiet',     desc: 'Umawiasz pojedyncze lekcje lub kupujesz pakiet kilku zajęć — jak Ci wygodniej.' },
-  ]}
-/>
+  pageType={'service'}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="npg-hero">
+    <span class="npg-eyebrow">Indywidualnie · 1, 2 lub 3 osoby</span>
+    <h1 class="npg-h1">Zajęcia w pełni<br/><span>dopasowane do Ciebie</span></h1>
+    <p class="npg-lead">Indywidualne lekcje pływania dla <strong>dzieci i dorosłych</strong> — 100% uwagi instruktora, elastyczny grafik, najszybsze postępy. Możesz trenować sam, w parze lub w trójce — koszt rozkłada się wtedy na osoby.</p>
+    <div class="npg-hero-cta">
+      <a href={`tel:${site.phone}`} class="npg-btn-primary">Umów lekcję — {site.phoneHuman}</a>
+      <a href="#cennik" class="npg-btn-ghost">Zobacz ceny ↓</a>
+    </div>
+  </section>
+
+  <section id="cennik" class="ind-cennik">
+    <span class="npg-section-eyebrow">Cennik</span>
+    <h2 class="npg-section-title">Trzy warianty — wybierz swój</h2>
+
+    <div class="ind-grid">
+      {warianty.map((w) => (
+        <div class={`ind-karta${w.badge ? ' ind-karta-highlight' : ''}`}>
+          {w.badge && <span class="ind-karta-badge">{w.badge}</span>}
+          <h3 class="ind-karta-name">{w.name}</h3>
+          <div class="ind-karta-price">
+            <span class="ind-karta-amount">{w.price}</span>
+            <span class="ind-karta-unit">zł / 45 min</span>
+          </div>
+          {w.perPerson && <p class="ind-karta-perosoba">{w.perPerson}</p>}
+          <ul class="ind-karta-points">
+            {w.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="ind-info">
+      <div class="ind-info-icon" aria-hidden="true">📍</div>
+      <div class="ind-info-text">
+        <strong>Basen: ul. Kamiennogórska 16, 54-034 Wrocław</strong>
+        Lekcje indywidualne odbywają się na innym obiekcie niż zajęcia grupowe. Dokładny termin ustalamy telefonicznie.
+      </div>
+    </div>
+  </section>
+
+  <section class="npg-features">
+    <span class="npg-section-eyebrow">Dla kogo</span>
+    <h2 class="npg-section-title">Komu polecamy zajęcia indywidualne</h2>
+    <div class="npg-features-grid">
+      <div class="npg-feature">
+        <div class="npg-feature-icon" aria-hidden="true">🌊</div>
+        <h3>Dorośli od zera</h3>
+        <p>Nigdy nie pływałeś — chcesz spokojnie i bez świadków przepracować podstawy w swoim tempie.</p>
+      </div>
+      <div class="npg-feature">
+        <div class="npg-feature-icon" aria-hidden="true">😌</div>
+        <h3>Z lękiem przed wodą</h3>
+        <p>Indywidualne tempo, pełna kontrola nad sytuacją, instruktor w zasięgu ręki — komfort dla osób z dyskomfortem w wodzie.</p>
+      </div>
+      <div class="npg-feature">
+        <div class="npg-feature-icon" aria-hidden="true">⚡</div>
+        <h3>Szlif techniki</h3>
+        <p>Umiesz pływać, ale chcesz konkretnie poprawić oddech, nawroty albo doszlifować jeden styl.</p>
+      </div>
+      <div class="npg-feature">
+        <div class="npg-feature-icon" aria-hidden="true">📅</div>
+        <h3>Elastyczny grafik</h3>
+        <p>Praca zmianowa, częste wyjazdy, plan ze szkoły dziecka — umawiamy terminy na bieżąco albo na stałe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="npg-steps">
+    <span class="npg-section-eyebrow">Jak to działa</span>
+    <h2 class="npg-section-title">Krok po kroku</h2>
+    <ol class="npg-steps-list">
+      <li>
+        <span class="npg-step-num">1</span>
+        <div>
+          <h3>Rozmowa telefoniczna</h3>
+          <p>Dzwonisz pod <a href={`tel:${site.phone}`}>{site.phoneHuman}</a>. Rozmawiamy 5 minut o poziomie, celach i ilu osobach (1/2/3). Proponujemy wstępny termin.</p>
+        </div>
+      </li>
+      <li>
+        <span class="npg-step-num">2</span>
+        <div>
+          <h3>Pierwsze zajęcia</h3>
+          <p>Spotykamy się na basenie przy <strong>ul. Kamiennogórskiej 16</strong>. Instruktor sprawdza poziom, dobiera ćwiczenia i ustala plan.</p>
+        </div>
+      </li>
+      <li>
+        <span class="npg-step-num">3</span>
+        <div>
+          <h3>Stały rytm lub pakiet</h3>
+          <p>Umawiasz stałe terminy lub kupujesz pakiet kilku lekcji — jak Ci wygodniej. Płatność z góry za pakiet.</p>
+        </div>
+      </li>
+      <li>
+        <span class="npg-step-num">4</span>
+        <div>
+          <h3>Postępy</h3>
+          <p>Po kilku zajęciach widzisz różnicę. Robimy okresową ocenę i ustalamy kolejne cele.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="npg-cta-band">
+    <h2>Umów pierwszą lekcję indywidualną</h2>
+    <p>Zadzwoń — najszybciej ustalimy termin i wariant dopasowany do Ciebie lub dziecka.</p>
+    <div class="npg-cta-buttons">
+      <a href={`tel:${site.phone}`} class="npg-btn-primary">{site.phoneHuman}</a>
+      <a href="/zapisy/" class="npg-btn-ghost">Formularz zapisu</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .ind-cennik {
+    background: var(--cream);
+    padding: 80px 6%;
+    text-align: center;
+  }
+  .ind-grid {
+    display: grid; gap: 22px;
+    grid-template-columns: 1fr;
+    max-width: 1100px; margin: 0 auto 36px;
+  }
+  @media (min-width: 720px)  { .ind-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+
+  .ind-karta {
+    background: #fff;
+    border-radius: 22px;
+    padding: 32px 28px;
+    text-align: left;
+    box-shadow: 0 4px 24px rgba(41,52,52,.06);
+    border: 2px solid transparent;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .ind-karta-highlight {
+    border-color: var(--coral);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(255,131,87,.18);
+  }
+  .ind-karta-badge {
+    display: inline-block;
+    background: var(--coral); color: #fff;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 14px;
+    align-self: flex-start;
+  }
+  .ind-karta-name {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 18px; color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .ind-karta-price {
+    display: flex; align-items: baseline; gap: 6px;
+    margin-bottom: 2px;
+  }
+  .ind-karta-amount {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 52px; color: var(--coral); line-height: 1;
+  }
+  .ind-karta-unit {
+    font-family: var(--font-body); font-size: 13px;
+    color: var(--dark); opacity: .65;
+  }
+  .ind-karta-perosoba {
+    font-family: var(--font-body); font-size: 12px; font-weight: 700;
+    color: var(--coral); opacity: .85;
+    margin-bottom: 20px;
+  }
+  .ind-karta-points {
+    list-style: none; padding: 0;
+    margin-top: 20px;
+  }
+  .ind-karta-points li {
+    font-family: var(--font-body); font-size: 13px; line-height: 1.5;
+    color: var(--dark); opacity: .85;
+    padding: 6px 0;
+    padding-left: 22px;
+    position: relative;
+  }
+  .ind-karta-points li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 6px;
+    color: var(--coral); font-weight: 700;
+  }
+
+  .ind-info {
+    max-width: 720px; margin: 0 auto;
+    background: var(--mint);
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex; align-items: flex-start; gap: 18px;
+    text-align: left;
+  }
+  .ind-info-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+  .ind-info-text {
+    font-family: var(--font-body); font-size: 13px; line-height: 1.7;
+    color: var(--dark);
+  }
+  .ind-info-text strong {
+    display: block;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+</style>
