@@ -41,46 +41,31 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cen
       </div>
     </a>
 
-    <!-- Karta 2: od podstaw -->
+    <!-- Karta 2: nauka + doskonalenie (ta sama cena) -->
     <a class="cn-karta" href="/nauka-plywania/dzieci-od-podstaw/">
       <div class="cn-karta-top">
-        <span class="cn-karta-tag">Od podstaw</span>
+        <span class="cn-karta-tag">Od podstaw · Doskonalenie</span>
         <div class="cn-karta-cena"><sup></sup>65<sub> zł</sub></div>
         <span class="cn-karta-czas">45 minut</span>
       </div>
       <div class="cn-karta-body">
-        <h2 class="cn-karta-nazwa">Nauka pływania dla<br>dzieci od podstaw</h2>
+        <h2 class="cn-karta-nazwa">Nauka i doskonalenie<br>pływania dla dzieci</h2>
         <span class="cn-karta-wiek">5 – 10 lat</span>
         <div class="cn-karta-divider"></div>
-        <span class="cn-harm-label">Harmonogram</span>
+        <span class="cn-harm-label">Nauka od podstaw</span>
         <ul class="cn-harm-lista">
           <li>Czwartek 15:30 – 18:30</li>
+          <li>Sobota 9:00 – 15:00</li>
+        </ul>
+        <span class="cn-harm-label" style="margin-top:8px;">Doskonalenie</span>
+        <ul class="cn-harm-lista">
           <li>Sobota 9:00 – 15:00</li>
         </ul>
         <span class="cn-karta-note">Małe grupy — max 8 dzieci</span>
       </div>
     </a>
 
-    <!-- Karta 3: doskonalenie -->
-    <a class="cn-karta" href="/nauka-plywania/doskonalenie/">
-      <div class="cn-karta-top">
-        <span class="cn-karta-tag">Doskonalenie</span>
-        <div class="cn-karta-cena"><sup></sup>65<sub> zł</sub></div>
-        <span class="cn-karta-czas">45 minut</span>
-      </div>
-      <div class="cn-karta-body">
-        <h2 class="cn-karta-nazwa">Doskonalenie<br>pływania dla dzieci</h2>
-        <span class="cn-karta-wiek">5 – 10 lat</span>
-        <div class="cn-karta-divider"></div>
-        <span class="cn-harm-label">Harmonogram</span>
-        <ul class="cn-harm-lista">
-          <li>Sobota 9:00 – 15:00</li>
-        </ul>
-        <span class="cn-karta-note">Szlif techniki czterech stylów</span>
-      </div>
-    </a>
-
-    <!-- Karta 4: indywidualnie -->
+    <!-- Karta 3: indywidualnie -->
     <a class="cn-karta" href="/nauka-plywania/indywidualnie/">
       <div class="cn-karta-top">
         <span class="cn-karta-tag">Indywidualnie</span>
@@ -225,12 +210,9 @@ body {
 
 .cn-karty-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-bottom: 56px;
-}
-@media (max-width: 1100px) {
-  .cn-karty-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .cn-karta {
@@ -256,8 +238,7 @@ body {
   position: relative;
 }
 
-.cn-karta:nth-child(2) .cn-karta-top,
-.cn-karta:nth-child(4) .cn-karta-top { background: #FF8357; }
+.cn-karta:nth-child(2) .cn-karta-top { background: #FF8357; }
 
 .cn-karta-tag {
   font-size: 10px;
@@ -268,9 +249,7 @@ body {
   margin-bottom: 20px;
   display: block;
 }
-
-.cn-karta:nth-child(2) .cn-karta-tag,
-.cn-karta:nth-child(4) .cn-karta-tag { color: #FFF9F6; opacity: 0.75; }
+.cn-karta:nth-child(2) .cn-karta-tag { color: #FFF9F6; opacity: 0.75; }
 
 .cn-karta-cena {
   font-family: 'Comfortaa', sans-serif;
@@ -279,15 +258,12 @@ body {
   color: #293434;
   line-height: 1;
 }
-
-.cn-karta:nth-child(2) .cn-karta-cena,
-.cn-karta:nth-child(4) .cn-karta-cena { color: #FFF9F6; }
+.cn-karta:nth-child(2) .cn-karta-cena { color: #FFF9F6; }
 
 .cn-karta-cena sup {
   font-size: 30px;
   vertical-align: super;
 }
-
 .cn-karta-cena sub {
   font-size: 20px;
   font-weight: 400;
@@ -305,9 +281,7 @@ body {
   padding: 6px 16px;
   border-radius: 100px;
 }
-
-.cn-karta:nth-child(2) .cn-karta-czas,
-.cn-karta:nth-child(4) .cn-karta-czas {
+.cn-karta:nth-child(2) .cn-karta-czas {
   background: rgba(255,249,246,0.2);
   color: #FFF9F6;
 }
@@ -338,9 +312,7 @@ body {
   border-radius: 100px;
   width: fit-content;
 }
-
-.cn-karta:nth-child(2) .cn-karta-wiek,
-.cn-karta:nth-child(4) .cn-karta-wiek { background: #FFB094; }
+.cn-karta:nth-child(2) .cn-karta-wiek { background: #FFB094; }
 
 .cn-karta-divider {
   height: 1px;
@@ -540,10 +512,10 @@ body {
 }
 
 /* ── TABLET ── */
-@media (max-width: 760px) {
+@media (max-width: 880px) {
   .cn-hero { padding: 56px 5%; }
   .cn-main { padding: 52px 5%; }
-  .cn-karty-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .cn-karty-grid { grid-template-columns: 1fr; gap: 18px; margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
   .cn-karta-top { padding: 28px 24px 22px; }
   .cn-karta-body { padding: 24px 24px 28px; }
   .cn-karta-cena { font-size: 56px; }

@@ -328,15 +328,16 @@ const breadcrumbs = [];
     box-shadow: 0 12px 40px rgba(255,131,87,0.40);
   }
 
-  /* Goggles — mobile: straddle the coral banner and cream text area */
+  /* Goggles — mobile: sit on the boundary between coral banner and cream area */
   .hero-goggles {
     position: absolute;
-    width: 200px;
-    right: 12px;
-    top: 110px;
+    width: 150px;
+    right: 16px;
+    top: 140px;
     z-index: 3;
     display: block;
     transform: rotate(-8deg);
+    pointer-events: none;
   }
 
   /* Desktop: staggered blocks like Wix — coral upper-left, mint lower-right, cream bg */
