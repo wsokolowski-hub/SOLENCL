@@ -161,8 +161,6 @@ const breadcrumbs = [];
 <!-- ===== OPINIE ===== -->
 <section class="opinie-section">
   <h2 class="opinie-title">Opinie</h2>
-  <div class="opinie-stars" aria-label="Ocena 4,9 na 5">★★★★★</div>
-  <p class="opinie-rating">4,9 / 5 · 21 opinii w Google</p>
 
   {site.reviews.featurableWidgetId ? (
     <div class="opinie-widget">
@@ -254,9 +252,15 @@ const breadcrumbs = [];
     overflow: hidden;
   }
 
-  /* Left panel (coral sun pattern) — desktop only */
+  /* Mobile: coral sun pattern shown as a banner above the text */
   .hero-left {
-    display: none;
+    display: block;
+    height: 200px;
+    background-color: var(--coral);
+    background-image: url('/assets/pattern-slonce.webp');
+    background-repeat: repeat;
+    background-size: 50% auto;
+    background-position: top left;
   }
 
   /* Mobile: cream bg, text left, goggles absolute top-right */
@@ -324,12 +328,12 @@ const breadcrumbs = [];
     box-shadow: 0 12px 40px rgba(255,131,87,0.40);
   }
 
-  /* Goggles — mobile: absolute, top-right corner overlapping H1 */
+  /* Goggles — mobile: straddle the coral banner and cream text area */
   .hero-goggles {
     position: absolute;
-    width: 170px;
-    right: -10px;
-    top: 36px;
+    width: 200px;
+    right: 12px;
+    top: 110px;
     z-index: 3;
     display: block;
     transform: rotate(-8deg);

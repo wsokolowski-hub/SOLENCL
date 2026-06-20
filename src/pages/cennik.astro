@@ -20,8 +20,8 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cen
   <!-- KARTY -->
   <div class="cn-karty-grid">
 
-    <!-- Karta 1 -->
-    <div class="cn-karta">
+    <!-- Karta 1: niemowlęta -->
+    <a class="cn-karta" href="/nauka-plywania/niemowleta-i-dzieci-do-4-lat/">
       <div class="cn-karta-top">
         <span class="cn-karta-tag">Rodzic + Dziecko</span>
         <div class="cn-karta-cena"><sup></sup>55<sub> zł</sub></div>
@@ -39,30 +39,67 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cen
         </ul>
         <span class="cn-karta-note">Rodzic uczestniczy razem z dzieckiem</span>
       </div>
-    </div>
+    </a>
 
-    <!-- Karta 2 -->
-    <div class="cn-karta">
+    <!-- Karta 2: od podstaw -->
+    <a class="cn-karta" href="/nauka-plywania/dzieci-od-podstaw/">
       <div class="cn-karta-top">
-        <span class="cn-karta-tag">Od podstaw · Doskonalenie</span>
+        <span class="cn-karta-tag">Od podstaw</span>
         <div class="cn-karta-cena"><sup></sup>65<sub> zł</sub></div>
         <span class="cn-karta-czas">45 minut</span>
       </div>
       <div class="cn-karta-body">
-        <h2 class="cn-karta-nazwa">Nauka i doskonalenie<br>pływania dla dzieci</h2>
+        <h2 class="cn-karta-nazwa">Nauka pływania dla<br>dzieci od podstaw</h2>
         <span class="cn-karta-wiek">5 – 10 lat</span>
         <div class="cn-karta-divider"></div>
-        <span class="cn-harm-label">Nauka od podstaw</span>
+        <span class="cn-harm-label">Harmonogram</span>
         <ul class="cn-harm-lista">
           <li>Czwartek 15:30 – 18:30</li>
           <li>Sobota 9:00 – 15:00</li>
         </ul>
-        <span class="cn-harm-label" style="margin-top:8px;">Doskonalenie</span>
+        <span class="cn-karta-note">Małe grupy — max 8 dzieci</span>
+      </div>
+    </a>
+
+    <!-- Karta 3: doskonalenie -->
+    <a class="cn-karta" href="/nauka-plywania/doskonalenie/">
+      <div class="cn-karta-top">
+        <span class="cn-karta-tag">Doskonalenie</span>
+        <div class="cn-karta-cena"><sup></sup>65<sub> zł</sub></div>
+        <span class="cn-karta-czas">45 minut</span>
+      </div>
+      <div class="cn-karta-body">
+        <h2 class="cn-karta-nazwa">Doskonalenie<br>pływania dla dzieci</h2>
+        <span class="cn-karta-wiek">5 – 10 lat</span>
+        <div class="cn-karta-divider"></div>
+        <span class="cn-harm-label">Harmonogram</span>
         <ul class="cn-harm-lista">
           <li>Sobota 9:00 – 15:00</li>
         </ul>
+        <span class="cn-karta-note">Szlif techniki czterech stylów</span>
       </div>
-    </div>
+    </a>
+
+    <!-- Karta 4: indywidualnie -->
+    <a class="cn-karta" href="/nauka-plywania/indywidualnie/">
+      <div class="cn-karta-top">
+        <span class="cn-karta-tag">Indywidualnie</span>
+        <div class="cn-karta-cena"><sup>od</sup>180<sub> zł</sub></div>
+        <span class="cn-karta-czas">45 minut</span>
+      </div>
+      <div class="cn-karta-body">
+        <h2 class="cn-karta-nazwa">Zajęcia<br>indywidualne</h2>
+        <span class="cn-karta-wiek">dzieci i dorośli</span>
+        <div class="cn-karta-divider"></div>
+        <span class="cn-harm-label">Warianty</span>
+        <ul class="cn-harm-lista">
+          <li>1 osoba — 180 zł</li>
+          <li>2 osoby — 220 zł (110 / os.)</li>
+          <li>3 osoby — 250 zł (~83 / os.)</li>
+        </ul>
+        <span class="cn-karta-note">Basen ul. Kamiennogórska 16</span>
+      </div>
+    </a>
 
   </div>
 
@@ -188,9 +225,12 @@ body {
 
 .cn-karty-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
   margin-bottom: 56px;
+}
+@media (max-width: 1100px) {
+  .cn-karty-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .cn-karta {
@@ -198,6 +238,15 @@ body {
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 4px 40px rgba(41,52,52,0.09);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s, box-shadow .25s;
+}
+.cn-karta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(41,52,52,0.15);
 }
 
 /* TOP karty */
@@ -207,7 +256,8 @@ body {
   position: relative;
 }
 
-.cn-karta:nth-child(2) .cn-karta-top { background: #FF8357; }
+.cn-karta:nth-child(2) .cn-karta-top,
+.cn-karta:nth-child(4) .cn-karta-top { background: #FF8357; }
 
 .cn-karta-tag {
   font-size: 10px;
@@ -219,7 +269,8 @@ body {
   display: block;
 }
 
-.cn-karta:nth-child(2) .cn-karta-tag { color: #FFF9F6; opacity: 0.75; }
+.cn-karta:nth-child(2) .cn-karta-tag,
+.cn-karta:nth-child(4) .cn-karta-tag { color: #FFF9F6; opacity: 0.75; }
 
 .cn-karta-cena {
   font-family: 'Comfortaa', sans-serif;
@@ -229,7 +280,8 @@ body {
   line-height: 1;
 }
 
-.cn-karta:nth-child(2) .cn-karta-cena { color: #FFF9F6; }
+.cn-karta:nth-child(2) .cn-karta-cena,
+.cn-karta:nth-child(4) .cn-karta-cena { color: #FFF9F6; }
 
 .cn-karta-cena sup {
   font-size: 30px;
@@ -254,7 +306,8 @@ body {
   border-radius: 100px;
 }
 
-.cn-karta:nth-child(2) .cn-karta-czas {
+.cn-karta:nth-child(2) .cn-karta-czas,
+.cn-karta:nth-child(4) .cn-karta-czas {
   background: rgba(255,249,246,0.2);
   color: #FFF9F6;
 }
@@ -286,7 +339,8 @@ body {
   width: fit-content;
 }
 
-.cn-karta:nth-child(2) .cn-karta-wiek { background: #FFB094; }
+.cn-karta:nth-child(2) .cn-karta-wiek,
+.cn-karta:nth-child(4) .cn-karta-wiek { background: #FFB094; }
 
 .cn-karta-divider {
   height: 1px;
@@ -492,27 +546,26 @@ body {
   .cn-karty-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
   .cn-karta-top { padding: 28px 24px 22px; }
   .cn-karta-body { padding: 24px 24px 28px; }
-  .cn-karta-cena { font-size: 64px; }
+  .cn-karta-cena { font-size: 56px; }
   .cn-karta-nazwa { font-size: 17px; }
   .cn-dolna { grid-template-columns: 1fr; }
   .cn-lokalizacja { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
 /* ── MOBILE ── */
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .cn-hero { padding: 44px 4%; }
   .cn-title { font-size: 38px; letter-spacing: 3px; }
   .cn-main { padding: 36px 4%; }
-  .cn-karty-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+  .cn-karty-grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
   .cn-karta { border-radius: 20px; }
-  .cn-karta-top { padding: 20px 16px 16px; }
-  .cn-karta-body { padding: 16px 16px 20px; gap: 12px; }
-  .cn-karta-cena { font-size: 46px; }
-  .cn-karta-cena sub { font-size: 14px; }
-  .cn-karta-tag { font-size: 7px; letter-spacing: 1px; margin-bottom: 10px; }
-  .cn-karta-nazwa { font-size: 13px; }
-  .cn-karta-wiek { font-size: 9px; padding: 3px 10px; }
-  .cn-harm-lista, .cn-karta-note { display: none; }
+  .cn-karta-top { padding: 22px 22px 18px; }
+  .cn-karta-body { padding: 22px 22px 26px; gap: 12px; }
+  .cn-karta-cena { font-size: 54px; }
+  .cn-karta-cena sub { font-size: 16px; }
+  .cn-karta-tag { font-size: 9px; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .cn-karta-nazwa { font-size: 16px; }
+  .cn-karta-wiek { font-size: 11px; padding: 4px 12px; }
   .cn-platnosc { padding: 28px 22px; }
   .cn-info { padding: 28px 22px; }
   .cn-konto-numer { font-size: 11px; }
