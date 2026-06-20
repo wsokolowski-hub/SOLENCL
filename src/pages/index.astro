@@ -245,17 +245,17 @@ const breadcrumbs = [];
 
 <style is:global>
 /* === HERO === */
-/* Mobile first: single-column, mint background */
+/* Mobile first: stacked — coral pattern banner -> goggles on boundary -> mint text panel */
 .hero {
-    background: var(--cream);
+    background: var(--mint);
     position: relative;
     overflow: hidden;
   }
 
-  /* Mobile: coral sun pattern shown as a banner above the text */
+  /* Mobile: coral sun pattern banner */
   .hero-left {
     display: block;
-    height: 200px;
+    height: 240px;
     background-color: var(--coral);
     background-image: url('/assets/pattern-slonce.webp');
     background-repeat: repeat;
@@ -263,18 +263,17 @@ const breadcrumbs = [];
     background-position: top left;
   }
 
-  /* Mobile: cream bg, text left, goggles absolute top-right */
+  /* Mobile: mint text panel (matches desktop right side) */
   .hero-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    background: var(--cream);
-    padding: 48px 24px 64px;
-    text-align: left;
+    background: var(--mint);
+    padding: 96px 24px 56px;
+    text-align: center;
     position: relative;
     z-index: 2;
-    min-height: 380px;
   }
 
   .hero-eyebrow {
@@ -284,18 +283,18 @@ const breadcrumbs = [];
     text-transform: uppercase;
     color: var(--dark);
     opacity: 0.55;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .hero-h1 {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(34px, 9vw, 66px);
+    font-size: clamp(30px, 8vw, 48px);
     color: var(--coral);
     line-height: 1.1;
     margin-bottom: 20px;
-    letter-spacing: -1px;
-    max-width: 55%;
+    letter-spacing: -0.5px;
+    max-width: 100%;
   }
 
   .hero-desc {
@@ -303,8 +302,8 @@ const breadcrumbs = [];
     font-size: 13px;
     line-height: 1.75;
     color: var(--dark);
-    max-width: 340px;
-    margin-bottom: 36px;
+    max-width: 360px;
+    margin-bottom: 32px;
     opacity: 0.8;
   }
 
@@ -328,15 +327,15 @@ const breadcrumbs = [];
     box-shadow: 0 12px 40px rgba(255,131,87,0.40);
   }
 
-  /* Goggles — mobile: sit on the boundary between coral banner and cream area */
+  /* Goggles — mobile: centered, sitting on the boundary between coral and mint */
   .hero-goggles {
     position: absolute;
-    width: 150px;
-    right: 16px;
-    top: 140px;
+    width: 200px;
+    left: 50%;
+    top: 240px;
+    transform: translate(-50%, -50%) rotate(-8deg);
     z-index: 3;
     display: block;
-    transform: rotate(-8deg);
     pointer-events: none;
   }
 
