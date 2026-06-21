@@ -22,14 +22,18 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
   <nav class="hdr-mobile" id="mobile-nav" aria-label="Menu mobilne">
     {nav.map((item) => (
       item.children ? (
-        <div class="hdr-mobile-group">
-          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+        <details class="hdr-mobile-group" open={isActive(item.href)}>
+          <summary>
+            <span>{item.label}</span>
+            <svg class="hdr-mobile-caret" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5l4 4 4-4"/></svg>
+          </summary>
           <div class="hdr-mobile-sub">
+            <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>↳ Wszystkie kursy</a>
             {item.children.map((c) => (
               <a href={c.href} aria-current={path === c.href ? 'page' : undefined}>↳ {c.label}</a>
             ))}
           </div>
-        </div>
+        </details>
       ) : (
         <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
       )

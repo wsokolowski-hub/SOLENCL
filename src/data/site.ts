@@ -59,8 +59,6 @@ export type NavItem = { href: string; label: string; children?: NavChild[] };
 
 export const nav: NavItem[] = [
   { href: '/', label: 'GŁÓWNA' },
-  { href: '/o-nas/', label: 'O NAS' },
-  { href: '/gdzie-plywamy/', label: 'GDZIE PŁYWAMY?' },
   {
     href: '/nauka-plywania/',
     label: 'NAUKA PŁYWANIA',
@@ -71,6 +69,8 @@ export const nav: NavItem[] = [
       { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: 'Dzieci i dorośli · 180 / 220 / 250 zł · Kamiennogórska 16' },
     ],
   },
+  { href: '/o-nas/', label: 'O NAS' },
+  { href: '/gdzie-plywamy/', label: 'GDZIE PŁYWAMY?' },
   { href: '/zapisy/',  label: 'ZAPISY' },
   { href: '/cennik/',  label: 'CENNIK' },
   { href: '/kontakt/', label: 'KONTAKT' },
