@@ -132,12 +132,40 @@ a[x-apple-data-detectors] {
   letter-spacing: .02em;
 }
 
-/* Mobile submenu — parent link is clickable, sub-pages always visible (no accordion) */
-.hdr-mobile-group { display: block; }
-.hdr-mobile-sub {
-  padding: 0 0 12px 16px;
+/* Mobile submenu — parent link stays clickable; caret button toggles the list */
+.hdr-mobile-group {
+  display: block;
   border-bottom: 1px solid rgba(255,131,87,.18);
 }
+.hdr-mobile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.hdr-mobile-row > a {
+  flex: 1;
+  border-bottom: none !important;
+}
+.hdr-mobile-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 6px;
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hdr-mobile-toggle svg { transition: transform .2s ease; }
+.hdr-mobile-group.is-open .hdr-mobile-toggle svg { transform: rotate(180deg); }
+
+.hdr-mobile-sub {
+  display: none;
+  padding: 0 0 12px 16px;
+}
+.hdr-mobile-group.is-open .hdr-mobile-sub { display: block; }
+
 .hdr-mobile-sub a {
   display: block;
   padding: 10px 0 !important;
@@ -150,7 +178,6 @@ a[x-apple-data-detectors] {
 }
 .hdr-mobile-sub a:hover { color: var(--coral); opacity: 1; }
 .hdr-mobile-sub a[aria-current="page"] { color: var(--coral); opacity: 1; }
-.hdr-mobile-group > a { border-bottom: none !important; }
 
 .hdr-right { display: flex; align-items: center; gap: 10px; }
 .hdr-social {

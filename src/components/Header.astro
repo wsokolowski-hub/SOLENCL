@@ -22,8 +22,18 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
   <nav class="hdr-mobile" id="mobile-nav" aria-label="Menu mobilne">
     {nav.map((item) => (
       item.children ? (
-        <div class="hdr-mobile-group">
-          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+        <div class={`hdr-mobile-group${isActive(item.href) ? ' is-open' : ''}`}>
+          <div class="hdr-mobile-row">
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+            <button
+              class="hdr-mobile-toggle"
+              type="button"
+              aria-label={`Pokaż podstrony: ${item.label}`}
+              aria-expanded={isActive(item.href) ? 'true' : 'false'}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
           <div class="hdr-mobile-sub">
             {item.children.map((c) => (
               <a href={c.href} aria-current={path === c.href ? 'page' : undefined}>↳ {c.label}</a>
@@ -71,5 +81,15 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
   btn?.addEventListener('click', () => {
     const open = menu?.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(!!open));
+  });
+
+  // Mobile submenu toggle (separate from the parent link so the link itself still navigates)
+  document.querySelectorAll<HTMLButtonElement>('.hdr-mobile-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const group = toggle.closest('.hdr-mobile-group');
+      const open = group?.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(!!open));
+    });
   });
 </script>
