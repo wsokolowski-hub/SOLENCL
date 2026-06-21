@@ -132,7 +132,25 @@ a[x-apple-data-detectors] {
   letter-spacing: .02em;
 }
 
-/* Mobile menu — flat list, NAUKA PŁYWANIA is a regular link to /nauka-plywania/ hub */
+/* Mobile submenu — parent link is clickable, sub-pages always visible (no accordion) */
+.hdr-mobile-group { display: block; }
+.hdr-mobile-sub {
+  padding: 0 0 12px 16px;
+  border-bottom: 1px solid rgba(255,131,87,.18);
+}
+.hdr-mobile-sub a {
+  display: block;
+  padding: 10px 0 !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px !important;
+  color: var(--dark);
+  border-bottom: none !important;
+  opacity: .85;
+}
+.hdr-mobile-sub a:hover { color: var(--coral); opacity: 1; }
+.hdr-mobile-sub a[aria-current="page"] { color: var(--coral); opacity: 1; }
+.hdr-mobile-group > a { border-bottom: none !important; }
 
 .hdr-right { display: flex; align-items: center; gap: 10px; }
 .hdr-social {

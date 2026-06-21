@@ -21,7 +21,18 @@ const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith
 
   <nav class="hdr-mobile" id="mobile-nav" aria-label="Menu mobilne">
     {nav.map((item) => (
-      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      item.children ? (
+        <div class="hdr-mobile-group">
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          <div class="hdr-mobile-sub">
+            {item.children.map((c) => (
+              <a href={c.href} aria-current={path === c.href ? 'page' : undefined}>↳ {c.label}</a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      )
     ))}
   </nav>
 </header>
