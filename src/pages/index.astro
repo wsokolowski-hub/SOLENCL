@@ -245,65 +245,69 @@ const breadcrumbs = [];
 
 <style is:global>
 /* === HERO === */
-/* Mobile first: stacked — coral pattern banner -> goggles on boundary -> mint text panel */
+/* Mobile-first: same horizontal split as desktop, just scaled down */
 .hero {
-    background: var(--mint);
+    background: var(--cream);
     position: relative;
     overflow: hidden;
+    height: 340px;
   }
 
-  /* Mobile: coral sun pattern banner */
+  /* Coral pattern panel — left side (both mobile and desktop) */
   .hero-left {
     display: block;
-    height: 240px;
+    position: absolute;
+    left: 0; top: 0;
+    width: 60%; height: 75%;
     background-color: var(--coral);
     background-image: url('/assets/pattern-slonce.webp');
     background-repeat: repeat;
-    background-size: 50% auto;
+    background-size: 45% auto;
     background-position: top left;
   }
 
-  /* Mobile: mint text panel (matches desktop right side) */
+  /* Mint text panel — right side (both mobile and desktop) */
   .hero-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 55%; top: 20%;
     background: var(--mint);
-    padding: 96px 24px 56px;
-    text-align: center;
-    position: relative;
+    padding: 18px 14px 18px 18px;
+    text-align: left;
     z-index: 2;
   }
 
   .hero-eyebrow {
     font-family: var(--font-body);
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 7px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--dark);
     opacity: 0.55;
-    margin-bottom: 14px;
+    margin-bottom: 6px;
   }
 
   .hero-h1 {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(30px, 8vw, 48px);
+    font-size: clamp(15px, 4.6vw, 22px);
     color: var(--coral);
     line-height: 1.1;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
     max-width: 100%;
   }
 
   .hero-desc {
     font-family: var(--font-body);
-    font-size: 13px;
-    line-height: 1.75;
+    font-size: 9.5px;
+    line-height: 1.55;
     color: var(--dark);
-    max-width: 360px;
-    margin-bottom: 32px;
+    margin-bottom: 12px;
     opacity: 0.8;
   }
 
@@ -313,26 +317,26 @@ const breadcrumbs = [];
     color: var(--cream);
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 10px;
     letter-spacing: 1px;
-    padding: 16px 44px;
+    padding: 9px 22px;
     border-radius: 100px;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 32px rgba(255,131,87,0.30);
+    box-shadow: 0 6px 20px rgba(255,131,87,0.28);
   }
 
   .hero-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(255,131,87,0.40);
+    box-shadow: 0 10px 28px rgba(255,131,87,0.40);
   }
 
-  /* Goggles — mobile: centered, sitting on the boundary between coral and mint */
+  /* Goggles — sitting on the coral/mint vertical boundary */
   .hero-goggles {
     position: absolute;
-    width: 200px;
-    left: 50%;
-    top: 240px;
+    width: 140px;
+    left: 36%;
+    top: 50%;
     transform: translate(-50%, -50%) rotate(-8deg);
     z-index: 3;
     display: block;
@@ -373,9 +377,29 @@ const breadcrumbs = [];
       justify-content: center;
     }
 
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
     .hero-h1 {
       max-width: 100%;
       font-size: clamp(30px, 3.2vw, 52px);
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      max-width: 340px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta {
+      font-size: 15px;
+      padding: 16px 44px;
+      box-shadow: 0 8px 32px rgba(255,131,87,0.30);
     }
 
     .hero-goggles {
