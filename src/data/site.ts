@@ -33,9 +33,8 @@ export const site = {
     { day: 'Sobota', value: '09:00 – 14:00 (telefon)' },
   ],
   poolHours: [
-    { day: 'Czwartek', value: '15:30 – 18:30' },
     { day: 'Sobota', value: '09:00 – 15:00' },
-    { day: 'Niedziela', value: '10:00 – 12:00 (niemowlęta)' },
+    { day: 'Niedziela', value: '09:00 – 12:00' },
   ],
   semester: {
     one: { label: 'I semestr', range: '5.09.2026 – 17.01.2027', status: 'open' },
@@ -73,7 +72,7 @@ export const nav: NavItem[] = [
     children: [
       { href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/', label: 'Pływanie niemowląt i dzieci do lat 4', desc: '6 mies – 4 lata · rodzic + dziecko · 55 zł / 30 min' },
       { href: '/nauka-plywania/dzieci-od-podstaw/',             label: 'Nauka pływania dla dzieci od podstaw', desc: '5–10 lat · grupy do 8 · 65 zł / 45 min' },
-      { href: '/nauka-plywania/doskonalenie/',                  label: 'Doskonalenie pływania dla dzieci',     desc: '5–10 lat · soboty · 65 zł / 45 min' },
+      { href: '/nauka-plywania/doskonalenie/',                  label: 'Doskonalenie pływania dla dzieci',     desc: '5–10 lat · sob. i niedz. · 65 zł / 45 min' },
       { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: 'Dzieci i dorośli · 180 / 220 / 250 zł · Kamiennogórska 16' },
     ],
   },
