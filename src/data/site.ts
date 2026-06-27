@@ -71,7 +71,7 @@ export const nav: NavItem[] = [
     label: 'NAUKA PŁYWANIA',
     children: [
       { href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/', label: 'Pływanie niemowląt i dzieci do lat 4', desc: '6 mies – 4 lata · rodzic + dziecko · 55 zł / 30 min' },
-      { href: '/nauka-plywania/dzieci-od-podstaw/',             label: 'Nauka pływania dla dzieci od podstaw', desc: '5–10 lat · grupy do 8 · 65 zł / 45 min' },
+      { href: '/nauka-plywania/dzieci-od-podstaw/',             label: 'Nauka pływania dla dzieci od podstaw', desc: '5–10 lat · grupy do 10 · 65 zł / 45 min' },
       { href: '/nauka-plywania/doskonalenie/',                  label: 'Doskonalenie pływania dla dzieci',     desc: '5–10 lat · sob. i niedz. · 65 zł / 45 min' },
       { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: 'Dzieci i dorośli · 180 / 220 / 250 zł · Kamiennogórska 16' },
     ],
