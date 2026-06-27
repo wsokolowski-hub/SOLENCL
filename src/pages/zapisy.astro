@@ -14,6 +14,26 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Zapisy", href: "/zap
   <p class="zap-hero-sub">Zapisz dziecko wygodnie przez formularz online poniżej. Jeśli nie wiesz, do której grupy zapisać dziecko — zadzwoń, pomożemy dobrać odpowiednią pod względem wieku i poziomu.</p>
 </div>
 
+<!-- FORMULARZ ZAPISOWY -->
+<div class="zap-form">
+  <div class="zap-form-inner">
+    <span class="zap-sekcja-eyebrow">Formularz zapisowy</span>
+    <h2 class="zap-sekcja-title">Zapisz dziecko online</h2>
+    <p class="zap-form-sub">Wypełnij formularz — odezwiemy się, aby potwierdzić termin i grupę. Nie wiesz, którą grupę wybrać? <a href="tel:+48505912389">Zadzwoń: 505 912 389</a></p>
+    <div class="zap-form-embed">
+      <iframe
+        id="zapisy-iframe"
+        src="https://solenswim.vercel.app/embed/zapisy"
+        width="100%"
+        height="1600"
+        style="border:0;border-radius:16px"
+        loading="lazy"
+        title="Formularz zapisowy Solen Swim"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- SEMESTRY -->
 <div class="zap-semestry">
   <span class="zap-sekcja-eyebrow">Harmonogram semestrów</span>
@@ -88,24 +108,21 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Zapisy", href: "/zap
   </div>
 </div>
 
-<!-- FORMULARZ ZAPISOWY -->
-<div class="zap-form">
-  <div class="zap-form-inner">
-    <span class="zap-sekcja-eyebrow">Formularz zapisowy</span>
-    <h2 class="zap-sekcja-title">Zapisz dziecko online</h2>
-    <p class="zap-form-sub">Wypełnij formularz — odezwiemy się, aby potwierdzić termin i grupę. Nie wiesz, którą grupę wybrać? <a href="tel:+48505912389">Zadzwoń: 505 912 389</a></p>
-    <div class="zap-form-embed">
-      <iframe
-        src="https://solenswim.vercel.app/embed/zapisy"
-        width="100%"
-        height="900"
-        style="border:0;border-radius:16px"
-        loading="lazy"
-        title="Formularz zapisowy Solen Swim"
-      ></iframe>
-    </div>
-  </div>
-</div>
+<script is:inline>
+  // Auto-dopasowanie wysokości iframe, jeśli aplikacja zapisowa wysyła swoją wysokość.
+  (function () {
+    var frame = document.getElementById('zapisy-iframe');
+    if (!frame) return;
+    window.addEventListener('message', function (e) {
+      if (!/solenswim\.vercel\.app$/.test(new URL(e.origin).host)) return;
+      var h = null;
+      var d = e.data;
+      if (typeof d === 'number') h = d;
+      else if (d && typeof d === 'object') h = d.height || d.frameHeight || (d.type === 'resize' && d.value);
+      if (h && h > 200) frame.style.height = h + 'px';
+    });
+  })();
+</script>
 </Base>
 
 <style is:global>
