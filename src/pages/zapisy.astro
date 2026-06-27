@@ -36,7 +36,7 @@ const wiek = [
   <div class="zap-form-inner">
     <span class="zap-sekcja-eyebrow">Zapis telefoniczny</span>
     <h2 class="zap-form-title">Wypełnij formularz —<br><span>oddzwonimy!</span></h2>
-    <p class="zap-form-sub">Zostaw dane, a skontaktujemy się z Tobą, aby potwierdzić termin i dobrać odpowiednią grupę.</p>
+    <p class="zap-form-sub">Zadzwoń sam pod <a href="tel:+48505912389">505&nbsp;912&nbsp;389</a> lub wypełnij formularz, a&nbsp;oddzwonimy — pomożemy potwierdzić termin i&nbsp;dobrać odpowiednią grupę.</p>
 
     <form class="zap-formularz" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value={site.forms.web3formsKey} />
@@ -345,6 +345,13 @@ body {
   max-width: 480px;
   margin: 0 auto 36px;
 }
+.zap-form-sub a {
+  color: #FF8357;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255,131,87,0.4);
+}
+.zap-form-sub a:hover { border-bottom-color: #FF8357; }
 .zap-formularz {
   background: #FFF9F6;
   border-radius: 22px;
