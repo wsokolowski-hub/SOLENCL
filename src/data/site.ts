@@ -52,6 +52,14 @@ export const site = {
     googleProfileUrl: 'https://g.page/r/CQ_aXznUvIdKEAE',
     googleWriteReviewUrl: 'https://g.page/r/CQ_aXznUvIdKEAE/review',
   },
+  // Pełny formularz zapisu online (osobna aplikacja na Vercel)
+  onlineSignupUrl: 'https://solenswim.vercel.app',
+  forms: {
+    // Darmowy klucz z https://web3forms.com (wpisz swój e-mail -> dostajesz Access Key).
+    // Zgłoszenia z formularza "oddzwonimy" trafią na ten e-mail. Dopóki puste,
+    // formularz prosi o kontakt telefoniczny zamiast wysyłki.
+    web3formsKey: '',
+  },
 } as const;
 
 export type NavChild = { href: string; label: string; desc?: string };
