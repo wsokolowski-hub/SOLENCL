@@ -38,8 +38,8 @@ export const site = {
     { day: 'Niedziela', value: '10:00 – 12:00 (niemowlęta)' },
   ],
   semester: {
-    one: { label: 'I semestr', range: '15.11.2025 – 31.01.2026', status: 'closed' },
-    two: { label: 'II semestr', range: '19.02.2026 – 28.06.2026', status: 'open' },
+    one: { label: 'I semestr', range: '5.09.2026 – 17.01.2027', status: 'open' },
+    two: { label: 'II semestr', range: '6.02.2027 – 27.06.2027', status: 'soon' },
   },
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61581816024136',
