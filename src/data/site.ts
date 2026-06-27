@@ -58,7 +58,7 @@ export const site = {
     // Darmowy klucz z https://web3forms.com (wpisz swój e-mail -> dostajesz Access Key).
     // Zgłoszenia z formularza "oddzwonimy" trafią na ten e-mail. Dopóki puste,
     // formularz prosi o kontakt telefoniczny zamiast wysyłki.
-    web3formsKey: '',
+    web3formsKey: '32632141-8fba-4b5d-b0c9-ad953459284b',
   },
 } as const;
 
