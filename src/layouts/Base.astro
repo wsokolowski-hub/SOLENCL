@@ -1,10 +1,13 @@
 ---
+import '@/styles/fonts.css';
 import '@/styles/global.css';
 import { site } from '@/data/site';
 import SEO from '@/components/SEO.astro';
 import SchemaOrg from '@/components/SchemaOrg.astro';
+import type { CourseSchema } from '@/components/SchemaOrg.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 interface Props {
   title: string;
@@ -14,9 +17,11 @@ interface Props {
   pageType?: 'home' | 'service' | 'contact' | 'faq' | 'about' | 'location';
   faq?: { q: string; a: string }[];
   breadcrumbs?: { name: string; href: string }[];
+  course?: CourseSchema;
+  noindex?: boolean;
 }
 
-const { title, description, path, image, pageType, faq, breadcrumbs } = Astro.props;
+const { title, description, path, image, pageType, faq, breadcrumbs, course, noindex } = Astro.props;
 const lang = site.locale.split('_')[0];
 ---
 <!doctype html>
@@ -24,18 +29,19 @@ const lang = site.locale.split('_')[0];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <link rel="icon" type="image/png" href="/assets/logo-kwadrat.webp" />
-    <link rel="apple-touch-icon" href="/assets/logo-kwadrat.webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" />
-    <SEO {title} {description} {path} {image} />
-    <SchemaOrg {pageType} {faq} {breadcrumbs} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/comfortaa-latin-ext-d56eb1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-mono-latin-ext-3c18ea.woff2" as="font" type="font/woff2" crossorigin />
+    <SEO {title} {description} {path} {image} {noindex} />
+    <SchemaOrg {pageType} {faq} {breadcrumbs} {course} />
     <slot name="head" />
   </head>
   <body>
     <a href="#main" class="skip">Przejdź do treści</a>
     <Header />
+    {breadcrumbs && breadcrumbs.length > 1 && <Breadcrumbs items={breadcrumbs} />}
     <main id="main">
       <slot />
     </main>

@@ -3,7 +3,7 @@ export const site = {
   short: 'Solen Swim',
   tagline: 'swim with the sun',
   description:
-    'Szkoła pływania dla dzieci i niemowląt we Wrocławiu (Grabiszyn). Zajęcia od 6. miesiąca życia. Małe grupy, certyfikowani instruktorzy.',
+    'Szkoła pływania dla dzieci i niemowląt we Wrocławiu (Grabiszyn). Zajęcia w weekendy — soboty i niedziele, od 6. miesiąca życia. Małe grupy, certyfikowani instruktorzy.',
   url: 'https://solenswim.com',
   locale: 'pl_PL',
   city: 'Wrocław',
@@ -19,7 +19,19 @@ export const site = {
     postal: '54-411',
     city: 'Wrocław',
   },
+  // Drugi obiekt — wyłącznie zajęcia indywidualne
+  address2: {
+    street: 'ul. Kamiennogórska 16',
+    postal: '54-034',
+    city: 'Wrocław',
+  },
   geo: { lat: 51.0869, lng: 16.9916 },
+  maps: {
+    directionsUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=Szko%C5%82a+P%C5%82ywania+Solen+Swim%2C+ul.+Aleksandra+Ostrowskiego+3%2C+54-411+Wroc%C5%82aw',
+    embedUrl:
+      'https://www.google.com/maps?q=Szko%C5%82a+P%C5%82ywania+Solen+Swim,+ul.+Aleksandra+Ostrowskiego+3,+54-411+Wroc%C5%82aw&output=embed',
+  },
   phone: '+48505912389',
   phoneHuman: '505 912 389',
   phone2: '+48793790711',
@@ -27,7 +39,8 @@ export const site = {
   email: 'solenswim@outlook.com',
   bankAccount: '05 1090 2529 0000 0001 6453 7999',
   rating: { value: '4.9', count: '21' },
-  priceRange: '60-65 zł',
+  priceRange: '60-250 zł',
+  semesterEnd: '2027-01-17',
   hours: [
     { day: 'Pon–Pt', value: '09:00 – 18:00 (telefon)' },
     { day: 'Sobota', value: '09:00 – 14:00 (telefon)' },

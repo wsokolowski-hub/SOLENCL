@@ -1,12 +1,27 @@
 ---
 import { site } from '@/data/site';
 
+export interface CourseSchema {
+  name: string;
+  description: string;
+  price: string;
+  url: string;
+  audience?: string;
+}
+
 interface Props {
   pageType?: 'home' | 'service' | 'contact' | 'faq' | 'about' | 'location';
   faq?: { q: string; a: string }[];
   breadcrumbs?: { name: string; href: string }[];
+  course?: CourseSchema;
 }
-const { pageType = 'home', faq, breadcrumbs } = Astro.props;
+const { pageType = 'home', faq, breadcrumbs, course } = Astro.props;
+
+const offerDefaults = {
+  priceCurrency: 'PLN',
+  availability: 'https://schema.org/InStock',
+  priceValidUntil: site.semesterEnd,
+} as const;
 
 const business = {
   '@context': 'https://schema.org',
@@ -15,10 +30,15 @@ const business = {
   name: site.name,
   description: site.description,
   url: site.url,
-  telephone: [site.phone, site.phone2],
+  telephone: site.phone,
   email: site.email,
-  image: `${site.url}/assets/logo-kwadrat.webp`,
+  image: [
+    `${site.url}/assets/img-9c79488ad9a3.webp`,
+    `${site.url}/assets/hero-dziecko.webp`,
+    `${site.url}/assets/logo-kwadrat.webp`,
+  ],
   logo: `${site.url}/assets/logo.png`,
+  founder: { '@type': 'Person', name: site.owner, jobTitle: 'Założycielka i instruktorka pływania' },
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.address.street,
@@ -27,40 +47,48 @@ const business = {
     addressCountry: site.country,
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  hasMap: site.reviews.googleProfileUrl,
   areaServed: { '@type': 'City', name: site.city },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: site.rating.value,
-    reviewCount: site.rating.count,
-    bestRating: '5',
-  },
   priceRange: site.priceRange,
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '09:00', closes: '15:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday',   opens: '09:00', closes: '12:00' },
   ],
+  contactPoint: [
+    { '@type': 'ContactPoint', telephone: site.phone,  contactType: 'customer service', availableLanguage: 'pl' },
+    { '@type': 'ContactPoint', telephone: site.phone2, contactType: 'customer service', availableLanguage: 'pl' },
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Kursy pływania',
+    name: 'Kursy pływania — weekendy (soboty i niedziele)',
     itemListElement: [
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Pływanie niemowląt i dzieci do lat 4', description: 'Zajęcia rodzic+dziecko, 30 min, grupy do 8 par.' },
-        price: '60', priceCurrency: 'PLN',
+        itemOffered: { '@type': 'Service', name: 'Pływanie niemowląt i dzieci do lat 4', description: 'Zajęcia rodzic+dziecko, 30 min, grupy do 8 par. Soboty i niedziele.' },
+        price: '60', ...offerDefaults,
+        url: `${site.url}/nauka-plywania/niemowleta-i-dzieci-do-4-lat/`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Nauka pływania dla dzieci od podstaw (5–10 lat)', description: 'Zajęcia 45 min, grupy do 8 dzieci.' },
-        price: '65', priceCurrency: 'PLN',
+        itemOffered: { '@type': 'Service', name: 'Nauka pływania dla dzieci od podstaw (5–10 lat)', description: 'Zajęcia 45 min, grupy do 8 dzieci. Soboty i niedziele.' },
+        price: '65', ...offerDefaults,
+        url: `${site.url}/nauka-plywania/dzieci-od-podstaw/`,
       },
       {
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: 'Doskonalenie pływania dla dzieci (5–10 lat)', description: 'Zajęcia 45 min, grupy do 8 dzieci, soboty i niedziele.' },
-        price: '65', priceCurrency: 'PLN',
+        price: '65', ...offerDefaults,
+        url: `${site.url}/nauka-plywania/doskonalenie/`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Lekcje indywidualne pływania (dzieci i dorośli)', description: '1, 2 lub 3 osoby z instruktorem — 180/220/250 zł, basen ul. Kamiennogórska 16.' },
+        price: '180', ...offerDefaults,
+        url: `${site.url}/nauka-plywania/indywidualnie/`,
       },
     ],
   },
-  sameAs: [site.social.facebook, site.social.instagram],
+  sameAs: [site.social.facebook, site.social.instagram, site.reviews.googleProfileUrl],
 };
 
 const breadcrumbList = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -83,7 +111,43 @@ const faqPage = faq && faq.length > 0 ? {
     acceptedAnswer: { '@type': 'Answer', text: q.a },
   })),
 } : null;
+
+// Kurs semestralny (Course rich results) — emitowany na podstronach usług
+const [startY, startM, startD] = ['2026', '09', '05'];
+const courseSchema = course ? {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: course.name,
+  description: course.description,
+  provider: { '@id': `${site.url}/#business` },
+  url: new URL(course.url, site.url).toString(),
+  ...(course.audience ? { audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: course.audience } } : {}),
+  offers: {
+    '@type': 'Offer',
+    price: course.price,
+    priceCurrency: 'PLN',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: site.semesterEnd,
+    url: new URL(course.url, site.url).toString(),
+    category: 'Paid',
+  },
+  hasCourseInstance: {
+    '@type': 'CourseInstance',
+    courseMode: 'Onsite',
+    courseSchedule: {
+      '@type': 'Schedule',
+      byDay: ['https://schema.org/Saturday', 'https://schema.org/Sunday'],
+      repeatFrequency: 'P1W',
+      startDate: `${startY}-${startM}-${startD}`,
+      endDate: site.semesterEnd,
+    },
+    startDate: `${startY}-${startM}-${startD}`,
+    endDate: site.semesterEnd,
+    location: { '@id': `${site.url}/#business` },
+  },
+} : null;
 ---
 <script type="application/ld+json" set:html={JSON.stringify(business)} />
 {breadcrumbList && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />}
 {faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
+{courseSchema && <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />}

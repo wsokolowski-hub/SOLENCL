@@ -1,3 +1,6 @@
+# Kanoniczny host — www -> apex
+https://www.solenswim.com/* https://solenswim.com/:splat 301
+
 # Wix legacy paths
 /strona-glowna   /   301
 /home            /   301
