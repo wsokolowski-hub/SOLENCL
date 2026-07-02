@@ -1,8 +1,31 @@
 ---
 import Base from '@/layouts/Base.astro';
 import { site } from '@/data/site';
-const title = 'Szkoła Pływania Wrocław | Solen Swim | Dzieci od 6 miesiąca';
-const description = 'Szkoła pływania dla dzieci i niemowląt we Wrocławiu (Grabiszyn). Zajęcia od 6. miesiąca życia. Małe grupy, certyfikowani instruktorzy. 4,9/5 (21 opinii). Zapisz się online.';
+const title = 'Szkoła Pływania dla Dzieci Wrocław — weekendy | Solen Swim';
+const description = 'Szkoła pływania dla dzieci we Wrocławiu (Grabiszyn). Zajęcia w weekendy od 6. miesiąca do 10 lat. Małe grupy do 8 osób, certyfikowani instruktorzy.';
+
+// Opinie Google (Featurable API) — pobierane w czasie builda; przy braku
+// dostępu do sieci sekcja renderuje się bez statycznych opinii (fallback).
+type StaticReview = { author: string; text: string };
+let staticReviews: StaticReview[] = [];
+try {
+  const res = await fetch(
+    `https://featurable.com/api/v1/widgets/${site.reviews.featurableWidgetId}`,
+    { signal: AbortSignal.timeout(8000) },
+  );
+  if (res.ok) {
+    const data: any = await res.json();
+    staticReviews = (data?.reviews ?? [])
+      .filter((r: any) => (r?.comment || r?.text) && ['FIVE', 5].includes(r?.starRating ?? r?.rating))
+      .slice(0, 3)
+      .map((r: any) => ({
+        author: String(r?.reviewer?.displayName ?? r?.author ?? 'Klient Google'),
+        text: String(r?.comment ?? r?.text ?? '').slice(0, 260),
+      }));
+  }
+} catch {
+  // brak sieci podczas builda — pomijamy statyczne opinie
+}
 const path = '/';
 const pageType = 'home' as const;
 const breadcrumbs = [];
@@ -12,12 +35,12 @@ const breadcrumbs = [];
 <section class="hero">
   <div class="hero-left"></div>
   <div class="hero-right">
-    <p class="hero-eyebrow">Nauka pływania dla dzieci · Wrocław</p>
-    <h1 class="hero-h1">Szkoła Pływania<br>Solen Swim</h1>
-    <p class="hero-desc">Zacznij pływać z <strong>Solen Swim!</strong> Oferujemy zajęcia na różnych poziomach, łącząc naukę z zabawą. Dołącz do nas już dziś!</p>
+    <p class="hero-eyebrow">Solen Swim · Grabiszyn · soboty i niedziele</p>
+    <h1 class="hero-h1">Szkoła pływania dla dzieci<br>we Wrocławiu</h1>
+    <p class="hero-desc">Zacznij pływać z <strong>Solen Swim!</strong> Zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 — od 6. miesiąca do 10 lat. Uczymy przez zabawę, w grupach do 8 osób.</p>
     <a class="hero-cta" href="/zapisy/">Zapisz się</a>
   </div>
-  <img class="hero-goggles" src="/assets/okularki.webp" alt="Okularki pływackie Solen Swim">
+  <img class="hero-goggles" src="/assets/okularki.webp" alt="Okularki pływackie Solen Swim" width="1060" height="1060">
 </section>
 <!-- ===== KURSY ===== -->
 <section class="kursy">
@@ -25,9 +48,9 @@ const breadcrumbs = [];
   <h2 class="kursy-title">Nasze kursy</h2>
 
   <!-- KURS 1 -->
-  <div class="kurs">
+  <a class="kurs" href="/nauka-plywania/niemowleta-i-dzieci-do-4-lat/">
     <div class="kurs-foto">
-      <img src="/assets/img-924d79bd96e8.webp" alt="Pływanie niemowląt i dzieci do lat 4">
+      <img src="/assets/img-924d79bd96e8.webp" alt="Pływanie niemowląt i dzieci do lat 4" width="800" height="661" loading="lazy">
     </div>
     <div class="kurs-info">
       <h3 class="kurs-nazwa">Pływanie niemowląt<br>i dzieci do lat 4</h3>
@@ -38,13 +61,14 @@ const breadcrumbs = [];
         Czas trwania: 30 minut<br>
         ul. Ostrowskiego 3, Wrocław Grabiszyn
       </div>
+      <span class="kurs-link">Pływanie niemowląt — szczegóły →</span>
     </div>
-  </div>
+  </a>
 
   <!-- KURS 2 — odwrócony -->
-  <div class="kurs odwrocony">
+  <a class="kurs odwrocony" href="/nauka-plywania/dzieci-od-podstaw/">
     <div class="kurs-foto">
-      <img src="/assets/img-20f0624ea60b.webp" alt="Nauka pływania dla dzieci od podstaw">
+      <img src="/assets/img-20f0624ea60b.webp" alt="Nauka pływania dla dzieci od podstaw" width="800" height="620" loading="lazy">
     </div>
     <div class="kurs-info">
       <h3 class="kurs-nazwa">Nauka pływania dla<br>dzieci od podstaw</h3>
@@ -55,13 +79,14 @@ const breadcrumbs = [];
         Czas trwania: 45 minut<br>
         ul. Ostrowskiego 3, Wrocław Grabiszyn
       </div>
+      <span class="kurs-link">Nauka pływania od podstaw — szczegóły →</span>
     </div>
-  </div>
+  </a>
 
   <!-- KURS 3 -->
-  <div class="kurs">
+  <a class="kurs" href="/nauka-plywania/doskonalenie/">
     <div class="kurs-foto">
-      <img src="/assets/img-13fb15be6e83.webp" alt="Doskonalenie pływania dla dzieci">
+      <img src="/assets/img-13fb15be6e83.webp" alt="Doskonalenie pływania dla dzieci" width="533" height="800" loading="lazy">
     </div>
     <div class="kurs-info">
       <h3 class="kurs-nazwa">Doskonalenie<br>pływania dla dzieci</h3>
@@ -71,8 +96,9 @@ const breadcrumbs = [];
         Czas trwania: 45 minut<br>
         ul. Ostrowskiego 3, Wrocław Grabiszyn
       </div>
+      <span class="kurs-link">Doskonalenie pływania — szczegóły →</span>
     </div>
-  </div>
+  </a>
 
 </section>
 <!-- ===== CTA KURSY ===== -->
@@ -106,7 +132,7 @@ const breadcrumbs = [];
   <div class="cennik-grid">
 
     <!-- Karta 1 -->
-    <div class="karta">
+    <a class="karta" href="/nauka-plywania/niemowleta-i-dzieci-do-4-lat/">
       <div class="karta-top">
         <span class="karta-tag">dla najmłodszych</span>
         <div class="karta-cena"><sup></sup>60<sub> zł</sub></div>
@@ -121,10 +147,10 @@ const breadcrumbs = [];
         </ul>
         <span class="karta-note">Rodzic uczestniczy razem z dzieckiem</span>
       </div>
-    </div>
+    </a>
 
     <!-- Karta 2 -->
-    <div class="karta">
+    <a class="karta" href="/nauka-plywania/dzieci-od-podstaw/">
       <div class="karta-top">
         <span class="karta-tag">od podstaw i doskonalenie</span>
         <div class="karta-cena"><sup></sup>65<sub> zł</sub></div>
@@ -138,7 +164,7 @@ const breadcrumbs = [];
           <li>Niedziela 9:00 – 12:00</li>
         </ul>
       </div>
-    </div>
+    </a>
 
   </div>
 
@@ -159,7 +185,19 @@ const breadcrumbs = [];
 </div>
 <!-- ===== OPINIE ===== -->
 <section class="opinie-section">
-  <h2 class="opinie-title">Opinie</h2>
+  <h2 class="opinie-title">Opinie rodziców</h2>
+  <p class="opinie-rating">⭐ <strong>{site.rating.value.replace('.', ',')} / 5</strong> — {site.rating.count} opinii w Google</p>
+
+  {staticReviews.length > 0 && (
+    <div class="opinie-static">
+      {staticReviews.map((r) => (
+        <blockquote class="opinie-cytat">
+          <p>„{r.text}"</p>
+          <footer>— {r.author}, opinia Google</footer>
+        </blockquote>
+      ))}
+    </div>
+  )}
 
   {site.reviews.featurableWidgetId ? (
     <div class="opinie-widget">
@@ -169,9 +207,14 @@ const breadcrumbs = [];
     <p class="opinie-placeholder">Zobacz, co piszą o nas rodzice — przeczytaj wszystkie opinie bezpośrednio w Google.</p>
   )}
 
-  <a class="opinie-cta" href={site.reviews.googleProfileUrl} target="_blank" rel="noopener">
-    Zobacz opinie w Google
-  </a>
+  <div class="opinie-akcje">
+    <a class="opinie-cta" href={site.reviews.googleProfileUrl} target="_blank" rel="noopener">
+      Zobacz opinie w Google
+    </a>
+    <a class="opinie-cta opinie-cta-outline" href={site.reviews.googleWriteReviewUrl} target="_blank" rel="noopener">
+      Wystaw nam opinię ⭐
+    </a>
+  </div>
 </section>
 {site.reviews.featurableWidgetId && (
   <script is:inline defer src="https://featurable.com/assets/bundle.js" charset="UTF-8"></script>
@@ -220,20 +263,20 @@ const breadcrumbs = [];
   <div class="social-lista">
 
     <!-- Facebook -->
-    <div class="social-btn">
+    <a class="social-btn" href={site.social.facebook} target="_blank" rel="noopener" aria-label="Solen Swim na Facebooku">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
       </svg>
-    </div>
+    </a>
 
     <!-- Instagram -->
-    <div class="social-btn">
+    <a class="social-btn" href={site.social.instagram} target="_blank" rel="noopener" aria-label="Solen Swim na Instagramie">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#FFF9F6" stroke-width="2"/>
         <circle cx="12" cy="12" r="4" fill="none" stroke="#FFF9F6" stroke-width="2"/>
         <circle cx="17.5" cy="6.5" r="1" fill="#FFF9F6"/>
       </svg>
-    </div>
+    </a>
 
   </div>
 
@@ -409,12 +452,36 @@ const breadcrumbs = [];
   margin-bottom: 72px;
 }
 
-/* POJEDYNCZY KURS */
+/* POJEDYNCZY KURS — klikalna karta prowadząca do podstrony kursu */
 .kurs {
   display: flex;
   align-items: center;
   gap: 72px;
   margin-bottom: 80px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 24px;
+  transition: transform .25s;
+}
+
+.kurs:hover {
+  transform: translateY(-3px);
+  color: inherit;
+}
+
+.kurs:hover .kurs-link {
+  color: #293434;
+}
+
+.kurs-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .5px;
+  color: #FF8357;
+  transition: color .2s;
 }
 
 /* Naprzemienne — co drugi kurs odwraca kolejność */
@@ -668,6 +735,15 @@ const breadcrumbs = [];
   box-shadow: 0 4px 40px rgba(41,52,52,0.09);
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.karta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 48px rgba(41,52,52,0.14);
+  color: inherit;
 }
 
 /* Górna część karty — kolorowe tło */

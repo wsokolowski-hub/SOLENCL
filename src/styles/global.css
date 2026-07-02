@@ -250,7 +250,44 @@ a[x-apple-data-detectors] {
   font-size: 13px; letter-spacing: 1px;
   color: rgba(41,52,52,.55); margin: 8px 0 40px;
 }
-.opinie-widget { max-width: 1100px; margin: 0 auto 36px; }
+/* min-height rezerwuje miejsce na widget ładowany JS-em (ochrona przed CLS) */
+.opinie-widget { max-width: 1100px; margin: 0 auto 36px; min-height: 320px; }
+.opinie-static {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto 36px;
+}
+.opinie-cytat {
+  background: #fff; border-radius: 20px;
+  padding: 26px 24px; text-align: left;
+  box-shadow: 0 4px 24px rgba(41,52,52,.07);
+  margin: 0;
+}
+.opinie-cytat p {
+  font-family: var(--font-body);
+  font-size: 13px; line-height: 1.75;
+  color: var(--dark); margin-bottom: 14px;
+}
+.opinie-cytat footer {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 12px; color: var(--coral);
+}
+.opinie-akcje {
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+}
+.opinie-cta-outline {
+  background: transparent;
+  color: var(--dark);
+  border: 2px solid var(--mint);
+  box-shadow: none;
+}
+.opinie-cta-outline:hover {
+  background: rgba(182,222,221,.3);
+  color: var(--dark);
+  box-shadow: none;
+}
 .opinie-placeholder {
   font-family: var(--font-body);
   font-size: 14px; line-height: 1.7;
