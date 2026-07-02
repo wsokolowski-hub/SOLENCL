@@ -1,7 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
-const title = 'O nas | Szkoła Pływania Solen Swim Wrocław Grabiszyn';
-const description = 'Poznaj naszą szkołę pływania w Wrocławiu. Doświadczeni instruktorzy, zajęcia dla dzieci od 6. miesiąca. Basen Grabiszyn, ul. Ostrowskiego 3. 4,9 w Google.';
+const title = 'Szkoła pływania dla dzieci Wrocław Grabiszyn | Solen Swim';
+const description = 'Poznaj Solen Swim i założycielkę Kamilę Falkowską. Weekendowe zajęcia dla dzieci 6 mies.–10 lat, grupy max 8 osób. Wrocław Grabiszyn, ul. Ostrowskiego 3.';
 const path = '/o-nas/';
 const pageType = 'about' as const;
 const breadcrumbs = [{ name: "Start", href: "/" }, { name: "O nas", href: "/o-nas/" }];
@@ -10,8 +10,9 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "O nas", href: "/o-na
 <!-- HERO -->
 <div class="onas-hero">
   <span class="onas-eyebrow">Solen Swim · Wrocław</span>
-  <h1 class="onas-title">Z nami każdy maluch<br>rozbłyśnie jak <span>słońce</span></h1>
-  <p class="onas-hero-sub">Szkoła pływania powstała z pasji do wody i pracy z dziećmi. Uczymy od 6. miesiąca życia — bezpiecznie, z uśmiechem i bez pośpiechu.</p>
+  <h1 class="onas-title">Szkoła pływania dla dzieci we&nbsp;Wrocławiu — poznaj <span>Solen Swim</span></h1>
+  <p class="onas-podtytul">Z nami każdy maluch rozbłyśnie jak <span>słońce</span></p>
+  <p class="onas-hero-sub">Szkoła pływania powstała z pasji do wody i pracy z dziećmi. Uczymy od 6. miesiąca życia do 10. roku — bezpiecznie, z uśmiechem i bez pośpiechu, w weekendy na basenie przy ul. Ostrowskiego 3 na wrocławskim Grabiszynie.</p>
 </div>
 
 <!-- CYTAT -->
@@ -35,9 +36,12 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "O nas", href: "/o-na
       <p class="onas-tekst">
         Naszym celem jest, by każde dziecko czuło się bezpiecznie i pokochało wodę od pierwszego kontaktu — od pierwszych plusków po pewne ruchy w wodzie.
       </p>
+      <p class="onas-tekst">
+        Nasza metodyka opiera się na nauce przez zabawę: ćwiczenia mają formę gier i zadań, dzięki którym dzieci oswajają się z wodą naturalnie, krok po kroku. Bezpieczeństwo jest zawsze na pierwszym miejscu — kameralne grupy do 8 dzieci pozwalają instruktorowi widzieć każdego malucha przez całe zajęcia i reagować na jego potrzeby.
+      </p>
       <div class="onas-divider"></div>
       <p class="onas-tekst">
-        Każde dziecko uczy się we własnym tempie. Wychodzimy z basenu z uśmiechem — i to jest dla nas najważniejsze.
+        Każde dziecko uczy się we własnym tempie. Zajęcia odbywają się w weekendy — w soboty i niedziele przedpołudniami — więc łatwo wpisują się w rodzinny plan tygodnia. Prowadzimy też lekcje indywidualne, również dla dorosłych, na basenie przy ul. Kamiennogórskiej 16. Wychodzimy z basenu z uśmiechem — i to jest dla nas najważniejsze.
       </p>
     </div>
 
@@ -55,6 +59,23 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "O nas", href: "/o-na
       </ul>
     </div>
 
+  </div>
+
+  <!-- ZAŁOŻYCIELKA -->
+  <div class="onas-zalozycielka">
+    <div class="onas-zal-foto" aria-hidden="true">KF</div>
+    <!-- TODO: właścicielka — dodać zdjęcie Kamili + listę konkretnych certyfikatów/uprawnień (np. instruktor pływania, ratownik) -->
+    <div class="onas-zal-tresc">
+      <span class="onas-sekcja-eyebrow">Poznaj założycielkę</span>
+      <h2 class="onas-sekcja-title">Kamila Falkowska</h2>
+      <p class="onas-zal-rola">Założycielka i instruktorka Solen Swim</p>
+      <p class="onas-tekst">
+        Solen Swim to autorska szkoła pływania Kamili Falkowskiej — instruktorki, która na basenie czuje się jak w domu i tę radość z wody przekazuje dzieciom. To ona zbudowała filozofię szkoły: uczyć przez zabawę, bez presji i w małych grupach, w których każde dziecko ma czas i uwagę instruktora.
+      </p>
+      <p class="onas-tekst">
+        Na zajęciach Kamila i zespół instruktorów stawiają na indywidualne podejście — od pierwszego oswajania niemowlaka z wodą po szlifowanie techniki u starszych dzieci. Chcesz porozmawiać o swoim dziecku przed zapisem? <a href="/kontakt/" class="onas-zal-link">Zadzwoń — chętnie doradzimy</a>.
+      </p>
+    </div>
   </div>
 
   <!-- KARTY WARTOŚCI -->
@@ -149,6 +170,18 @@ body {
 }
 
 .onas-title span {
+  color: #FF8357;
+}
+
+.onas-podtytul {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 2.4vw, 20px);
+  color: #B6DEDD;
+  margin-bottom: 18px;
+}
+
+.onas-podtytul span {
   color: #FF8357;
 }
 
@@ -265,6 +298,54 @@ body {
   flex-shrink: 0;
   margin-top: 6px;
 }
+
+/* ─── ZAŁOŻYCIELKA ─── */
+.onas-zalozycielka {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: #FFF9F6;
+  border-radius: 28px;
+  box-shadow: 0 4px 32px rgba(41,52,52,0.08);
+  padding: 48px;
+  margin-bottom: 72px;
+}
+
+.onas-zal-foto {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #B6DEDD;
+  color: #293434;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.onas-zal-tresc { flex: 1; }
+
+.onas-zal-tresc .onas-sekcja-title { margin-bottom: 6px; }
+
+.onas-zal-rola {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.onas-zal-link {
+  color: #FF8357;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.onas-zal-link:hover { text-decoration: underline; }
 
 /* ─── KARTY WARTOŚCI ─── */
 .onas-wartosci {
@@ -386,6 +467,14 @@ body {
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 52px;
   }
+  .onas-zalozycielka {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 28px;
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+  .onas-zal-foto { width: 140px; height: 140px; font-size: 40px; }
   .onas-banner {
     flex-direction: column;
     align-items: flex-start;

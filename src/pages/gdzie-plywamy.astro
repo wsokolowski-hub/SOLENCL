@@ -1,7 +1,8 @@
 ---
 import Base from '@/layouts/Base.astro';
-const title = 'Gdzie pływamy — Basen Grabiszyn Wrocław | Solen Swim';
-const description = 'Basen kryty na Grabiszynku, ul. Ostrowskiego 3 we Wrocławiu. 2 tory 12,5 m, głębokość 0,9–1,35 m, ogrzewana woda, darmowy parking. Idealne miejsce na naukę pływania dla dzieci.';
+import { site } from '@/data/site';
+const title = 'Basen dla dzieci Grabiszyn Wrocław — weekendy | Solen Swim';
+const description = 'Basen dla dzieci na Grabiszynie we Wrocławiu — zajęcia w weekendy. 2 tory po 12,5 m, głębokość 0,9–1,35 m, podgrzewana woda i bezpłatny parking.';
 const path = '/gdzie-plywamy/';
 const pageType = 'location' as const;
 const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", href: "/gdzie-plywamy/" }];
@@ -10,20 +11,20 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", hre
 <!-- HERO -->
 <div class="gp-hero">
   <span class="gp-eyebrow">Gdzie pływamy</span>
-  <h1 class="gp-title">Znajdź nas<br>na <span>Grabiszynie</span></h1>
-  <span class="gp-hero-adres">📍 ul. Aleksandra Ostrowskiego 3, Wrocław</span>
+  <h1 class="gp-title">Basen dla dzieci<br>na <span>Grabiszynie</span><span class="gp-title-sub">Znajdź nas we Wrocławiu — pływamy w każdy weekend</span></h1>
+  <span class="gp-hero-adres">📍 {site.address.street}, {site.address.postal} {site.address.city}</span>
 </div>
 
 <!-- MOZAIKA ZDJEC -->
 <div class="gp-mozaika">
   <div class="gp-foto">
-    <img src="/assets/img-9c79488ad9a3.webp" alt="Basen Solen Swim Wrocław">
+    <img src="/assets/img-9c79488ad9a3.webp" alt="Basen Solen Swim Wrocław" width="800" height="535" loading="lazy">
   </div>
   <div class="gp-foto">
-    <img src="/assets/img-f9a61ca66c17.webp" alt="Basen kryty ul. Ostrowskiego Wrocław">
+    <img src="/assets/img-f9a61ca66c17.webp" alt="Basen kryty ul. Ostrowskiego Wrocław" width="800" height="535" loading="lazy">
   </div>
   <div class="gp-foto">
-    <img src="/assets/img-4b72bebcee47.webp" alt="Zajęcia pływania dla dzieci Wrocław">
+    <img src="/assets/img-4b72bebcee47.webp" alt="Zajęcia pływania dla dzieci Wrocław" width="800" height="464" loading="lazy">
   </div>
 </div>
 
@@ -41,8 +42,8 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", hre
           <div class="gp-info-ikona">📍</div>
           <div>
             <span class="gp-info-label">Adres</span>
-            <p class="gp-info-wartosc">ul. Aleksandra Ostrowskiego 3</p>
-            <span class="gp-info-sub">Wrocław · dzielnica Grabiszyn</span>
+            <p class="gp-info-wartosc">{site.address.street}</p>
+            <span class="gp-info-sub">{site.address.postal} {site.address.city} · dzielnica Grabiszyn</span>
           </div>
         </div>
         <div class="gp-info-item">
@@ -61,7 +62,7 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", hre
             <span class="gp-info-sub">Bezpośrednio przy obiekcie</span>
           </div>
         </div>
-        <a class="gp-info-item" href="tel:+48505912389" target="_blank">
+        <a class="gp-info-item" href="tel:+48505912389">
           <div class="gp-info-ikona coral">📞</div>
           <div>
             <span class="gp-info-label">Kontakt</span>
@@ -81,14 +82,15 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", hre
           <div class="gp-dojazd-num">🚗</div>
           <div class="gp-dojazd-tekst">
             <p class="gp-dojazd-tytul">Samochodem</p>
-            <p class="gp-dojazd-opis">Bezpłatny parking bezpośrednio przy obiekcie. Wjazd od ul. Ostrowskiego.</p>
+            <p class="gp-dojazd-opis">Bezpłatny parking bezpośrednio przy obiekcie — w weekendowe poranki bez problemu znajdziecie miejsce. Wjazd od ul. Ostrowskiego.</p>
           </div>
         </li>
         <li class="gp-dojazd-item">
           <div class="gp-dojazd-num">🚌</div>
           <div class="gp-dojazd-tekst">
             <p class="gp-dojazd-tytul">Komunikacją miejską</p>
-            <p class="gp-dojazd-opis">Przystanek w pobliżu ul. Ostrowskiego — linie MPK w kierunku Grabiszyna.</p>
+            <p class="gp-dojazd-opis">Najbliższe przystanki to „Ostrowskiego” i „Grabiszyńska” w ciągu ul. Grabiszyńskiej — dojedziecie tramwajem lub autobusem MPK Wrocław, a stamtąd czeka Was krótki spacer.</p>
+            <!-- TODO: właściciel — uzupełnić numery linii MPK -->
           </div>
         </li>
         <li class="gp-dojazd-item">
@@ -103,23 +105,80 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Gdzie pływamy", hre
 
   </div>
 
+  <!-- PARAMETRY BASENU -->
+  <section class="gp-parametry">
+    <span class="gp-sekcja-eyebrow">Nasz basen w liczbach</span>
+    <h2 class="gp-sekcja-title">Warunki idealne<br>do nauki pływania</h2>
+    <p class="gp-parametry-intro">Nasz basen na Grabiszynie został pomyślany z myślą o najmłodszych pływakach. Zajęcia prowadzimy w kameralnych grupach do 8 dzieci, dla maluchów od 6. miesiąca życia do 10 lat — każdy znajdzie tu swoją głębokość, dosłownie i w przenośni.</p>
+    <div class="gp-param-grid">
+      <div class="gp-param-karta">
+        <span class="gp-param-liczba">2 × 12,5 m</span>
+        <p class="gp-param-opis">Dwa tory po 12,5 metra — wystarczająco dużo miejsca na naukę, bez tłoku znanego z dużych pływalni.</p>
+      </div>
+      <div class="gp-param-karta">
+        <span class="gp-param-liczba">0,9–1,35 m</span>
+        <p class="gp-param-opis">Głębokość idealna do nauki — dzieci czują dno pod stopami, a rodzice mają spokojną głowę.</p>
+      </div>
+      <div class="gp-param-karta">
+        <span class="gp-param-liczba">Ciepła woda</span>
+        <p class="gp-param-opis">Woda podgrzewana do temperatury komfortowej dla dzieci — nawet niemowlęta pływają z uśmiechem.</p>
+      </div>
+      <div class="gp-param-karta">
+        <span class="gp-param-liczba">Basen kryty</span>
+        <p class="gp-param-opis">Pływamy pod dachem, więc zajęcia odbywają się przez cały rok — niezależnie od pogody za oknem.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- HARMONOGRAM -->
   <div class="gp-harmonogram">
     <span class="gp-harm-eyebrow">Kiedy pływamy</span>
-    <p class="gp-harm-title">Harmonogram zajęć</p>
+    <p class="gp-harm-title">Harmonogram zajęć — tylko w weekendy</p>
     <div class="gp-harm-grid">
-      <div class="gp-harm-karta">
-        <span class="gp-harm-dzien">Sobota</span>
-        <p class="gp-harm-kurs">Wszystkie kursy</p>
-        <p class="gp-harm-godziny">9:00 – 15:00</p>
-      </div>
-      <div class="gp-harm-karta">
-        <span class="gp-harm-dzien">Niedziela</span>
-        <p class="gp-harm-kurs">Wszystkie kursy</p>
-        <p class="gp-harm-godziny">9:00 – 12:00</p>
-      </div>
+      {site.poolHours.map((slot) => (
+        <div class="gp-harm-karta">
+          <span class="gp-harm-dzien">{slot.day}</span>
+          <p class="gp-harm-kurs">Wszystkie kursy</p>
+          <p class="gp-harm-godziny">{slot.value}</p>
+        </div>
+      ))}
     </div>
   </div>
+
+  <!-- OKOLICE -->
+  <section class="gp-okolice">
+    <span class="gp-sekcja-eyebrow">Blisko Was</span>
+    <h2 class="gp-sekcja-title">Dojeżdżają do nas rodzice<br>z całej okolicy</h2>
+    <p class="gp-okolice-opis">Grabiszyn leży tuż przy dużych osiedlach mieszkaniowych zachodniego i południowego Wrocławia, więc dojazd na zajęcia zajmuje dosłownie chwilę. A ponieważ pływamy wyłącznie w weekendy, na basen bez pośpiechu zdążą także pracujący rodzice — sobotni lub niedzielny poranek w wodzie to świetny początek rodzinnego dnia.</p>
+    <ul class="gp-okolice-chips">
+      <li class="gp-chip"><strong>Grabiszynek</strong> — tuż obok, kilka minut spacerem</li>
+      <li class="gp-chip"><strong>Gajowice</strong> — ok. 5 minut samochodem</li>
+      <li class="gp-chip"><strong>Muchobór Mały</strong> — 5–10 minut samochodem</li>
+      <li class="gp-chip"><strong>Oporów</strong> — 5–10 minut samochodem</li>
+      <li class="gp-chip"><strong>Krzyki</strong> — ok. 10 minut samochodem</li>
+      <li class="gp-chip"><strong>Popowice</strong> — ok. 10 minut samochodem</li>
+    </ul>
+  </section>
+
+  <!-- MAPA -->
+  <section class="gp-mapa">
+    <span class="gp-sekcja-eyebrow">Mapa dojazdu</span>
+    <h2 class="gp-sekcja-title">Zobacz nas na mapie</h2>
+    <div class="gp-mapa-ramka">
+      <iframe
+        src={site.maps.embedUrl}
+        title={`Mapa dojazdu — Solen Swim, ${site.address.street}, ${site.address.postal} ${site.address.city}`}
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <div class="gp-mapa-btns">
+      <a class="gp-btn gp-btn-coral" href={site.maps.directionsUrl} target="_blank" rel="noopener">Wyznacz trasę</a>
+      <a class="gp-btn gp-btn-outline" href={site.reviews.googleProfileUrl} target="_blank" rel="noopener">Zobacz wizytówkę w Google</a>
+    </div>
+    <p class="gp-mapa-nota">Zajęcia indywidualne prowadzimy również na drugim obiekcie przy ul. Kamiennogórskiej 16, 54-034 Wrocław.</p>
+  </section>
 
 </div>
 </Base>
@@ -441,8 +500,175 @@ a.gp-info-item:hover {
   font-weight: 700;
 }
 
+/* PODTYTUŁ W H1 */
+.gp-title-sub {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 1px;
+  color: #293434 !important;
+  opacity: 0.65;
+  margin-top: 14px;
+  text-transform: none;
+}
+
+/* PARAMETRY BASENU */
+.gp-parametry {
+  margin: 56px 0;
+}
+
+.gp-parametry-intro {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #293434;
+  opacity: 0.7;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.gp-param-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gp-param-karta {
+  background: #FFF9F6;
+  border-radius: 20px;
+  padding: 26px 22px;
+  box-shadow: 0 2px 20px rgba(41,52,52,0.07);
+  border-top: 4px solid #B6DEDD;
+}
+
+.gp-param-karta:nth-child(2) { border-top-color: #FF8357; }
+.gp-param-karta:nth-child(3) { border-top-color: #FFB094; }
+.gp-param-karta:nth-child(4) { border-top-color: #86C6C4; }
+
+.gp-param-liczba {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #FF8357;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gp-param-opis {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #293434;
+  opacity: 0.7;
+}
+
+/* OKOLICE / DZIELNICE */
+.gp-okolice {
+  margin: 56px 0;
+}
+
+.gp-okolice-opis {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #293434;
+  opacity: 0.7;
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.gp-okolice-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+}
+
+.gp-chip {
+  background: rgba(182,222,221,0.35);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #293434;
+  line-height: 1.4;
+}
+
+.gp-chip strong {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+}
+
+/* MAPA */
+.gp-mapa {
+  margin-top: 56px;
+}
+
+.gp-mapa-ramka {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(41,52,52,0.10);
+  margin-bottom: 22px;
+}
+
+.gp-mapa-ramka iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+
+.gp-mapa-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.gp-btn {
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gp-btn-coral {
+  background: #FF8357;
+  color: #FFF9F6;
+  box-shadow: 0 6px 24px rgba(255,131,87,0.30);
+}
+
+.gp-btn-coral:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,131,87,0.40);
+  color: #FFF9F6;
+}
+
+.gp-btn-outline {
+  background: transparent;
+  color: #293434;
+  border: 2px solid #B6DEDD;
+}
+
+.gp-btn-outline:hover {
+  background: rgba(182,222,221,0.25);
+  color: #293434;
+}
+
+.gp-mapa-nota {
+  font-size: 12px;
+  color: #293434;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
 /* TABLET */
 @media (max-width: 760px) {
+  .gp-param-grid { grid-template-columns: 1fr 1fr; }
+  .gp-mapa-ramka iframe { height: 340px; }
   .gp-hero { padding: 56px 5%; }
   .gp-mozaika {
     grid-template-columns: 1fr 1fr;
@@ -471,5 +697,10 @@ a.gp-info-item:hover {
   .gp-info-item { padding: 14px 16px; }
   .gp-harmonogram { padding: 28px 20px; border-radius: 20px; }
   .gp-harm-grid { grid-template-columns: 1fr; gap: 10px; }
+  .gp-param-grid { grid-template-columns: 1fr; }
+  .gp-parametry, .gp-okolice { margin: 40px 0; }
+  .gp-mapa { margin-top: 40px; }
+  .gp-mapa-ramka iframe { height: 280px; }
+  .gp-btn { width: 100%; text-align: center; }
 }
 </style>
