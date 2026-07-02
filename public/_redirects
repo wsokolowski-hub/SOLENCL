@@ -1,5 +1,6 @@
-# Kanoniczny host — www -> apex
-https://www.solenswim.com/* https://solenswim.com/:splat 301
+# UWAGA: przekierowanie www -> apex NIE może być tutaj (Workers wspiera tylko
+# ścieżki względne). Skonfigurowane jako Redirect Rule w panelu Cloudflare:
+# Rules -> Redirect Rules -> hostname www.solenswim.com -> https://solenswim.com 301
 
 # Wix legacy paths
 /strona-glowna   /   301
