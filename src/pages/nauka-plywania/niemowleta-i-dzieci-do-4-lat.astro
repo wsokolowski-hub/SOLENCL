@@ -2,12 +2,13 @@
 import NaukaPage from '@/components/NaukaPage.astro';
 ---
 <NaukaPage
-  title="Pływanie niemowląt i dzieci do 4 lat — Wrocław Grabiszyn | Solen Swim"
-  description="Zajęcia z pływania dla niemowląt i dzieci do 4. roku życia we Wrocławiu. Razem z rodzicem w wodzie, w ogrzewanej wannie, w atmosferze zabawy. 60 zł / 30 min. Grupy do 8 par."
+  title="Pływanie niemowląt Wrocław — weekendy | Solen Swim"
+  description="Pływanie niemowląt we Wrocławiu (Grabiszyn) — zajęcia w weekendy z rodzicem w wodzie. 60 zł / 30 min, grupy do 8 par. Ciepła woda, nauka przez zabawę."
   path="/nauka-plywania/niemowleta-i-dzieci-do-4-lat/"
   eyebrow="Pływanie niemowląt"
-  h1={`Pierwsze pluski<br/><span>w bezpiecznej wodzie</span>`}
-  lead="Zajęcia dla najmłodszych w wieku od 6. miesiąca do 4 lat. Rodzic wchodzi do wody razem z dzieckiem — uczymy zabawą, nie pośpiechem. Małe grupy, ciepła woda, doświadczeni instruktorzy."
+  h1={`Pływanie niemowląt<br/><span>we Wrocławiu (Grabiszyn)</span>`}
+  slogan="Pierwsze pluski w bezpiecznej wodzie"
+  lead="Zajęcia dla najmłodszych w wieku od 6. miesiąca do 4 lat — w soboty i niedziele. Rodzic wchodzi do wody razem z dzieckiem — uczymy zabawą, nie pośpiechem. Małe grupy, ciepła woda, doświadczeni instruktorzy."
   serviceName="Pływanie niemowląt i dzieci do lat 4"
   price="60"
   priceUnit="zł / 30 min"
@@ -15,6 +16,7 @@ import NaukaPage from '@/components/NaukaPage.astro';
   groupSize="max 8 par (rodzic + dziecko)"
   duration="30 minut"
   parentInPool={true}
+  courseAudience="Niemowlęta i dzieci do 4 lat z rodzicem"
   schedule={[
     { day: 'Sobota',    hours: '09:00 – 15:00' },
     { day: 'Niedziela', hours: '09:00 – 12:00' },
@@ -25,10 +27,37 @@ import NaukaPage from '@/components/NaukaPage.astro';
     { icon: '👨‍👩‍👧', title: 'Rodzic w wodzie',      desc: 'Rodzic wchodzi do wody razem z dzieckiem — pełne poczucie bezpieczeństwa.' },
     { icon: '🤗', title: 'Bez pośpiechu',         desc: 'Dzieci nigdy nie są zmuszane — zaufanie i radość rozwijają się stopniowo, we własnym tempie.' },
   ]}
+  longSections={[
+    {
+      title: 'Jak wyglądają zajęcia dla niemowląt?',
+      body: [
+        'Każde spotkanie to 30 minut zabawy w wodzie prowadzonej przez instruktora. Rodzic trzyma dziecko w ramionach, a instruktor pokazuje kolejne ćwiczenia: kołysanie na wodzie, delikatne zanurzenia, pierwsze samodzielne ruchy z asekuracją. Wykorzystujemy piosenki, kolorowe zabawki i powtarzalne rytuały, dzięki którym maluch szybko czuje się w basenie jak u siebie.',
+        'Zajęcia odbywają się na basenie przy ul. Ostrowskiego 3 na wrocławskim Grabiszynie — w płytkiej, podgrzewanej wodzie (głębokość od 0,9 m), idealnej dla najmłodszych. Grupy liczą maksymalnie 8 par, więc instruktor ma czas dla każdego dziecka.',
+      ],
+    },
+    {
+      title: 'Co daje maluchowi pływanie od niemowlaka?',
+      body: [
+        'Regularny kontakt z wodą w pierwszych latach życia wspiera rozwój ruchowy, koordynację i pracę mięśni, a przy okazji wzmacnia więź z rodzicem. Dzieci, które oswoją się z wodą wcześnie, dużo łatwiej przechodzą później do samodzielnej nauki pływania — bez lęku i bez presji.',
+        'Pływamy wyłącznie w weekendy — w soboty i niedziele przedpołudniami — dlatego zajęcia łatwo pogodzić z pracą i tygodniowym rytmem rodziny.',
+      ],
+    },
+  ]}
   steps={[
     { title: 'Konsultacja telefoniczna', desc: 'Dzwonisz pod 505 912 389, dopytujemy o wiek dziecka i ustalamy dogodny dzień zajęć.' },
     { title: 'Pierwsze zajęcia',         desc: 'Przychodzisz z dzieckiem na basen Ostrowskiego 3. Pierwsze 30 min to oswajanie z wodą bez presji.' },
     { title: 'Stałe terminy',            desc: 'Po pierwszych zajęciach umawiamy stały dzień i godzinę na cały semestr.' },
     { title: 'Płatność w 3 ratach',      desc: 'Bez wpisowego. Karnet semestralny rozkładany na 3 raty — szczegóły telefonicznie.' },
+  ]}
+  miniFaq={[
+    { q: 'Czy niemowlę potrzebuje pieluchy do wody?', a: 'Tak — na zajęcia zabierz jednorazową lub wielorazową pieluchę wodoodporną. To jedyny obowiązkowy element wyposażenia malucha; okularki nie są potrzebne najmłodszym.' },
+    { q: 'Co jeśli dziecko płacze na pierwszych zajęciach?', a: 'To zupełnie normalne — każde dziecko oswaja się z basenem we własnym tempie. Nasi instruktorzy niczego nie forsują: czasem pierwsze zajęcia to po prostu przytulanie w ciepłej wodzie. Płacz zwykle mija po 2–3 spotkaniach.' },
+    { q: 'Od ilu dokładnie miesięcy można zacząć?', a: 'Przyjmujemy maluchy od ukończonego 6. miesiąca życia. Górna granica tej grupy to 4 lata — starsze dzieci zapraszamy na kurs nauki pływania od podstaw.' },
+  ]}
+  related={[
+    { href: '/nauka-plywania/dzieci-od-podstaw/', label: 'Nauka pływania dla dzieci od podstaw' },
+    { href: '/nauka-plywania/doskonalenie/',      label: 'Doskonalenie pływania dla dzieci' },
+    { href: '/cennik/',                            label: 'Cennik zajęć' },
+    { href: '/gdzie-plywamy/',                     label: 'Basen na Grabiszynie — zobacz obiekt' },
   ]}
 />

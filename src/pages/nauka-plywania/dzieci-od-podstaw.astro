@@ -3,11 +3,12 @@ import NaukaPage from '@/components/NaukaPage.astro';
 ---
 <NaukaPage
   title="Nauka pływania dla dzieci od podstaw — Wrocław | Solen Swim"
-  description="Nauka pływania dla dzieci w wieku 5–10 lat we Wrocławiu. Małe grupy do 8 osób, 45 minut zajęć, nauka 4 stylów: kraul, żabka, grzbiet, motylek. 65 zł / 45 min, basen Grabiszyn."
+  description="Nauka pływania dla dzieci 5–10 lat we Wrocławiu (Grabiszyn) — weekendy. Grupy do 8 osób, nauka 4 stylów, 65 zł / 45 min. Zapisy na semestr otwarte."
   path="/nauka-plywania/dzieci-od-podstaw/"
   eyebrow="Dzieci od podstaw"
-  h1={`Pierwsze samodzielne<br/><span>tempo na wodzie</span>`}
-  lead="Zajęcia dla dzieci 5–10 lat, które dopiero zaczynają przygodę z pływaniem. Dziecko ćwiczy samodzielnie pod okiem instruktora — uczymy podstaw, oddechu, czterech stylów."
+  h1={`Nauka pływania dla dzieci<br/><span>od podstaw — Wrocław</span>`}
+  slogan="Pierwsze samodzielne tempo na wodzie"
+  lead="Zajęcia dla dzieci 5–10 lat, które dopiero zaczynają przygodę z pływaniem — w soboty i niedziele. Dziecko ćwiczy samodzielnie pod okiem instruktora — uczymy podstaw, oddechu, czterech stylów."
   serviceName="Nauka pływania dla dzieci od podstaw"
   price="65"
   priceUnit="zł / 45 min"
@@ -16,6 +17,7 @@ import NaukaPage from '@/components/NaukaPage.astro';
   duration="45 minut"
   parentInPool={false}
   badge="Najpopularniejsze"
+  courseAudience="Dzieci 5–10 lat"
   schedule={[
     { day: 'Sobota',    hours: '09:00 – 15:00' },
     { day: 'Niedziela', hours: '09:00 – 12:00' },
@@ -26,10 +28,37 @@ import NaukaPage from '@/components/NaukaPage.astro';
     { icon: '🧒', title: 'Małe grupy',              desc: 'Maksymalnie 8 dzieci w grupie — instruktor ma czas dla każdego ucznia, dzieci szybciej robią postępy.' },
     { icon: '🏊', title: 'Sprawdzone metody',       desc: 'Łączymy naukę z zabawą — dzieci uczą się bez stresu, w atmosferze bezpieczeństwa i wsparcia.' },
   ]}
+  longSections={[
+    {
+      title: 'Jak uczymy pływać od podstaw?',
+      body: [
+        'Zaczynamy od pełnego oswojenia z wodą: zanurzania twarzy, wydechów do wody i bezpiecznego poruszania się po basenie. Kolejne etapy to leżenie na wodzie na piersiach i na plecach, poślizgi z odbicia od ściany oraz pierwsza praca nóg z deską. Gdy dziecko czuje się pewnie, wprowadzamy ruchy ramion i naukę oddechu — tak powstają pierwsze samodzielnie przepłynięte metry kraulem i grzbietem.',
+        'Ćwiczymy na basenie przy ul. Ostrowskiego 3 na Grabiszynie — dwa tory po 12,5 m i głębokość 0,9–1,35 m sprawiają, że każde dziecko ma grunt pod nogami i poczucie bezpieczeństwa. Grupy dobieramy poziomem, maksymalnie 8 dzieci na instruktora.',
+      ],
+    },
+    {
+      title: 'Czego dziecko nauczy się w semestrze?',
+      body: [
+        'Po semestrze regularnych zajęć większość dzieci swobodnie leży na wodzie, płynie kilkanaście metrów kraulem lub żabką i bezpiecznie skacze do wody. Tempo zależy od punktu startu — dlatego instruktor na bieżąco dostosowuje ćwiczenia, a na koniec semestru podpowiada, czy kolejnym krokiem jest kontynuacja nauki, czy przejście do grupy doskonalącej.',
+        'Zajęcia odbywają się wyłącznie w weekendy — soboty 9:00–15:00 i niedziele 9:00–12:00 — więc nie kolidują ze szkołą ani zajęciami dodatkowymi w tygodniu.',
+      ],
+    },
+  ]}
   steps={[
     { title: 'Zapis przez telefon',  desc: 'Dzwonisz pod 505 912 389, rozmawiamy o wieku i poziomie dziecka. Ustalamy dzień i godzinę.' },
     { title: 'Próbne zajęcia',       desc: 'Dziecko przychodzi z kąpielówkami, ręcznikiem i okularkami. Instruktor sprawdza poziom i dobiera ćwiczenia.' },
     { title: 'Stała grupa',          desc: 'Dziecko trafia do grupy o podobnym poziomie. Ten sam instruktor, ten sam dzień, cały semestr.' },
     { title: 'Postępy semestralne',  desc: 'Po semestrze widać konkretne efekty — dziecko swobodnie pływa kraulem lub żabką.' },
+  ]}
+  miniFaq={[
+    { q: 'Czy dziecko musi cokolwiek umieć przed zapisem?', a: 'Nie — kurs od podstaw jest właśnie dla dzieci, które zaczynają od zera. Wystarczy chęć do zabawy w wodzie; całą resztę zbudujemy krok po kroku.' },
+    { q: 'Co zabrać na pierwsze zajęcia?', a: 'Strój kąpielowy lub kąpielówki, ręcznik, klapki i okularki do pływania. Wszystko inne — deski, makarony i pomoce — zapewniamy na miejscu.' },
+    { q: 'Jak długo trwa nauka samodzielnego pływania?', a: 'To bardzo indywidualne, ale przy regularnych cotygodniowych zajęciach większość dzieci płynie pierwsze samodzielne metry w ciągu jednego semestru. Małe grupy do 8 osób znacząco przyspieszają postępy.' },
+  ]}
+  related={[
+    { href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/', label: 'Pływanie niemowląt i dzieci do lat 4' },
+    { href: '/nauka-plywania/doskonalenie/',                 label: 'Doskonalenie pływania dla dzieci' },
+    { href: '/cennik/',                                       label: 'Cennik zajęć' },
+    { href: '/gdzie-plywamy/',                                label: 'Basen na Grabiszynie — zobacz obiekt' },
   ]}
 />

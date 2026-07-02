@@ -2,12 +2,13 @@
 import NaukaPage from '@/components/NaukaPage.astro';
 ---
 <NaukaPage
-  title="Doskonalenie pływania dla dzieci — Wrocław Grabiszyn | Solen Swim"
-  description="Doskonalenie pływania dla dzieci 5–10 lat, które już pływają. Szlif techniki czterech stylów: kraul, żabka, grzbiet, motylek. Soboty 9:00–15:00 i niedziele 9:00–12:00. 65 zł / 45 min."
+  title="Doskonalenie pływania dla dzieci — Wrocław | Solen Swim"
+  description="Doskonalenie pływania dla dzieci 5–10 lat we Wrocławiu (Grabiszyn) — weekendy. Szlif techniki 4 stylów, grupy do 8 osób, 65 zł / 45 min."
   path="/nauka-plywania/doskonalenie/"
   eyebrow="Doskonalenie"
-  h1={`Szlif techniki<br/><span>dla pływających dzieci</span>`}
-  lead="Zajęcia dla dzieci 5–10 lat, które potrafią już utrzymać się na wodzie i znają podstawy. Pracujemy nad techniką, wydłużamy dystans, doskonalimy nawroty i oddech."
+  h1={`Doskonalenie pływania<br/><span>dla dzieci we Wrocławiu</span>`}
+  slogan="Szlif techniki dla pływających dzieci"
+  lead="Zajęcia dla dzieci 5–10 lat, które potrafią już utrzymać się na wodzie i znają podstawy — w soboty i niedziele. Pracujemy nad techniką, wydłużamy dystans, doskonalimy nawroty i oddech."
   serviceName="Doskonalenie pływania dla dzieci"
   price="65"
   priceUnit="zł / 45 min"
@@ -15,6 +16,7 @@ import NaukaPage from '@/components/NaukaPage.astro';
   groupSize="max 8 dzieci"
   duration="45 minut"
   parentInPool={false}
+  courseAudience="Dzieci 5–10 lat pływające samodzielnie"
   schedule={[
     { day: 'Sobota',    hours: '09:00 – 15:00' },
     { day: 'Niedziela', hours: '09:00 – 12:00' },
@@ -24,10 +26,37 @@ import NaukaPage from '@/components/NaukaPage.astro';
     { icon: '⚡', title: 'Szybsze postępy',         desc: 'Dzieci już znają podstawy — możemy pracować nad efektywnością i wydłużaniem dystansu.' },
     { icon: '👯', title: 'Grupa równa poziomem',    desc: 'Dzieci w grupie mają zbliżoną technikę — zajęcia idą w jednym tempie, nikt nie czeka i nie odstaje.' },
   ]}
+  longSections={[
+    {
+      title: 'Jak wyglądają zajęcia doskonalące?',
+      body: [
+        'Każde 45-minutowe spotkanie ma jasny cel techniczny: raz pracujemy nad oddechem w kraulu, innym razem nad ułożeniem bioder w żabce, symetrią pracy ramion na grzbiecie czy pierwszymi delfinowymi ruchami do motylka. Do tego dochodzą nawroty, skoki startowe i stopniowe wydłużanie przepływanego dystansu.',
+        'Trenujemy na basenie przy ul. Ostrowskiego 3 na Grabiszynie — dwa tory po 12,5 m pozwalają prowadzić zajęcia płynnie, seriami, bez tłoku znanego z dużych pływalni. Grupy liczą maksymalnie 8 dzieci o zbliżonym poziomie.',
+      ],
+    },
+    {
+      title: 'Dla kogo jest doskonalenie?',
+      body: [
+        'To kurs dla dzieci, które samodzielnie utrzymują się na wodzie i przepłyną kilka–kilkanaście metrów, a teraz chcą pływać technicznie, dalej i szybciej. Jeśli nie masz pewności, czy dziecko jest gotowe — zadzwoń, a instruktor pomoże wybrać między doskonaleniem a kursem od podstaw. Pierwsze zajęcia zawsze zaczynamy od testu poziomu.',
+        'Zajęcia odbywają się wyłącznie w weekendy — w soboty i niedziele — więc trening nie koliduje ze szkołą, a poranek na basenie świetnie otwiera rodzinny dzień.',
+      ],
+    },
+  ]}
   steps={[
     { title: 'Telefoniczna kwalifikacja',  desc: 'Dzwonisz pod 505 912 389. Pytamy o aktualne umiejętności dziecka i dobieramy odpowiednią grupę.' },
     { title: 'Test poziomu',               desc: 'Na pierwszych zajęciach instruktor sprawdza technikę i decyduje, czy doskonalenie jest właściwym wyborem.' },
     { title: 'Weekendowe terminy',         desc: 'Grupy doskonalące spotykają się w soboty 9:00–15:00 i niedziele 9:00–12:00 — wybieramy dogodną godzinę.' },
     { title: 'Konkretne cele semestralne', desc: 'Po semestrze widać konkretną poprawę — np. nowy styl opanowany do końca, dłuższy dystans, lepsze nawroty.' },
+  ]}
+  miniFaq={[
+    { q: 'Jaki poziom jest wymagany na doskonalenie?', a: 'Dziecko powinno samodzielnie utrzymywać się na wodzie i przepłynąć przynajmniej kilka metrów dowolnym stylem. Poziom zawsze weryfikuje instruktor na pierwszych zajęciach — jeśli okaże się za wysoki, płynnie przechodzimy do grupy od podstaw.' },
+    { q: 'Czy uczycie motylka?', a: 'Tak — motylek pojawia się jako ostatni z czterech stylów, gdy dziecko ma już opanowaną technikę kraula i grzbietu. Zaczynamy od ruchów delfinowych i pracy tułowia.' },
+    { q: 'Czy przygotowujecie do zawodów?', a: 'Skupiamy się na solidnej technice wszystkich stylów, nawrotach i skokach startowych — czyli fundamencie, którego wymaga pływanie sportowe. O indywidualnych celach dziecka najlepiej porozmawiać z instruktorem telefonicznie.' },
+  ]}
+  related={[
+    { href: '/nauka-plywania/dzieci-od-podstaw/',            label: 'Nauka pływania dla dzieci od podstaw' },
+    { href: '/nauka-plywania/indywidualnie/',                label: 'Zajęcia indywidualne z instruktorem' },
+    { href: '/cennik/',                                       label: 'Cennik zajęć' },
+    { href: '/gdzie-plywamy/',                                label: 'Basen na Grabiszynie — zobacz obiekt' },
   ]}
 />

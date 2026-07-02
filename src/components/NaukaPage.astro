@@ -5,6 +5,9 @@ import { site } from '@/data/site';
 interface ScheduleItem { day: string; hours: string }
 interface FeatureItem { icon: string; title: string; desc: string }
 interface StepItem { title: string; desc: string }
+interface LongSection { title: string; body: string[] }
+interface MiniFaqItem { q: string; a: string }
+interface RelatedLink { href: string; label: string }
 
 interface Props {
   title: string;            // SEO title
@@ -12,6 +15,7 @@ interface Props {
   path: string;             // /nauka-plywania/xxx/
   eyebrow: string;          // small tag above H1
   h1: string;               // page H1 (HTML allowed)
+  slogan?: string;          // emocjonalny podtytuł pod H1
   lead: string;             // hero subtitle
   serviceName: string;      // for schema.org
   price: string;            // "60"
@@ -24,6 +28,10 @@ interface Props {
   features: FeatureItem[];  // dla kogo / co dostajesz
   steps?: StepItem[];       // opcjonalne: jak to działa
   badge?: string;           // np "Najpopularniejsze"
+  longSections?: LongSection[]; // sekcje opisowe (metodyka, efekty)
+  miniFaq?: MiniFaqItem[];  // pytania specyficzne dla kursu (tylko widoczny HTML)
+  related?: RelatedLink[];  // powiązane kursy / strony
+  courseAudience?: string;  // np. "Dzieci 5–10 lat" — do schema Course
 }
 
 const p = Astro.props as Props;
@@ -32,6 +40,14 @@ const breadcrumbs = [
   { name: 'Nauka pływania', href: '/nauka-plywania/' },
   { name: p.eyebrow, href: p.path },
 ];
+
+const course = {
+  name: `${p.serviceName} — Wrocław`,
+  description: p.description,
+  price: p.price,
+  url: p.path,
+  audience: p.courseAudience,
+};
 ---
 <Base
   title={p.title}
@@ -39,10 +55,12 @@ const breadcrumbs = [
   path={p.path}
   pageType={'service'}
   breadcrumbs={breadcrumbs}
+  course={course}
 >
   <section class="npg-hero">
     <span class="npg-eyebrow">{p.eyebrow}</span>
     <h1 class="npg-h1" set:html={p.h1}></h1>
+    {p.slogan && <p class="npg-slogan">{p.slogan}</p>}
     <p class="npg-lead">{p.lead}</p>
     <div class="npg-hero-cta">
       <a href="/zapisy/" class="npg-btn-primary">Zapisz dziecko</a>
@@ -69,7 +87,7 @@ const breadcrumbs = [
     </div>
 
     <div class="npg-schedule">
-      <h3>Harmonogram zajęć</h3>
+      <h3>Harmonogram zajęć — weekendy</h3>
       <ul>
         {p.schedule.map((s) => (
           <li><strong>{s.day}</strong><span>{s.hours}</span></li>
@@ -93,6 +111,19 @@ const breadcrumbs = [
     </div>
   </section>
 
+  {p.longSections && p.longSections.length > 0 && (
+    <section class="npg-long">
+      {p.longSections.map((s) => (
+        <div class="npg-long-blok">
+          <h2 class="npg-long-title">{s.title}</h2>
+          {s.body.map((par) => (
+            <p class="npg-long-text">{par}</p>
+          ))}
+        </div>
+      ))}
+    </section>
+  )}
+
   {p.steps && p.steps.length > 0 && (
     <section class="npg-steps">
       <span class="npg-section-eyebrow">Jak to działa</span>
@@ -111,6 +142,33 @@ const breadcrumbs = [
     </section>
   )}
 
+  {p.miniFaq && p.miniFaq.length > 0 && (
+    <section class="npg-minifaq">
+      <span class="npg-section-eyebrow">Częste pytania</span>
+      <h2 class="npg-section-title">Rodzice pytają</h2>
+      <div class="npg-minifaq-list">
+        {p.miniFaq.map((f) => (
+          <details class="npg-minifaq-item">
+            <summary class="npg-minifaq-q">{f.q}</summary>
+            <p class="npg-minifaq-a">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {p.related && p.related.length > 0 && (
+    <section class="npg-related">
+      <span class="npg-section-eyebrow">Zobacz też</span>
+      <h2 class="npg-section-title">Może Cię zainteresować</h2>
+      <ul class="npg-related-list">
+        {p.related.map((r) => (
+          <li><a href={r.href} class="npg-related-link">{r.label} →</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <section class="npg-cta-band">
     <h2>Gotowy na pierwsze zajęcia?</h2>
     <p>Zadzwoń lub napisz — odpowiemy w ciągu 24h i pomożemy dopasować termin.</p>
@@ -120,4 +178,3 @@ const breadcrumbs = [
     </div>
   </section>
 </Base>
-

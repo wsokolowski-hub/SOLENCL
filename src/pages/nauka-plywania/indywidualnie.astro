@@ -8,6 +8,14 @@ const breadcrumbs = [
   { name: 'Indywidualnie', href: '/nauka-plywania/indywidualnie/' },
 ];
 
+const course = {
+  name: 'Indywidualna nauka pływania — Wrocław',
+  description: 'Indywidualne lekcje pływania dla dzieci i dorosłych — 1, 2 lub 3 osoby z instruktorem, basen ul. Kamiennogórska 16.',
+  price: '180',
+  url: '/nauka-plywania/indywidualnie/',
+  audience: 'Dzieci i dorośli',
+};
+
 const warianty = [
   {
     name: '1 osoba',
@@ -48,15 +56,17 @@ const warianty = [
 ];
 ---
 <Base
-  title="Zajęcia indywidualne z pływania — Wrocław | Solen Swim"
-  description="Indywidualne lekcje pływania we Wrocławiu dla dzieci i dorosłych. 1 na 1 z instruktorem (180 zł), w parze (220 zł = 110/os.) lub trójce (250 zł). Pełna elastyczność grafiku. Basen ul. Kamiennogórska 16."
+  title="Indywidualna nauka pływania Wrocław | Solen Swim"
+  description="Indywidualne lekcje pływania we Wrocławiu — dzieci i dorośli. 1 na 1 z instruktorem 180 zł, 2 os. 220 zł, 3 os. 250 zł. Basen ul. Kamiennogórska 16."
   path="/nauka-plywania/indywidualnie/"
   pageType={'service'}
   breadcrumbs={breadcrumbs}
+  course={course}
 >
   <section class="npg-hero">
     <span class="npg-eyebrow">Indywidualnie · 1, 2 lub 3 osoby</span>
-    <h1 class="npg-h1">Zajęcia w pełni<br/><span>dopasowane do Ciebie</span></h1>
+    <h1 class="npg-h1">Indywidualna nauka pływania<br/><span>— Wrocław</span></h1>
+    <p class="npg-slogan">Zajęcia w pełni dopasowane do Ciebie</p>
     <p class="npg-lead">Indywidualne lekcje pływania dla <strong>dzieci i dorosłych</strong> — 100% uwagi instruktora, elastyczny grafik, najszybsze postępy. Możesz trenować sam, w parze lub w trójce — koszt rozkłada się wtedy na osoby.</p>
     <div class="npg-hero-cta">
       <a href={`tel:${site.phone}`} class="npg-btn-primary">Umów lekcję — {site.phoneHuman}</a>
@@ -154,6 +164,36 @@ const warianty = [
         </div>
       </li>
     </ol>
+  </section>
+
+  <section class="npg-minifaq">
+    <span class="npg-section-eyebrow">Częste pytania</span>
+    <h2 class="npg-section-title">Najczęściej pytacie</h2>
+    <div class="npg-minifaq-list">
+      <details class="npg-minifaq-item">
+        <summary class="npg-minifaq-q">Czy dorośli też mogą się zapisać?</summary>
+        <p class="npg-minifaq-a">Tak — lekcje indywidualne prowadzimy zarówno dla dzieci, jak i dla dorosłych. Uczymy od zera, pomagamy oswoić lęk przed wodą i szlifujemy technikę u pływających.</p>
+      </details>
+      <details class="npg-minifaq-item">
+        <summary class="npg-minifaq-q">Ile lekcji potrzeba, żeby nauczyć się pływać?</summary>
+        <p class="npg-minifaq-a">To zależy od punktu startu i regularności — przy zajęciach 1 na 1 postępy są najszybsze, a plan ustalamy indywidualnie po pierwszej lekcji z testem poziomu.</p>
+      </details>
+      <details class="npg-minifaq-item">
+        <summary class="npg-minifaq-q">Czy można ćwiczyć we dwoje lub troje?</summary>
+        <p class="npg-minifaq-a">Tak — wariant dla 2 osób kosztuje 220 zł (110 zł/os.), a dla 3 osób 250 zł (ok. 83 zł/os.). Ważne, żeby osoby w grupie miały zbliżony poziom zaawansowania.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="npg-related">
+    <span class="npg-section-eyebrow">Zobacz też</span>
+    <h2 class="npg-section-title">Może Cię zainteresować</h2>
+    <ul class="npg-related-list">
+      <li><a href="/nauka-plywania/dzieci-od-podstaw/" class="npg-related-link">Nauka pływania dla dzieci od podstaw →</a></li>
+      <li><a href="/nauka-plywania/doskonalenie/" class="npg-related-link">Doskonalenie pływania dla dzieci →</a></li>
+      <li><a href="/cennik/" class="npg-related-link">Cennik zajęć →</a></li>
+      <li><a href="/gdzie-plywamy/" class="npg-related-link">Gdzie pływamy →</a></li>
+    </ul>
   </section>
 
   <section class="npg-cta-band">

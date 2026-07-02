@@ -14,6 +14,7 @@ const opcje = [
     czas: '30 minut',
     cena: '60 zł',
     opis: 'Zajęcia rodzic + dziecko — oswajanie z wodą w formie zabawy. Grupy do 8 par.',
+    cta: 'Pływanie niemowląt — szczegóły',
     color: 'mint',
   },
   {
@@ -24,6 +25,7 @@ const opcje = [
     czas: '45 minut',
     cena: '65 zł',
     opis: 'Dzieci samodzielnie pod okiem instruktora. Nauka 4 stylów, max 8 osób w grupie.',
+    cta: 'Nauka od podstaw — szczegóły',
     color: 'coral',
   },
   {
@@ -34,6 +36,7 @@ const opcje = [
     czas: '45 minut',
     cena: '65 zł',
     opis: 'Dla dzieci, które już pływają — szlif techniki, kraul, żabka, grzbiet, motylek.',
+    cta: 'Doskonalenie pływania — szczegóły',
     color: 'salmon',
   },
   {
@@ -44,21 +47,22 @@ const opcje = [
     czas: '45 minut',
     cena: 'od 180 zł',
     opis: '1, 2 lub 3 osoby z instruktorem — 180 / 220 / 250 zł. Basen ul. Kamiennogórska 16.',
+    cta: 'Lekcje indywidualne — szczegóły',
     color: 'teal',
   },
 ];
 ---
 <Base
-  title="Nauka pływania we Wrocławiu — Szkoła Solen Swim"
-  description="Nauka pływania we Wrocławiu (Grabiszyn) — od niemowląt po dorosłych. Cztery formaty zajęć: pływanie niemowląt, nauka od podstaw, doskonalenie i lekcje indywidualne. Małe grupy, certyfikowani instruktorzy."
+  title="Nauka pływania Wrocław — weekendy | Solen Swim"
+  description="Nauka pływania we Wrocławiu (Grabiszyn) — zajęcia w weekendy. Pływanie niemowląt, nauka od podstaw, doskonalenie i lekcje indywidualne. Grupy do 8 osób."
   path="/nauka-plywania/"
   pageType={'service'}
   breadcrumbs={breadcrumbs}
 >
   <section class="np-hero">
     <span class="np-eyebrow">Nauka pływania</span>
-    <h1 class="np-title">Wybierz format<br/><span>dla siebie lub dziecka</span></h1>
-    <p class="np-sub">Cztery różne ścieżki — od pierwszego kontaktu z wodą po doskonalenie techniki. Każda grupa prowadzona przez doświadczonego instruktora.</p>
+    <h1 class="np-title">Nauka pływania we Wrocławiu<br/><span>— dla dzieci i dorosłych</span></h1>
+    <p class="np-sub">Cztery różne ścieżki — od pierwszego kontaktu z wodą po doskonalenie techniki. Zajęcia grupowe w weekendy (soboty i niedziele) na basenie przy ul. Ostrowskiego 3 na Grabiszynie. Każda grupa prowadzona przez doświadczonego instruktora.</p>
   </section>
 
   <section class="np-grid">
@@ -72,7 +76,7 @@ const opcje = [
           <li><strong>Cena:</strong> {o.cena}</li>
         </ul>
         <p class="np-card-opis">{o.opis}</p>
-        <span class="np-card-cta">Zobacz szczegóły →</span>
+        <span class="np-card-cta">{o.cta} →</span>
       </a>
     ))}
   </section>

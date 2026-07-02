@@ -688,3 +688,109 @@ a[x-apple-data-detectors] {
   border-color: rgba(255,249,246,.3);
 }
 .npg-cta-band .npg-btn-ghost:hover { color: var(--coral); border-color: var(--coral); }
+
+/* ── NPG: podtytuł-slogan pod H1 ── */
+.npg-slogan {
+  position: relative;
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(15px, 2.2vw, 19px);
+  color: var(--coral);
+  margin: -6px auto 18px;
+}
+
+/* ── NPG: sekcje opisowe (metodyka / efekty) ── */
+.npg-long {
+  background: var(--cream);
+  padding: 24px 6% 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.npg-long-blok {
+  max-width: 760px;
+  margin: 0 auto 40px;
+}
+.npg-long-blok:last-child { margin-bottom: 0; }
+.npg-long-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--dark); margin-bottom: 16px; line-height: 1.3;
+}
+.npg-long-text {
+  font-family: var(--font-body);
+  font-size: 13.5px; line-height: 1.9;
+  color: var(--dark); opacity: .78;
+  margin-bottom: 14px;
+}
+
+/* ── NPG: mini-FAQ kursu ── */
+.npg-minifaq {
+  background: var(--cream);
+  padding: 40px 6% 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.npg-minifaq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.npg-minifaq-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 18px rgba(41,52,52,.06);
+  padding: 0;
+  overflow: hidden;
+}
+.npg-minifaq-q {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 14px; color: var(--dark);
+  padding: 18px 22px;
+  position: relative;
+}
+.npg-minifaq-q::-webkit-details-marker { display: none; }
+.npg-minifaq-q::after {
+  content: '+';
+  position: absolute; right: 20px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--coral); font-size: 20px; font-weight: 700;
+}
+.npg-minifaq-item[open] .npg-minifaq-q::after { content: '–'; }
+.npg-minifaq-a {
+  font-family: var(--font-body);
+  font-size: 13px; line-height: 1.8;
+  color: var(--dark); opacity: .75;
+  padding: 0 22px 20px;
+}
+
+/* ── NPG: powiązane kursy ── */
+.npg-related {
+  background: var(--cream);
+  padding: 8px 6% 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.npg-related-list {
+  list-style: none;
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  padding: 0; margin: 0;
+}
+.npg-related-link {
+  display: inline-block;
+  background: rgba(182,222,221,.35);
+  color: var(--dark);
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 12.5px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  transition: background .2s, transform .2s;
+}
+.npg-related-link:hover {
+  background: var(--mint);
+  color: var(--dark);
+  transform: translateY(-2px);
+}
