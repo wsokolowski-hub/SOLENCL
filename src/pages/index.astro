@@ -3,29 +3,6 @@ import Base from '@/layouts/Base.astro';
 import { site } from '@/data/site';
 const title = 'Szkoła Pływania dla Dzieci Wrocław — weekendy | Solen Swim';
 const description = 'Szkoła pływania dla dzieci we Wrocławiu (Grabiszyn). Zajęcia w weekendy od 6. miesiąca do 10 lat. Małe grupy do 8 osób, certyfikowani instruktorzy.';
-
-// Opinie Google (Featurable API) — pobierane w czasie builda; przy braku
-// dostępu do sieci sekcja renderuje się bez statycznych opinii (fallback).
-type StaticReview = { author: string; text: string };
-let staticReviews: StaticReview[] = [];
-try {
-  const res = await fetch(
-    `https://featurable.com/api/v1/widgets/${site.reviews.featurableWidgetId}`,
-    { signal: AbortSignal.timeout(8000) },
-  );
-  if (res.ok) {
-    const data: any = await res.json();
-    staticReviews = (data?.reviews ?? [])
-      .filter((r: any) => (r?.comment || r?.text) && ['FIVE', 5].includes(r?.starRating ?? r?.rating))
-      .slice(0, 3)
-      .map((r: any) => ({
-        author: String(r?.reviewer?.displayName ?? r?.author ?? 'Klient Google'),
-        text: String(r?.comment ?? r?.text ?? '').slice(0, 260),
-      }));
-  }
-} catch {
-  // brak sieci podczas builda — pomijamy statyczne opinie
-}
 const path = '/';
 const pageType = 'home' as const;
 const breadcrumbs = [];
@@ -187,17 +164,6 @@ const breadcrumbs = [];
 <section class="opinie-section">
   <h2 class="opinie-title">Opinie rodziców</h2>
   <p class="opinie-rating">⭐ <strong>{site.rating.value.replace('.', ',')} / 5</strong> — {site.rating.count} opinii w Google</p>
-
-  {staticReviews.length > 0 && (
-    <div class="opinie-static">
-      {staticReviews.map((r) => (
-        <blockquote class="opinie-cytat">
-          <p>„{r.text}"</p>
-          <footer>— {r.author}, opinia Google</footer>
-        </blockquote>
-      ))}
-    </div>
-  )}
 
   {site.reviews.featurableWidgetId ? (
     <div class="opinie-widget">
