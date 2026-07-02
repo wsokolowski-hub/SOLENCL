@@ -1,8 +1,8 @@
 name: Deploy to Cloudflare Workers
 
-# Wymaga sekretów repo (Settings -> Secrets and variables -> Actions):
-#   CLOUDFLARE_API_TOKEN  — token z uprawnieniem "Workers Scripts: Edit"
-#   CLOUDFLARE_ACCOUNT_ID — ID konta z panelu Cloudflare (prawa kolumna dashboardu)
+# Po każdym pushu na main wywołuje Deploy Hook Cloudflare (sekret CF_DEPLOY_HOOK).
+# Hook uruchamia build po stronie Cloudflare Workers Builds — te same komendy
+# i token co przy integracji git, ale bez zależności od webhooka GitHub->CF.
 
 on:
   push:
@@ -10,24 +10,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  trigger-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        run: npm run build
-
-      - name: Deploy to Cloudflare Workers
-        run: npx wrangler deploy
+      - name: Call Cloudflare deploy hook
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::Brak sekretu CF_DEPLOY_HOOK — dodaj go w Settings -> Secrets and variables -> Actions"
+            exit 1
+          fi
+          code=$(curl -sS -o /tmp/resp.txt -w "%{http_code}" -X POST "$HOOK")
+          echo "Cloudflare odpowiedział: HTTP $code"
+          cat /tmp/resp.txt
+          [ "$code" -ge 200 ] && [ "$code" -lt 300 ]
