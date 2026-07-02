@@ -1,15 +1,33 @@
-name: Deploy to Cloudflare Workers (disabled)
+name: Deploy to Cloudflare Workers
 
-# Disabled until CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID secrets are
-# configured at https://github.com/wsokolowski-hub/SOLENCL/settings/secrets/actions
-# Re-enable by uncommenting the `on:` block below.
+# Wymaga sekretów repo (Settings -> Secrets and variables -> Actions):
+#   CLOUDFLARE_API_TOKEN  — token z uprawnieniem "Workers Scripts: Edit"
+#   CLOUDFLARE_ACCOUNT_ID — ID konta z panelu Cloudflare (prawa kolumna dashboardu)
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   deploy:
-    if: false
     runs-on: ubuntu-latest
     steps:
-      - run: echo "disabled"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to Cloudflare Workers
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
