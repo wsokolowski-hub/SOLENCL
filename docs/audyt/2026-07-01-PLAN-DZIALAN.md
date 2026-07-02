@@ -77,3 +77,16 @@ Priorytety: 🔴 Krytyczny (natychmiast) · 🟠 Wysoki (≤1 tydzień) · 🟡 
 ## Checkpoint / powrót
 - Stan przed zmianami: `git checkout checkpoint/v1.1-stable-2026-07-01` (commit `a58e6cc`)
 - Poprzedni checkpoint: `checkpoint/v1.0-pre-nauka`
+
+---
+
+## STATUS WDROŻENIA (2.07.2026)
+
+✅ **Wdrożone on-site (Fazy 1–3 + część 4):** wszystkie punkty 1.1–1.10, 2.2–2.4, 2.6–2.9, 3.1–3.7, 4.2 (copy sezonowe na /zapisy/), 4.5 (FAQ +6 pytań). Kod: gałąź `main`, checkpoint `checkpoint/v1.2-seo-complete`.
+
+⚠️ **Częściowo:**
+- 2.1 (opinie w HTML) — widoczna ocena 4,9/5 + CTA „Wystaw opinię" dodane; pełne treści opinii pobierane automatycznie z Featurable API w czasie builda (na Cloudflare); lokalnie fallback bez opinii. Zweryfikować po deployu.
+- 2.5 (E-E-A-T) — sekcja o Kamili dodana; **potrzebne od właścicielki:** zdjęcie + lista konkretnych certyfikatów (TODO w kodzie).
+- Dojazd MPK — przystanki opisane bez numerów linii (TODO w kodzie — uzupełnić numery).
+
+❌ **Poza kodem (do zrobienia ręcznie):** 4.1 (optymalizacja profilu GBP), 4.3 (katalogi NAP), 4.4 (blog), 4.6 (Google Search Console + Bing Webmaster — weryfikacja i submit sitemap!), reguła www→apex w panelu Cloudflare (dodana też w _redirects).
