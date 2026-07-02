@@ -10,8 +10,8 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cen
 <!-- HERO -->
 <div class="cn-hero">
   <span class="cn-eyebrow">Solen Swim · Wrocław</span>
-  <h1 class="cn-title">Cennik</h1>
-  <p class="cn-hero-sub">cena za jedne zajęcia</p>
+  <h1 class="cn-title">Cennik<span class="cn-title-sub">nauki pływania — Wrocław</span></h1>
+  <p class="cn-hero-sub">cena za jedne zajęcia · soboty i niedziele</p>
 </div>
 
 <!-- MAIN -->
@@ -189,6 +189,14 @@ body {
   text-transform: uppercase;
   color: #B6DEDD;
   margin-bottom: 16px;
+}
+
+.cn-title-sub {
+  display: block;
+  font-size: clamp(15px, 2.4vw, 22px);
+  letter-spacing: 3px;
+  color: #FF8357;
+  margin-top: 8px;
 }
 
 .cn-hero-sub {

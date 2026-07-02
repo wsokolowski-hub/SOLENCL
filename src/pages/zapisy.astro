@@ -1,8 +1,8 @@
 ---
 import Base from '@/layouts/Base.astro';
 import { site } from '@/data/site';
-const title = 'Zapisy na pływanie Wrocław | Solen Swim — Kursy dla dzieci';
-const description = 'Zapisz dziecko na zajęcia pływania we Wrocławiu. Zapis telefoniczny (oddzwonimy) lub online. Niemowlęta od 60 zł, nauka pływania od 65 zł. Basen Grabiszyn.';
+const title = 'Zapisy na naukę pływania Wrocław 2026/27 | Solen Swim';
+const description = 'Zapisy na naukę pływania dla dzieci we Wrocławiu — semestr od 5.09.2026. Zajęcia w weekendy na Grabiszynie. Zapis telefoniczny lub online, od 60 zł.';
 const path = '/zapisy/';
 const pageType = 'service' as const;
 const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Zapisy", href: "/zapisy/" }];
@@ -22,9 +22,9 @@ const wiek = [
 <Base title={title} description={description} path={path} pageType={pageType} breadcrumbs={breadcrumbs}>
 <!-- HERO -->
 <div class="zap-hero">
-  <span class="zap-badge">✅ Zapisy otwarte — I semestr 2026/2027</span>
-  <h1 class="zap-title">Wystartowały<br><span>zapisy!</span></h1>
-  <p class="zap-hero-sub">Wybierz wygodny sposób zapisu. Zostaw numer, a oddzwonimy i pomożemy dobrać grupę — albo zapisz dziecko od razu przez formularz online.</p>
+  <span class="zap-badge">✅ Wystartowały zapisy — I semestr 2026/2027</span>
+  <h1 class="zap-title">Zapisy na naukę pływania<br><span>— Wrocław</span></h1>
+  <p class="zap-hero-sub">Trwają zapisy na semestr wrześniowy 2026/2027 (5.09.2026 – 17.01.2027) — zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 (Grabiszyn). Zostaw numer, a oddzwonimy i pomożemy dobrać grupę — albo zapisz dziecko od razu przez formularz online.</p>
   <div class="zap-hero-btns">
     <a href="#zapis-telefoniczny" class="zap-btn zap-btn-dark">📞 Zapis telefoniczny</a>
     <a href={site.onlineSignupUrl} class="zap-btn zap-btn-light">💻 Zapis online</a>
