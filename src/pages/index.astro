@@ -12,9 +12,8 @@ const breadcrumbs = [];
 <section class="hero">
   <div class="hero-left"></div>
   <div class="hero-right">
-    <p class="hero-eyebrow">Solen Swim · Grabiszyn · soboty i niedziele</p>
-    <h1 class="hero-h1">Szkoła pływania dla dzieci<br>we Wrocławiu</h1>
-    <p class="hero-desc">Zacznij pływać z <strong>Solen Swim!</strong> Zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 — od 6. miesiąca do 10 lat. Uczymy przez zabawę, w grupach do 8 osób.</p>
+    <h1 class="hero-h1"><span class="hero-h1-sub">Nauka pływania dla dzieci · Wrocław Grabiszyn · weekendy</span>Szkoła Pływania<br>Solen Swim</h1>
+    <p class="hero-desc">Zacznij pływać z <strong>Solen Swim!</strong> Zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 — nauka przez zabawę, w grupach do 8 osób.</p>
     <a class="hero-cta" href="/zapisy/">Zapisz się</a>
   </div>
   <img class="hero-goggles" src="/assets/okularki.webp" alt="Okularki pływackie Solen Swim" width="1060" height="1060">
@@ -355,7 +354,7 @@ const breadcrumbs = [];
       right: 0; bottom: 0;
       width: 50%; top: 18%;
       background: var(--mint);
-      padding: 40px 6% 40px 10%;
+      padding: 44px 6% 44px 13%;
       min-height: auto;
       align-items: flex-start;
       text-align: left;
@@ -370,15 +369,15 @@ const breadcrumbs = [];
 
     .hero-h1 {
       max-width: 100%;
-      font-size: clamp(24px, 2.4vw, 35px);
-      margin-bottom: 16px;
+      font-size: clamp(30px, 3.2vw, 52px);
+      margin-bottom: 20px;
     }
 
     .hero-desc {
       font-size: 13px;
       line-height: 1.75;
-      max-width: 390px;
-      margin-bottom: 28px;
+      max-width: 340px;
+      margin-bottom: 36px;
     }
 
     .hero-cta {
@@ -398,6 +397,20 @@ const breadcrumbs = [];
       right: auto;
     }
   }
+
+/* SEO: fraza kluczowa w H1, wystylizowana identycznie jak dawny eyebrow */
+.hero-h1-sub {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.55;
+  margin-bottom: 14px;
+}
+
 /* === KURSY === */
 .kursy {
   padding: 80px 6%;
