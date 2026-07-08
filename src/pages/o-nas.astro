@@ -63,8 +63,14 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "O nas", href: "/o-na
 
   <!-- ZAŁOŻYCIELKA -->
   <div class="onas-zalozycielka">
-    <div class="onas-zal-foto" aria-hidden="true">KF</div>
-    <!-- TODO: właścicielka — dodać zdjęcie Kamili + listę konkretnych certyfikatów/uprawnień (np. instruktor pływania, ratownik) -->
+    <img
+      class="onas-zal-foto"
+      src="/assets/kamila-falkowska.webp"
+      alt="Kamila Falkowska — założycielka i instruktorka Solen Swim — w wodzie z grupą dzieci na basenie przy ul. Ostrowskiego 3 we Wrocławiu"
+      width="720" height="808"
+      loading="lazy" decoding="async"
+    />
+    <!-- TODO: właścicielka — dodać listę konkretnych certyfikatów/uprawnień (np. instruktor pływania, ratownik) -->
     <div class="onas-zal-tresc">
       <span class="onas-sekcja-eyebrow">Poznaj założycielkę</span>
       <h2 class="onas-sekcja-title">Kamila Falkowska</h2>
@@ -312,18 +318,12 @@ body {
 }
 
 .onas-zal-foto {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: #B6DEDD;
-  color: #293434;
-  font-family: 'Comfortaa', sans-serif;
-  font-weight: 700;
-  font-size: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 280px;
+  height: auto;
+  border-radius: 24px;
+  display: block;
   flex-shrink: 0;
+  box-shadow: 0 4px 24px rgba(41,52,52,0.14);
 }
 
 .onas-zal-tresc { flex: 1; }
@@ -474,7 +474,7 @@ body {
     gap: 24px;
     margin-bottom: 52px;
   }
-  .onas-zal-foto { width: 140px; height: 140px; font-size: 40px; }
+  .onas-zal-foto { width: min(100%, 300px); margin: 0 auto; }
   .onas-banner {
     flex-direction: column;
     align-items: flex-start;
