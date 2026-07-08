@@ -550,7 +550,7 @@ a[x-apple-data-detectors] {
   display: flex; justify-content: space-between; gap: 12px;
   padding: 14px 0;
   border-bottom: 1px solid rgba(41,52,52,.08);
-  font-family: var(--font-body); font-size: 13px;
+  font-family: var(--font-heading); font-size: 13.5px;
   color: var(--dark);
 }
 .npg-schedule li strong { font-weight: 700; }
