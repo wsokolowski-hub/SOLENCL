@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import { site } from '@/data/site';
 const title = 'Cennik zajęć pływania Wrocław | Solen Swim — od 60 zł';
 const description = 'Ceny zajęć pływania dla dzieci we Wrocławiu. Niemowlęta (6 mies.–4 lat): 60 zł/30 min. Nauka i doskonalenie (5–10 lat): 65 zł/45 min. Płatność w 3 ratach.';
 const path = '/cennik/';
@@ -96,7 +97,7 @@ const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Cennik", href: "/cen
       </p>
       <div class="cn-konto">
         <span class="cn-konto-label">Numer konta bankowego</span>
-        <p class="cn-konto-numer">05 1090 2529 0000 0001 6453 7999</p>
+        <p class="cn-konto-numer">{site.bankAccount}</p>
       </div>
     </div>
 
