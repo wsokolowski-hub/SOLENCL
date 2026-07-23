@@ -12,8 +12,11 @@ Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 - Fonty self-hosted: Comfortaa (nagłówki, godziny/harmonogramy) + Space Mono (body), `public/fonts/`.
 - Brand: mint #B6DEDD, coral #FF8357, cream #FFF9F6, dark #293434.
 
-## Deploy (WAŻNE — nie kombinować)
-Push na `main` → GitHub Actions `.github/workflows/deploy.yml` → curl Cloudflare Deploy Hook (secret `CF_DEPLOY_HOOK`) → CF builduje i deployuje. Webhook git CF bywa martwy — NIE polegać na nim. Deploy trwa ~2 min od pusha.
+## Deploy i hosting (WAŻNE — nie kombinować)
+- PRODUKCJA: **Vercel** (projekt `solencl`, `vercel.json` — nagłówki, cache, redirecty). Push na `main` → Vercel auto-builduje i deployuje na solenswim.com (~1 min).
+- Domena solenswim.com: rejestracja w Wixie (NS zablokowane przez Wixa!), rekordy A/CNAME w DNS Wixa wskazują Vercel (A @ → 216.198.79.1, CNAME www → *.vercel-dns-017.com). www → apex robi Vercel.
+- Legacy: Cloudflare Workers (solencl.wiktor-sokolek.workers.dev) + workflow deploy.yml z CF_DEPLOY_HOOK — wciąż działa, ale to NIE jest produkcja.
+- Aplikacja zapisów: osobny projekt Vercel (solenswim.vercel.app), repo `wsokolowski-hub/zapisy`.
 
 ## Środowisko sandboxa (ograniczenia)
 - Proxy blokuje: solenswim.com, api.cloudflare.com, featurable.com — nie da się sprawdzić live; weryfikacja lokalnie.
@@ -23,7 +26,8 @@ Push na `main` → GitHub Actions `.github/workflows/deploy.yml` → curl Cloudf
 
 ## Fakty merytoryczne (nie zmyślać!)
 - Basen Ostrowskiego 3: 12,5 m, płytki. Uczymy MAX do żabki (kraul, grzbiet, żabka). ŻADNEGO motylka, zawodów, skoków startowych.
-- Zajęcia indywidualne: osobny basen, Kamiennogórska 16 (180–250 zł).
+- Zajęcia indywidualne: osobny basen, Kamiennogórska 16 (1 os. 180 / 2 os. 250 / 3 os. 300 zł).
+- ŻADNYCH "zajęć próbnych" w treści — nie oferujemy takiej opcji. Zapis: telefonicznie lub online.
 - Opinie: wyłącznie widget Featurable — żadnych ręcznie wpisanych opinii ani ocen "4,9/5" w treści.
 - Semestr I: 5.09.2026–17.01.2027. Właścicielka: Kamila Falkowska.
 

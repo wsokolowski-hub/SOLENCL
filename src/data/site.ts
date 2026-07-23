@@ -41,7 +41,7 @@ export const site = {
   email: 'solenswim@outlook.com',
   bankAccount: '89 1090 2516 0000 0001 6384 8593',
   rating: { value: '4.9', count: '21' },
-  priceRange: '60-250 zł',
+  priceRange: '60-300 zł',
   semesterEnd: '2027-01-17',
   hours: [
     { day: 'Pon–Pt', value: '09:00 – 18:00 (telefon)' },
@@ -88,7 +88,7 @@ export const nav: NavItem[] = [
       { href: '/nauka-plywania/niemowleta-i-dzieci-do-4-lat/', label: 'Pływanie niemowląt i dzieci do lat 4', desc: '6 mies – 4 lata · rodzic + dziecko · 60 zł / 30 min' },
       { href: '/nauka-plywania/dzieci-od-podstaw/',             label: 'Nauka pływania dla dzieci od podstaw', desc: '5–10 lat · grupy do 8 · 65 zł / 45 min' },
       { href: '/nauka-plywania/doskonalenie/',                  label: 'Doskonalenie pływania dla dzieci',     desc: '5–10 lat · sob. i niedz. · 65 zł / 45 min' },
-      { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: 'Dzieci i dorośli · 180–250 zł · Kamiennogórska 16' },
+      { href: '/nauka-plywania/indywidualnie/',                 label: 'Indywidualnie',                        desc: 'Dzieci i dorośli · 180–300 zł · Kamiennogórska 16' },
     ],
   },
   { href: '/o-nas/', label: 'O NAS' },
