@@ -16,7 +16,7 @@ Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 - PRODUKCJA: **Vercel** (projekt `solencl`, `vercel.json` — nagłówki, cache, redirecty). Push na `main` → Vercel auto-builduje i deployuje na solenswim.com (~1 min).
 - Domena solenswim.com: rejestracja w Wixie (NS zablokowane przez Wixa!), rekordy A/CNAME w DNS Wixa wskazują Vercel (A @ → 216.198.79.1, CNAME www → *.vercel-dns-017.com). www → apex robi Vercel.
 - Legacy: Cloudflare Workers (solencl.wiktor-sokolek.workers.dev) + workflow deploy.yml z CF_DEPLOY_HOOK — wciąż działa, ale to NIE jest produkcja.
-- Aplikacja zapisów: osobny projekt Vercel (solenswim.vercel.app), repo `wsokolowski-hub/zapisy`.
+- Aplikacja zapisów: osobny projekt Vercel na subdomenie zapisy.solenswim.com, repo `wsokolowski-hub/zapisy`.
 
 ## Środowisko sandboxa (ograniczenia)
 - Proxy blokuje: solenswim.com, api.cloudflare.com, featurable.com — nie da się sprawdzić live; weryfikacja lokalnie.

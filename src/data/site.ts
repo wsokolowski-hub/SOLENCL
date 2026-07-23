@@ -67,7 +67,7 @@ export const site = {
     googleWriteReviewUrl: 'https://g.page/r/CQ_aXznUvIdKEAE/review',
   },
   // Pełny formularz zapisu online (osobna aplikacja na Vercel)
-  onlineSignupUrl: 'https://solenswim.vercel.app',
+  onlineSignupUrl: 'https://zapisy.solenswim.com',
   forms: {
     // Darmowy klucz z https://web3forms.com (wpisz swój e-mail -> dostajesz Access Key).
     // Zgłoszenia z formularza "oddzwonimy" trafią na ten e-mail. Dopóki puste,
