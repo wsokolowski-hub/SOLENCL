@@ -52,8 +52,8 @@ export const site = {
     { day: 'Niedziela', value: '09:00 – 12:00' },
   ],
   semester: {
-    one: { label: 'I semestr', range: '5.09.2026 – 17.01.2027', status: 'open' },
-    two: { label: 'II semestr', range: '6.02.2027 – 27.06.2027', status: 'soon' },
+    one: { label: 'Jesień/Zima 26/27', range: '5.09.2026 – 17.01.2027', status: 'open' },
+    two: { label: 'Wiosna/Lato 27', range: '6.02.2027 – 27.06.2027', status: 'soon' },
   },
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61581816024136',

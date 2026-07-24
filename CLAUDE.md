@@ -29,7 +29,7 @@ Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 - Zajęcia indywidualne: osobny basen, Kamiennogórska 16 (1 os. 180 / 2 os. 250 / 3 os. 300 zł).
 - ŻADNYCH "zajęć próbnych" w treści — nie oferujemy takiej opcji. Zapis: telefonicznie lub online.
 - Opinie: wyłącznie widget Featurable — żadnych ręcznie wpisanych opinii ani ocen "4,9/5" w treści.
-- Semestr I: 5.09.2026–17.01.2027. Właścicielka: Kamila Falkowska.
+- Semestr Jesień/Zima 26/27: 5.09.2026–17.01.2027 (bieżący). Kolejny: Wiosna/Lato 27 (6.02–27.06.2027). Właścicielka: Kamila Falkowska.
 
 ## TODO od właściciela (czekamy na materiały)
 - Certyfikaty/uprawnienia Kamili (TODO w `o-nas.astro`), numery linii MPK (TODO w `gdzie-plywamy.astro`).
