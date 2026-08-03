@@ -70,7 +70,7 @@ export const site = {
   onlineSignupUrl: 'https://zapisy.solenswim.com',
   // Cookiebot (CMP — zgody na cookies, RODO). Wklej Domain Group ID (CBID) z panelu Cookiebot.
   // Dopóki puste — skrypt się NIE renderuje (bezpiecznie, strona działa bez bannera).
-  cookiebotId: '',
+  cookiebotId: '9521a1ea-6112-4224-879d-e58fdc2de023',
   forms: {
     // Darmowy klucz z https://web3forms.com (wpisz swój e-mail -> dostajesz Access Key).
     // Zgłoszenia z formularza "oddzwonimy" trafią na ten e-mail. Dopóki puste,
