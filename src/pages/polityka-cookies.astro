@@ -52,6 +52,12 @@ const updated = '16.10.2025';
     </ul>
 
     <h2>5. Narzędzia zewnętrzne</h2>
+    {site.cookiebotId && (
+      <Fragment>
+        <p>Pełną, automatycznie aktualizowaną listę plików cookies używanych na tej stronie (wraz z ich celem i czasem przechowywania) znajdziesz poniżej:</p>
+        <script is:inline id="CookieDeclaration" src={`https://consent.cookiebot.com/${site.cookiebotId}/cd.js`} type="text/javascript" async></script>
+      </Fragment>
+    )}
     <p>Na naszej stronie mogą być używane zewnętrzne usługi, które wykorzystują pliki cookies, takie jak:</p>
     <ul>
       <li>Google Analytics (usługa analizy ruchu w sieci Google LLC, USA)</li>
