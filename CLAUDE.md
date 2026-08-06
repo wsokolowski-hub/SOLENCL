@@ -4,11 +4,15 @@ Strona szkoły pływania dla dzieci (6 mies.–10 lat), Wrocław Grabiszyn, zaj�
 Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 
 ## Stack i architektura
-- Astro 5 (SSG, `build.format: 'directory'`), zero frameworków JS, style inline per strona (`<style is:global>`).
-- Hosting: Cloudflare Workers Static Assets (`wrangler.toml`, `dist/`). Wrangler 4.
+> UWAGA: ta gałąź (`claude/nextjs-migration`) to migracja z Astro na Next.js. Na `main` wciąż jest Astro.
+
+- Next.js 15 (App Router, SSG — wszystkie trasy prerenderowane statycznie), React 19, `trailingSlash: true`.
+- Strony w `src/app/<trasa>/page.tsx`; style per strona w co-located pliku CSS (np. `src/app/zapisy/zapisy.css`) importowanym w `page.tsx`. Style globalne: `src/styles/global.css` + `fonts.css` (import w `src/app/layout.tsx`).
 - Centralna konfiguracja: `src/data/site.ts` (adresy, telefony, ceny, nawigacja, semestry) — dane biznesowe zmieniaj TYLKO tam.
-- SEO: `src/components/SEO.astro` + `SchemaOrg.astro` (LocalBusiness, Course per strona kursu; BEZ aggregateRating — polityka Google). Breadcrumbs site-wide z `Base.astro`.
-- Nagłówki bezpieczeństwa + cache: `public/_headers` (CSP! nowe skrypty zewn. wymagają wpisu). `public/_redirects`: tylko WZGLĘDNE URL-e (absolutne = błąd deployu).
+- SEO: `src/lib/seo.ts` (`buildMetadata()` → Metadata API) + `src/components/SchemaOrg.tsx` (LocalBusiness, Course per strona kursu, FAQPage; BEZ aggregateRating — polityka Google). `src/components/PageShell.tsx` opakowuje treść: JSON-LD + breadcrumbs + `<main id="main">`.
+- Komponenty klienckie (jedyne z `'use client'`): `Header.tsx` (menu mobilne, submenu), `ZapisyForm.tsx` (wysyłka web3forms), `CookieDeclaration.tsx`. Reszta to komponenty serwerowe — zero JS.
+- Sitemap: `src/app/sitemap.ts` → `/sitemap.xml` (WAŻNE: w Astro było `/sitemap-index.xml`; `robots.txt` zaktualizowany, w GSC trzeba zgłosić nowy adres).
+- Nagłówki bezpieczeństwa (CSP! nowe skrypty zewn. wymagają wpisu), cache i redirecty: `next.config.mjs` (`headers()` / `redirects()`). `vercel.json` zawiera już tylko `framework: nextjs`.
 - Fonty self-hosted: Comfortaa (nagłówki, godziny/harmonogramy) + Space Mono (body), `public/fonts/`.
 - Brand: mint #B6DEDD, coral #FF8357, cream #FFF9F6, dark #293434.
 
@@ -20,7 +24,7 @@ Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 
 ## Środowisko sandboxa (ograniczenia)
 - Proxy blokuje: solenswim.com, api.cloudflare.com, featurable.com — nie da się sprawdzić live; weryfikacja lokalnie.
-- Weryfikacja wizualna: `npm run build` → `npx serve dist -l 4321` → playwright-core (chromium: `/opt/pw-browsers/chromium`). `npm install --no-save playwright-core` po każdym `npm ci` (jest wycinany).
+- Weryfikacja wizualna: `npm run build` → `npm run start -- -p 4321` → playwright-core (chromium: `/opt/pw-browsers/chromium`). `npm install --no-save playwright-core` po każdym `npm ci` (jest wycinany). Skrypt playwrighta musi leżeć W katalogu projektu (inaczej nie znajdzie node_modules).
 - `pkill` uruchamiać osobno (exit 144 zabija łańcuch komend).
 - GitHub MCP `actions_list` daje ogromny output — parsować zapisany plik pythonem.
 

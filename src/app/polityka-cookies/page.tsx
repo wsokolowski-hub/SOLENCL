@@ -1,0 +1,152 @@
+import React from 'react';
+import { site } from '@/data/site';
+import { buildMetadata } from '@/lib/seo';
+import PageShell from '@/components/PageShell';
+import CookieDeclaration from '@/components/CookieDeclaration';
+
+const breadcrumbs = [
+  { name: 'Start', href: '/' },
+  { name: 'Polityka plików cookie', href: '/polityka-cookies/' },
+];
+const domain = site.url.replace('https://', '').replace(/\/$/, '');
+const updated = '16.10.2025';
+
+export const metadata = buildMetadata({
+  title: 'Polityka plików cookie | Solen Swim Wrocław',
+  description:
+    'Polityka plików cookies szkoły pływania Solen Swim — czym są ciasteczka, do czego ich używamy, rodzaje, zarządzanie i narzędzia zewnętrzne.',
+  path: '/polityka-cookies/',
+});
+
+export default function Page() {
+  return (
+    <PageShell pageType="about" breadcrumbs={breadcrumbs}>
+      <article className="legal">
+        <h1>Polityka plików cookies</h1>
+        <p className="legal-lead">
+          <strong>{site.companyLegal}</strong>
+        </p>
+        <p className="legal-eyebrow">Data aktualizacji: {updated}</p>
+
+        <h2>1. Czym są pliki cookies?</h2>
+        <p>
+          Pliki cookies (tzw. „ciasteczka”) to niewielkie pliki tekstowe zapisywane na urządzeniu użytkownika podczas
+          korzystania ze strony internetowej.
+        </p>
+        <p>
+          Pozwalają one m.in. na prawidłowe działanie strony, zapamiętywanie preferencji użytkownika, a także analizowanie
+          sposobu korzystania z witryny.
+        </p>
+
+        <h2>2. W jakim celu używamy plików cookies?</h2>
+        <p>Strona {domain} wykorzystuje pliki cookies w następujących celach:</p>
+        <ul>
+          <li>
+            <strong>Zapewnienie prawidłowego działania strony</strong> – np. utrzymanie sesji użytkownika, dostosowanie
+            wyświetlania treści.
+          </li>
+          <li>
+            <strong>Statystyki i analiza ruchu</strong> – korzystamy z narzędzia Google Analytics, które pomaga nam
+            zrozumieć, jak użytkownicy korzystają z naszej strony (anonimowo, bez identyfikacji osoby).
+          </li>
+          <li>
+            <strong>Integracja z mediami społecznościowymi</strong> – na stronie znajdują się linki do naszych profili w
+            serwisach Facebook i Instagram, które mogą stosować własne pliki cookies.
+          </li>
+          <li>
+            <strong>Ułatwienie kontaktu</strong> – w formularzu kontaktowym mogą być używane cookies, które zapamiętują
+            dane wpisane w pola formularza, by ułatwić ponowne wysłanie wiadomości.
+          </li>
+        </ul>
+
+        <h2>3. Rodzaje plików cookies</h2>
+        <p>Na naszej stronie mogą być stosowane:</p>
+        <ul>
+          <li>
+            <strong>Cookies sesyjne</strong> – tymczasowe, które są usuwane po zamknięciu przeglądarki.
+          </li>
+          <li>
+            <strong>Cookies trwałe</strong> – pozostają na urządzeniu przez określony czas lub do momentu ich usunięcia.
+          </li>
+          <li>
+            <strong>Cookies zewnętrzne</strong> – pochodzące od partnerów takich jak Google (Google Analytics) lub Meta
+            (Facebook, Instagram).
+          </li>
+        </ul>
+
+        <h2>4. Zarządzanie plikami cookies</h2>
+        <p>
+          Każdy użytkownik może samodzielnie zmienić ustawienia dotyczące cookies w swojej przeglądarce internetowej.
+          Można je całkowicie zablokować, ograniczyć lub usunąć. Należy jednak pamiętać, że wyłączenie niektórych plików
+          cookies może wpłynąć na prawidłowe działanie strony.
+        </p>
+        <p>Instrukcje dotyczące zarządzania cookies znajdziesz na stronach producentów przeglądarek:</p>
+        <ul>
+          <li>
+            <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">
+              Google Chrome
+            </a>
+          </li>
+          <li>
+            <a href="https://support.mozilla.org/pl/kb/ciasteczka" target="_blank" rel="noopener">
+              Mozilla Firefox
+            </a>
+          </li>
+          <li>
+            <a href="https://support.microsoft.com/pl-pl/microsoft-edge" target="_blank" rel="noopener">
+              Microsoft Edge
+            </a>
+          </li>
+          <li>
+            <a href="https://support.apple.com/pl-pl/guide/safari/welcome/mac" target="_blank" rel="noopener">
+              Safari
+            </a>
+          </li>
+        </ul>
+
+        <h2>5. Narzędzia zewnętrzne</h2>
+        {site.cookiebotId && (
+          <>
+            <p>
+              Pełną, automatycznie aktualizowaną listę plików cookies używanych na tej stronie (wraz z ich celem i czasem
+              przechowywania) znajdziesz poniżej:
+            </p>
+            <CookieDeclaration cbid={site.cookiebotId} />
+          </>
+        )}
+        <p>Na naszej stronie mogą być używane zewnętrzne usługi, które wykorzystują pliki cookies, takie jak:</p>
+        <ul>
+          <li>Google Analytics (usługa analizy ruchu w sieci Google LLC, USA)</li>
+          <li>Facebook / Instagram (Meta Platforms Ireland Ltd.)</li>
+        </ul>
+        <p>Każda z tych firm posiada własną politykę prywatności dotyczącą przetwarzania danych. Zachęcamy do zapoznania się z nimi:</p>
+        <ul>
+          <li>
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+              Polityka prywatności Google
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">
+              Polityka prywatności Meta (Facebook, Instagram)
+            </a>
+          </li>
+        </ul>
+
+        <h2>6. Zmiany w polityce cookies</h2>
+        <p>
+          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce plików cookies, zgodnie z
+          obowiązującymi przepisami prawa lub w celu dostosowania do zmian technologicznych. Aktualna wersja dokumentu
+          jest zawsze dostępna na stronie {domain}/polityka-plikow-cookie.
+        </p>
+
+        <h2>7. Kontakt</h2>
+        <p>
+          W razie pytań dotyczących korzystania z plików cookies możesz skontaktować się z nami:
+          <br />
+          E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </article>
+    </PageShell>
+  );
+}

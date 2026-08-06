@@ -1,0 +1,66 @@
+/** @type {import('next').NextConfig} */
+
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://featurable.com https://*.cookiebot.com https://*.cookiebot.eu",
+  "style-src 'self' 'unsafe-inline' https://featurable.com",
+  "img-src 'self' data: https:",
+  "font-src 'self' https://featurable.com https://*.cookiebot.com https://*.cookiebot.eu",
+  "connect-src 'self' https://api.web3forms.com https://featurable.com https://api.featurable.com https://*.cookiebot.com https://*.cookiebot.eu",
+  "frame-src https://www.google.com https://maps.google.com https://*.cookiebot.com https://*.cookiebot.eu",
+  "frame-ancestors 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self' https://api.web3forms.com",
+  'upgrade-insecure-requests',
+].join('; ');
+
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'geolocation=(), camera=(), microphone=(), payment=(), usb=()' },
+  { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  { key: 'Content-Security-Policy', value: CSP },
+];
+
+const nextConfig = {
+  trailingSlash: true,
+  poweredByHeader: false,
+  async headers() {
+    return [
+      { source: '/:path*', headers: securityHeaders },
+      {
+        source: '/_next/static/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/fonts/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/assets/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+      },
+      { source: '/favicon.ico', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }] },
+      { source: '/favicon-32.png', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }] },
+      { source: '/apple-touch-icon.png', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }] },
+    ];
+  },
+  async redirects() {
+    return [
+      { source: '/strona-glowna', destination: '/', permanent: true },
+      { source: '/home', destination: '/', permanent: true },
+      { source: '/index.html', destination: '/', permanent: true },
+      { source: '/o-nas.html', destination: '/o-nas/', permanent: true },
+      { source: '/gdzie-plywamy.html', destination: '/gdzie-plywamy/', permanent: true },
+      { source: '/zapisy.html', destination: '/zapisy/', permanent: true },
+      { source: '/cennik.html', destination: '/cennik/', permanent: true },
+      { source: '/kontakt.html', destination: '/kontakt/', permanent: true },
+      { source: '/faq.html', destination: '/faq/', permanent: true },
+    ];
+  },
+};
+
+export default nextConfig;

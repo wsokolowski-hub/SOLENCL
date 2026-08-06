@@ -1,0 +1,505 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Blokada auto-linkowania przez iOS/Android */
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+}
+
+body {
+  background: #FFF9F6;
+  font-family: 'Space Mono', monospace;
+  color: #293434;
+}
+
+/* ─── HERO ─── */
+.zap-hero {
+  background: #FF8357;
+  padding: 72px 6%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.zap-hero::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: rgba(255,249,246,0.08);
+  top: -160px; right: -100px;
+}
+
+.zap-hero::after {
+  content: '';
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(41,52,52,0.08);
+  bottom: -70px; left: -60px;
+}
+
+.zap-badge {
+  display: inline-block;
+  background: #293434;
+  color: #B6DEDD;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.zap-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 7vw, 72px);
+  color: #FFF9F6;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.zap-title span { color: #293434; }
+
+.zap-hero-sub {
+  font-size: 14px;
+  color: #FFF9F6;
+  opacity: 0.85;
+  line-height: 1.8;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ─── GUZIKI HERO ─── */
+.zap-hero-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  position: relative;
+}
+.zap-btn {
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.zap-btn-dark {
+  background: #293434;
+  color: #FFF9F6;
+  box-shadow: 0 8px 28px rgba(41,52,52,0.25);
+}
+.zap-btn-dark:hover { transform: translateY(-2px); background: #1f2828; }
+.zap-btn-light {
+  background: #FFF9F6;
+  color: #FF8357;
+  box-shadow: 0 8px 28px rgba(41,52,52,0.18);
+}
+.zap-btn-light:hover { transform: translateY(-2px); }
+
+/* ─── FORMULARZ "ODDZWONIMY" ─── */
+.zap-form {
+  background: #B6DEDD;
+  padding: 64px 6%;
+}
+.zap-form-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+.zap-form-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 5vw, 42px);
+  color: #FF8357;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.zap-form-title span { color: #293434; }
+.zap-form-sub {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #293434;
+  opacity: 0.8;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.zap-form-sub a {
+  color: #FF8357;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255,131,87,0.4);
+}
+.zap-form-sub a:hover { border-bottom-color: #FF8357; }
+.zap-formularz {
+  background: #FFF9F6;
+  border-radius: 22px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 40px rgba(41,52,52,0.10);
+  text-align: left;
+}
+.zap-pole { display: block; margin-bottom: 20px; }
+.zap-pole > span {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: #293434;
+  margin-bottom: 8px;
+}
+.zap-pole > span i { color: #FF8357; font-style: normal; }
+.zap-pole input,
+.zap-pole select {
+  width: 100%;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  color: #293434;
+  background: #fff;
+  border: 1.5px solid rgba(41,52,52,0.18);
+  border-radius: 12px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.zap-pole select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%23FF8357' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+  cursor: pointer;
+}
+.zap-pole input:focus,
+.zap-pole select:focus {
+  border-color: #FF8357;
+  box-shadow: 0 0 0 4px rgba(255,131,87,0.15);
+}
+/* honeypot — ukryte pole antyspamowe */
+.zap-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+.zap-submit {
+  width: 100%;
+  background: #FF8357;
+  color: #FFF9F6;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.zap-submit:hover { background: #ff6f3d; transform: translateY(-1px); }
+.zap-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+.zap-form-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 16px;
+  text-align: center;
+}
+.zap-form-status.ok  { color: #1f7a5c; }
+.zap-form-status.err { color: #c0392b; }
+
+/* ─── SEMESTRY ─── */
+.zap-semestry {
+  padding: 64px 6%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.zap-sekcja-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 12px;
+  display: block;
+  text-align: center;
+}
+
+.zap-sekcja-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #293434;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.zap-semestry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.zap-semestr {
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.zap-semestr.zamkniety {
+  background: #FFF9F6;
+  box-shadow: 0 2px 24px rgba(41,52,52,0.07);
+}
+
+.zap-semestr.otwarty {
+  background: #293434;
+}
+
+.zap-semestr-ikona {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.zamkniety .zap-semestr-ikona { background: rgba(41,52,52,0.07); }
+.otwarty  .zap-semestr-ikona  { background: #FF8357; }
+
+.zap-semestr-info {}
+
+.zap-semestr-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.zamkniety .zap-semestr-label { color: #293434; opacity: 0.45; }
+.otwarty  .zap-semestr-label  { color: #B6DEDD; opacity: 0.7; }
+
+.zap-semestr-nazwa {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.zamkniety .zap-semestr-nazwa { color: #293434; }
+.otwarty  .zap-semestr-nazwa  { color: #FFF9F6; }
+
+.zap-semestr-daty {
+  font-size: 12px;
+}
+
+.zamkniety .zap-semestr-daty { color: #293434; opacity: 0.55; }
+.otwarty  .zap-semestr-daty  { color: #B6DEDD; opacity: 0.8; }
+
+.zap-semestr-status {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.zamkniety .zap-semestr-status {
+  background: rgba(41,52,52,0.08);
+  color: #293434;
+  opacity: 0.5;
+}
+
+.otwarty .zap-semestr-status {
+  background: #FF8357;
+  color: #FFF9F6;
+}
+
+/* ─── INFO O ZAPISACH ─── */
+.zap-info {
+  background: #B6DEDD;
+  padding: 64px 6%;
+}
+
+.zap-info-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.zap-info-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.55;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.zap-info-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #293434;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.zap-info-tekst {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #293434;
+  opacity: 0.8;
+  margin-bottom: 28px;
+}
+
+.zap-tel-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* KLIKALNY przycisk telefonu */
+.zap-tel-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #293434;
+  color: #FFF9F6;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.zap-tel-item:hover {
+  background: #FF8357;
+  transform: translateY(-2px);
+}
+
+.zap-tel-item:active {
+  transform: translateY(0);
+}
+
+.zap-tel-item span {
+  font-size: 11px;
+  opacity: 0.6;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: auto;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ─── PŁATNOŚĆ ─── */
+.zap-platnosc {
+  background: #FFF9F6;
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 32px rgba(41,52,52,0.08);
+}
+
+.zap-platnosc-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.zap-platnosc-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #293434;
+  margin-bottom: 16px;
+}
+
+.zap-platnosc-tekst {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #293434;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.zap-konto {
+  background: #293434;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.zap-konto-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.zap-konto-numer {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFF9F6;
+  letter-spacing: 1px;
+}
+
+/* ── TABLET ── */
+@media (max-width: 760px) {
+  .zap-hero { padding: 56px 5%; }
+  .zap-semestry { padding: 52px 5%; }
+  .zap-semestry-grid { grid-template-columns: 1fr; gap: 16px; }
+  .zap-info { padding: 52px 5%; }
+  .zap-info-inner { grid-template-columns: 1fr; gap: 40px; }
+  .zap-form { padding: 52px 5%; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .zap-hero { padding: 44px 4%; }
+  .zap-title { font-size: 34px; }
+  .zap-hero-sub { font-size: 13px; }
+  .zap-semestry { padding: 40px 4%; }
+  .zap-sekcja-title { font-size: 24px; }
+  .zap-semestr { padding: 22px 18px; flex-wrap: wrap; }
+  .zap-semestr-status { margin-left: 0; margin-top: 8px; }
+  .zap-info { padding: 40px 4%; }
+  .zap-info-title { font-size: 22px; }
+  .zap-platnosc { padding: 24px 20px; }
+  .zap-konto-numer { font-size: 12px; }
+  .zap-tel-item { font-size: 14px; padding: 14px 16px; }
+  .zap-tel-item span { display: none; }
+  .zap-form { padding: 40px 4%; }
+  .zap-form-sub { font-size: 13px; }
+}

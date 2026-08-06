@@ -1,0 +1,520 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Blokada auto-linkowania przez iOS/Android */
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+}
+
+body {
+  background: #FFF9F6;
+  font-family: 'Space Mono', monospace;
+  color: #293434;
+}
+
+/* HERO */
+.gp-hero {
+  background: #B6DEDD;
+  padding: 72px 6%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gp-hero::after {
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  background: rgba(255,131,87,0.10);
+  bottom: -120px; right: -80px;
+  pointer-events: none;
+}
+
+.gp-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.55;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.gp-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 6vw, 60px);
+  color: #293434;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.gp-title span { color: #FF8357; }
+
+.gp-hero-adres {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #293434;
+  color: #FFF9F6;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  letter-spacing: 1px;
+}
+
+/* MOZAIKA ZDJEC */
+.gp-mozaika {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 6px;
+  max-height: 566px;
+}
+
+.gp-foto {
+  overflow: hidden;
+  position: relative;
+}
+
+.gp-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gp-foto:hover img {
+  transform: scale(1.04);
+}
+
+/* zdjecie 1 zajmuje cala lewa kolumne */
+.gp-foto:first-child {
+  grid-row: 1 / 3;
+}
+
+/* MAIN */
+.gp-main {
+  padding: 72px 6%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.gp-sekcja-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FF8357;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.gp-sekcja-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #293434;
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+/* INFO KARTY */
+.gp-info-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gp-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+  background: #FFF9F6;
+  border-radius: 16px;
+  box-shadow: 0 2px 20px rgba(41,52,52,0.07);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+/* Klikalna wersja karty (anchor z tel:) */
+a.gp-info-item {
+  text-decoration: none;
+  color: #293434;
+  cursor: pointer;
+}
+a.gp-info-item .gp-info-wartosc,
+a.gp-info-item .gp-info-sub,
+a.gp-info-item .gp-info-label {
+  color: #293434;
+}
+a.gp-info-item:hover {
+  background: rgba(255,131,87,0.12);
+  box-shadow: 0 4px 28px rgba(255,131,87,0.18);
+  transform: translateY(-2px);
+}
+
+.gp-info-ikona {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(182,222,221,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.gp-info-ikona.coral { background: rgba(255,131,87,0.15); }
+
+.gp-info-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #293434;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.gp-info-wartosc {
+  font-size: 14px;
+  color: #293434;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.tel-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gp-info-sub {
+  font-size: 12px;
+  color: #293434;
+  opacity: 0.6;
+  margin-top: 2px;
+  display: block;
+}
+
+/* DOJAZD */
+.gp-dojazd-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gp-dojazd-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.gp-dojazd-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FF8357;
+  color: #FFF9F6;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gp-dojazd-tekst { padding-top: 4px; }
+
+.gp-dojazd-tytul {
+  font-size: 13px;
+  font-weight: 700;
+  color: #293434;
+  margin-bottom: 4px;
+}
+
+.gp-dojazd-opis {
+  font-size: 12px;
+  color: #293434;
+  opacity: 0.65;
+  line-height: 1.6;
+}
+
+/* HARMONOGRAM */
+.gp-harmonogram {
+  background: #293434;
+  border-radius: 28px;
+  padding: 48px;
+}
+
+.gp-harm-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.gp-harm-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #FFF9F6;
+  margin-bottom: 32px;
+}
+
+.gp-harm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gp-harm-karta {
+  background: rgba(255,249,246,0.06);
+  border-radius: 16px;
+  padding: 22px 18px;
+  border: 1px solid rgba(182,222,221,0.15);
+}
+
+.gp-harm-dzien {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B6DEDD;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.gp-harm-kurs {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #FFF9F6;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.gp-harm-godziny {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 14px;
+  color: #FF8357;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* PODTYTUŁ W H1 */
+.gp-title-sub {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 1px;
+  color: #293434 !important;
+  opacity: 0.65;
+  margin-top: 14px;
+  text-transform: none;
+}
+
+/* PARAMETRY BASENU */
+.gp-parametry {
+  margin: 56px 0;
+}
+
+.gp-parametry-intro {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #293434;
+  opacity: 0.7;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.gp-param-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gp-param-karta {
+  background: #FFF9F6;
+  border-radius: 20px;
+  padding: 26px 22px;
+  box-shadow: 0 2px 20px rgba(41,52,52,0.07);
+  border-top: 4px solid #B6DEDD;
+}
+
+.gp-param-karta:nth-child(2) { border-top-color: #FF8357; }
+.gp-param-karta:nth-child(3) { border-top-color: #FFB094; }
+.gp-param-karta:nth-child(4) { border-top-color: #86C6C4; }
+
+.gp-param-liczba {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #FF8357;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gp-param-opis {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #293434;
+  opacity: 0.7;
+}
+
+/* OKOLICE / DZIELNICE */
+.gp-okolice {
+  margin: 56px 0;
+}
+
+.gp-okolice-opis {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #293434;
+  opacity: 0.7;
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.gp-okolice-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+}
+
+.gp-chip {
+  background: rgba(182,222,221,0.35);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #293434;
+  line-height: 1.4;
+}
+
+.gp-chip strong {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+}
+
+/* MAPA */
+.gp-mapa {
+  margin-top: 56px;
+}
+
+.gp-mapa-ramka {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(41,52,52,0.10);
+  margin-bottom: 22px;
+}
+
+.gp-mapa-ramka iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+
+.gp-mapa-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.gp-btn {
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gp-btn-coral {
+  background: #FF8357;
+  color: #FFF9F6;
+  box-shadow: 0 6px 24px rgba(255,131,87,0.30);
+}
+
+.gp-btn-coral:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,131,87,0.40);
+  color: #FFF9F6;
+}
+
+.gp-btn-outline {
+  background: transparent;
+  color: #293434;
+  border: 2px solid #B6DEDD;
+}
+
+.gp-btn-outline:hover {
+  background: rgba(182,222,221,0.25);
+  color: #293434;
+}
+
+.gp-mapa-nota {
+  font-size: 12px;
+  color: #293434;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* TABLET */
+@media (max-width: 760px) {
+  .gp-param-grid { grid-template-columns: 1fr 1fr; }
+  .gp-mapa-ramka iframe { height: 340px; }
+  .gp-hero { padding: 56px 5%; }
+  .gp-mozaika {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    max-height: none;
+  }
+  .gp-foto:first-child { grid-row: auto; }
+  .gp-main { padding: 52px 5%; }
+  .gp-grid { grid-template-columns: 1fr; gap: 44px; margin-bottom: 44px; }
+  .gp-harmonogram { padding: 36px 28px; }
+  .gp-harm-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .gp-hero { padding: 44px 4%; }
+  .gp-mozaika {
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 200px 200px;
+    gap: 4px;
+    max-height: none;
+  }
+  .gp-foto:first-child { grid-row: auto; }
+  .gp-main { padding: 40px 4%; }
+  .gp-sekcja-title { font-size: 20px; }
+  .gp-info-item { padding: 14px 16px; }
+  .gp-harmonogram { padding: 28px 20px; border-radius: 20px; }
+  .gp-harm-grid { grid-template-columns: 1fr; gap: 10px; }
+  .gp-param-grid { grid-template-columns: 1fr; }
+  .gp-parametry, .gp-okolice { margin: 40px 0; }
+  .gp-mapa { margin-top: 40px; }
+  .gp-mapa-ramka iframe { height: 280px; }
+  .gp-btn { width: 100%; text-align: center; }
+}

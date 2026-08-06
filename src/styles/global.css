@@ -2,6 +2,15 @@
    SOLEN SWIM — Global (reset, tokens, header, footer, shared)
    ============================================================ */
 
+/* Skip-link (dawniej w Base.astro) */
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--coral); color: #fff; padding: 8px 16px;
+  font-family: var(--font-heading); font-weight: 700;
+  border-radius: 0 0 12px 0; z-index: 1000;
+}
+.skip:focus { left: 0; }
+
 :root {
   --mint:   #B6DEDD;
   --mint2:  #D4EEEC;
@@ -234,6 +243,29 @@ a[x-apple-data-detectors] {
   .hdr-burger { display: none; }
   .hdr-nav-strip { display: flex; }
 }
+
+/* ── BREADCRUMBS (okruszki) ── */
+.crumbs {
+  background: var(--cream);
+  padding: 12px 6% 0;
+}
+.crumbs-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.crumbs-item { display: flex; align-items: center; gap: 6px; }
+.crumbs-item a { color: var(--coral); text-decoration: none; }
+.crumbs-item a:hover { text-decoration: underline; }
+.crumbs-item span[aria-current] { color: var(--dark); opacity: 0.6; }
+.crumbs-sep { color: var(--dark); opacity: 0.35; }
 
 /* ── OPINIE ── */
 .opinie-section {
