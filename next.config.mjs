@@ -50,12 +50,17 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Sekcja zapisów prowadzi wprost do systemu zapisowego (osobna aplikacja).
+      // Obejmuje wszystkie wejścia: menu ZAPISY, stopkę i przyciski „Zapisz się".
+      // Tymczasowy (307) — łatwo cofnąć; na permanent (308) zmień, gdy decyzja stała.
+      { source: '/zapisy', destination: 'https://zapisy.solenswim.com', permanent: false },
+      { source: '/zapisy/:path*', destination: 'https://zapisy.solenswim.com', permanent: false },
       { source: '/strona-glowna', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/o-nas.html', destination: '/o-nas/', permanent: true },
       { source: '/gdzie-plywamy.html', destination: '/gdzie-plywamy/', permanent: true },
-      { source: '/zapisy.html', destination: '/zapisy/', permanent: true },
+      { source: '/zapisy.html', destination: 'https://zapisy.solenswim.com', permanent: true },
       { source: '/cennik.html', destination: '/cennik/', permanent: true },
       { source: '/kontakt.html', destination: '/kontakt/', permanent: true },
       { source: '/faq.html', destination: '/faq/', permanent: true },
