@@ -129,10 +129,8 @@ export default function Page() {
               umowę otrzymasz po zapisie w systemie online.
             </p>
             <div className="zap-konto">
-              <span className="zap-konto-label">Wszystko w systemie zapisowym</span>
-              <p className="zap-konto-numer" style={{ fontSize: '1rem', letterSpacing: 'normal' }}>
-                Wybór grupy, terminu i&nbsp;płatność — w jednym miejscu.
-              </p>
+              <span className="zap-konto-label">Numer konta bankowego</span>
+              <p className="zap-konto-numer">{site.bankAccount}</p>
             </div>
           </div>
         </div>
