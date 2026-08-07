@@ -41,4 +41,4 @@ Cel: maksymalna promocja + SEO. Język strony i komunikacji: polski.
 
 ## Checkpointy
 `checkpoint/v1.1-stable-2026-07-01` (wzorzec designu), `checkpoint/v1.2-seo-complete`.
-`checkpoint/astro-ostatni` — ostatni stan produkcji na Astro, tuż przed przejściem na Next.js (punkt powrotu, gdyby migracja sprawiała problemy).
+Ostatni stan produkcji na **Astro** (punkt powrotu, gdyby Next.js sprawiał problemy): commit `0848c74`, czyli pierwszy rodzic merge'a `d0aace3`. Powrót: `git revert -m 1 d0aace3`.
