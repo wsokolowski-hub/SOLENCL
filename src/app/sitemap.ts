@@ -10,7 +10,7 @@ const paths = [
   '/nauka-plywania/indywidualnie/',
   '/o-nas/',
   '/gdzie-plywamy/',
-  // '/zapisy/' — usunięte z mapy: przekierowuje do zewnętrznego systemu zapisowego
+  '/zapisy/',
   '/cennik/',
   '/kontakt/',
   '/faq/',

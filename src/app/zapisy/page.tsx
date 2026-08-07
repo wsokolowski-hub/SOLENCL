@@ -2,12 +2,11 @@ import React from 'react';
 import { site } from '@/data/site';
 import { buildMetadata } from '@/lib/seo';
 import PageShell from '@/components/PageShell';
-import ZapisyForm from './ZapisyForm';
 import './zapisy.css';
 
 const title = 'Zapisy na naukę pływania Wrocław 2026/27 | Solen Swim';
 const description =
-  'Zapisy na naukę pływania dla dzieci we Wrocławiu — semestr od 5.09.2026. Zajęcia w weekendy na Grabiszynie. Zapis telefoniczny lub online, od 60 zł.';
+  'Zapisy na naukę pływania dla dzieci we Wrocławiu — semestr od 5.09.2026. Zajęcia w weekendy na Grabiszynie. Zapisz dziecko online przez nasz system zapisowy, od 60 zł.';
 const path = '/zapisy/';
 const breadcrumbs = [
   { name: 'Start', href: '/' },
@@ -29,33 +28,40 @@ export default function Page() {
         </h1>
         <p className="zap-hero-sub">
           Trwają zapisy na semestr Jesień/Zima 26/27 (5.09.2026 – 17.01.2027) — zajęcia w weekendy na basenie przy ul.
-          Ostrowskiego 3 (Grabiszyn). Zostaw numer, a oddzwonimy i pomożemy dobrać grupę — albo zapisz dziecko od razu
-          przez formularz online.
+          Ostrowskiego 3 (Grabiszyn). Zapisz dziecko wygodnie przez nasz system zapisowy online — w kilka minut. A jeśli
+          masz pytania, zadzwoń, pomożemy dobrać odpowiednią grupę.
         </p>
         <div className="zap-hero-btns">
-          <a href="#zapis-telefoniczny" className="zap-btn zap-btn-dark">
-            📞 Zapis telefoniczny
+          <a href={site.onlineSignupUrl} className="zap-btn zap-btn-dark">
+            💻 Zapisz dziecko online
           </a>
-          <a href={site.onlineSignupUrl} className="zap-btn zap-btn-light">
-            💻 Zapis online
+          <a href="tel:+48505912389" className="zap-btn zap-btn-light">
+            📞 505 912 389
           </a>
         </div>
       </div>
 
-      {/* FORMULARZ ODDZWONIMY */}
-      <div className="zap-form" id="zapis-telefoniczny">
+      {/* CTA — SYSTEM ZAPISOWY */}
+      <div className="zap-form" id="zapis-online">
         <div className="zap-form-inner">
-          <span className="zap-sekcja-eyebrow">Zapis telefoniczny</span>
+          <span className="zap-sekcja-eyebrow">System zapisowy online</span>
           <h2 className="zap-form-title">
-            Wypełnij formularz —<br />
-            <span>oddzwonimy!</span>
+            Zapisz dziecko —<br />
+            <span>w kilka minut!</span>
           </h2>
           <p className="zap-form-sub">
-            Zadzwoń sam pod <a href="tel:+48505912389">505&nbsp;912&nbsp;389</a> lub wypełnij formularz,
-            a&nbsp;oddzwonimy — pomożemy potwierdzić termin i&nbsp;dobrać odpowiednią grupę.
+            Wyboru grupy, terminu i płatności dokonasz w naszym systemie zapisowym. To najwygodniejszy sposób —
+            wszystko w jednym miejscu, o dowolnej porze.
           </p>
 
-          <ZapisyForm web3formsKey={site.forms.web3formsKey} phoneHuman={site.phoneHuman} />
+          <a href={site.onlineSignupUrl} className="zap-btn zap-btn-dark zap-btn-cta">
+            💻 Przejdź do zapisów online
+          </a>
+
+          <p className="zap-form-sub" style={{ marginTop: 24 }}>
+            Nie wiesz, którą grupę wybrać? Zadzwoń pod{' '}
+            <a href="tel:+48505912389">505&nbsp;912&nbsp;389</a> — pomożemy dobrać ją pod względem wieku i&nbsp;poziomu.
+          </p>
         </div>
       </div>
 
@@ -93,11 +99,11 @@ export default function Page() {
           {/* KONTAKT */}
           <div>
             <span className="zap-info-eyebrow">Jak się zapisać</span>
-            <h2 className="zap-info-title">Formularz online lub telefon</h2>
+            <h2 className="zap-info-title">Online lub z pomocą telefonu</h2>
             <p className="zap-info-tekst">
-              Najwygodniej zapiszesz dziecko przez <strong>formularz zapisowy</strong> poniżej. A jeśli nie wiesz, do
-              której grupy zapisać dziecko — zadzwoń lub napisz SMS, pomożemy dobrać odpowiednią pod względem wieku i
-              poziomu.
+              Najwygodniej zapiszesz dziecko przez <strong>system zapisowy online</strong> — wybierzesz tam grupę,
+              termin i&nbsp;dokonasz płatności. A jeśli nie wiesz, do której grupy zapisać dziecko — zadzwoń lub napisz
+              SMS, pomożemy dobrać odpowiednią pod względem wieku i&nbsp;poziomu.
             </p>
             <div className="zap-tel-lista">
               {/* 505 — PIERWSZY, KLIKALNY */}
@@ -119,12 +125,14 @@ export default function Page() {
             <span className="zap-platnosc-eyebrow">Płatność za zajęcia</span>
             <h3 className="zap-platnosc-title">Karnet semestralny</h3>
             <p className="zap-platnosc-tekst">
-              Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły ustalamy
-              telefonicznie przy zapisie.
+              Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły płatności oraz
+              umowę otrzymasz po zapisie w systemie online.
             </p>
             <div className="zap-konto">
-              <span className="zap-konto-label">Numer konta bankowego</span>
-              <p className="zap-konto-numer">{site.bankAccount}</p>
+              <span className="zap-konto-label">Wszystko w systemie zapisowym</span>
+              <p className="zap-konto-numer" style={{ fontSize: '1rem', letterSpacing: 'normal' }}>
+                Wybór grupy, terminu i&nbsp;płatność — w jednym miejscu.
+              </p>
             </div>
           </div>
         </div>
