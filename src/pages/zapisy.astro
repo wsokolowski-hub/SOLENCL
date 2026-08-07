@@ -2,87 +2,33 @@
 import Base from '@/layouts/Base.astro';
 import { site } from '@/data/site';
 const title = 'Zapisy na naukę pływania Wrocław 2026/27 | Solen Swim';
-const description = 'Zapisy na naukę pływania dla dzieci we Wrocławiu — semestr od 5.09.2026. Zajęcia w weekendy na Grabiszynie. Zapis telefoniczny lub online, od 60 zł.';
+const description = 'Zapisy na naukę pływania dla dzieci we Wrocławiu — semestr od 5.09.2026. Zajęcia w weekendy na Grabiszynie. Zapisz dziecko online przez nasz system zapisowy, od 60 zł.';
 const path = '/zapisy/';
 const pageType = 'service' as const;
 const breadcrumbs = [{ name: "Start", href: "/" }, { name: "Zapisy", href: "/zapisy/" }];
-
-const kursy = [
-  'Pływanie niemowląt i dzieci do lat 4',
-  'Nauka pływania dla dzieci od podstaw',
-  'Doskonalenie pływania dla dzieci',
-  'Zajęcia indywidualne',
-  'Nie wiem — proszę o pomoc w doborze',
-];
-const wiek = [
-  '6 miesięcy – 1 rok', '1 rok', '2 lata', '3 lata', '4 lata',
-  '5 lat', '6 lat', '7 lat', '8 lat', '9 lat', '10 lat',
-];
 ---
 <Base title={title} description={description} path={path} pageType={pageType} breadcrumbs={breadcrumbs}>
 <!-- HERO -->
 <div class="zap-hero">
   <span class="zap-badge">✅ Wystartowały zapisy — Jesień/Zima 26/27</span>
   <h1 class="zap-title">Zapisy na naukę pływania<br><span>— Wrocław</span></h1>
-  <p class="zap-hero-sub">Trwają zapisy na semestr Jesień/Zima 26/27 (5.09.2026 – 17.01.2027) — zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 (Grabiszyn). Zostaw numer, a oddzwonimy i pomożemy dobrać grupę — albo zapisz dziecko od razu przez formularz online.</p>
+  <p class="zap-hero-sub">Trwają zapisy na semestr Jesień/Zima 26/27 (5.09.2026 – 17.01.2027) — zajęcia w weekendy na basenie przy ul. Ostrowskiego 3 (Grabiszyn). Zapisz dziecko wygodnie przez nasz system zapisowy online — w kilka minut. A jeśli masz pytania, zadzwoń, pomożemy dobrać odpowiednią grupę.</p>
   <div class="zap-hero-btns">
-    <a href="#zapis-telefoniczny" class="zap-btn zap-btn-dark">📞 Zapis telefoniczny</a>
-    <a href={site.onlineSignupUrl} class="zap-btn zap-btn-light">💻 Zapis online</a>
+    <a href={site.onlineSignupUrl} class="zap-btn zap-btn-dark">💻 Zapisz dziecko online</a>
+    <a href="tel:+48505912389" class="zap-btn zap-btn-light">📞 505 912 389</a>
   </div>
 </div>
 
-<!-- FORMULARZ ODDZWONIMY -->
-<div class="zap-form" id="zapis-telefoniczny">
+<!-- CTA — SYSTEM ZAPISOWY -->
+<div class="zap-form" id="zapis-online">
   <div class="zap-form-inner">
-    <span class="zap-sekcja-eyebrow">Zapis telefoniczny</span>
-    <h2 class="zap-form-title">Wypełnij formularz —<br><span>oddzwonimy!</span></h2>
-    <p class="zap-form-sub">Zadzwoń sam pod <a href="tel:+48505912389">505&nbsp;912&nbsp;389</a> lub wypełnij formularz, a&nbsp;oddzwonimy — pomożemy potwierdzić termin i&nbsp;dobrać odpowiednią grupę.</p>
+    <span class="zap-sekcja-eyebrow">System zapisowy online</span>
+    <h2 class="zap-form-title">Zapisz dziecko —<br><span>w kilka minut!</span></h2>
+    <p class="zap-form-sub">Wyboru grupy, terminu i płatności dokonasz w naszym systemie zapisowym. To najwygodniejszy sposób — wszystko w jednym miejscu, o dowolnej porze.</p>
 
-    <form class="zap-formularz" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value={site.forms.web3formsKey} />
-      <input type="hidden" name="subject" value="Nowy zapis (oddzwonimy) — Solen Swim" />
-      <input type="hidden" name="from_name" value="Formularz zapisowy Solen Swim" />
-      <input type="checkbox" name="botcheck" class="zap-hp" tabindex="-1" autocomplete="off" />
+    <a href={site.onlineSignupUrl} class="zap-btn zap-btn-dark zap-btn-cta">💻 Przejdź do zapisów online</a>
 
-      <label class="zap-pole">
-        <span>Telefon <i>*</i></span>
-        <input type="tel" name="Telefon" required inputmode="tel" placeholder="np. 600 100 200" />
-      </label>
-
-      <label class="zap-pole">
-        <span>E-mail <i>*</i></span>
-        <input type="email" name="E-mail" required placeholder="twoj@email.pl" />
-      </label>
-
-      <label class="zap-pole">
-        <span>Imię dziecka <i>*</i></span>
-        <input type="text" name="Imię dziecka" required />
-      </label>
-
-      <label class="zap-pole">
-        <span>Nazwisko dziecka <i>*</i></span>
-        <input type="text" name="Nazwisko dziecka" required />
-      </label>
-
-      <label class="zap-pole">
-        <span>Wybór kursu <i>*</i></span>
-        <select name="Wybór kursu" required>
-          <option value="" disabled selected>— wybierz kurs —</option>
-          {kursy.map((k) => <option value={k}>{k}</option>)}
-        </select>
-      </label>
-
-      <label class="zap-pole">
-        <span>Wiek dziecka <i>*</i></span>
-        <select name="Wiek dziecka" required>
-          <option value="" disabled selected>— wybierz wiek —</option>
-          {wiek.map((w) => <option value={w}>{w}</option>)}
-        </select>
-      </label>
-
-      <button type="submit" class="zap-submit">Prześlij</button>
-      <p class="zap-form-status" id="zap-status" role="status" aria-live="polite"></p>
-    </form>
+    <p class="zap-form-sub zap-form-sub-po">Nie wiesz, którą grupę wybrać? Zadzwoń pod <a href="tel:+48505912389">505&nbsp;912&nbsp;389</a> — pomożemy dobrać ją pod względem wieku i&nbsp;poziomu.</p>
   </div>
 </div>
 
@@ -123,9 +69,9 @@ const wiek = [
     <!-- KONTAKT -->
     <div>
       <span class="zap-info-eyebrow">Jak się zapisać</span>
-      <h2 class="zap-info-title">Formularz online lub telefon</h2>
+      <h2 class="zap-info-title">Online lub z pomocą telefonu</h2>
       <p class="zap-info-tekst">
-        Najwygodniej zapiszesz dziecko przez <strong>formularz zapisowy</strong> poniżej. A jeśli nie wiesz, do której grupy zapisać dziecko — zadzwoń lub napisz SMS, pomożemy dobrać odpowiednią pod względem wieku i poziomu.
+        Najwygodniej zapiszesz dziecko przez <strong>system zapisowy online</strong> — wybierzesz tam grupę, termin i dokonasz płatności. A jeśli nie wiesz, do której grupy zapisać dziecko — zadzwoń lub napisz SMS, pomożemy dobrać odpowiednią pod względem wieku i poziomu.
       </p>
       <div class="zap-tel-lista">
 
@@ -149,65 +95,18 @@ const wiek = [
       <span class="zap-platnosc-eyebrow">Płatność za zajęcia</span>
       <h3 class="zap-platnosc-title">Karnet semestralny</h3>
       <p class="zap-platnosc-tekst">
-        Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły ustalamy telefonicznie przy zapisie.
+        Należy wykupić karnet za cały kurs. Płatność odbywa się w 3 ratach za semestr — szczegóły płatności oraz umowę otrzymasz po zapisie w systemie online.
       </p>
       <div class="zap-konto">
-        <span class="zap-konto-label">Numer konta bankowego</span>
-        <p class="zap-konto-numer">{site.bankAccount}</p>
+        <span class="zap-konto-label">Wszystko w systemie zapisowym</span>
+        <p class="zap-konto-tekst">Wybór grupy, terminu i&nbsp;płatność — w jednym miejscu.</p>
       </div>
     </div>
 
   </div>
 </div>
 
-<script is:inline define:vars={{ hasKey: !!site.forms.web3formsKey, phone: site.phoneHuman }}>
-  (function () {
-    var form = document.querySelector('.zap-formularz');
-    var status = document.getElementById('zap-status');
-    if (!form) return;
 
-    // Brak klucza Web3Forms — formularz nie wyśle, więc kieruj na telefon.
-    if (!hasKey) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        status.className = 'zap-form-status err';
-        status.textContent = 'Formularz wysyłkowy nie jest jeszcze skonfigurowany. Zadzwoń: ' + phone;
-      });
-      return;
-    }
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('.zap-submit');
-      btn.disabled = true;
-      var original = btn.textContent;
-      btn.textContent = 'Wysyłanie…';
-      status.className = 'zap-form-status';
-      status.textContent = '';
-      try {
-        var res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form),
-        });
-        var data = await res.json();
-        if (data.success) {
-          status.className = 'zap-form-status ok';
-          status.textContent = 'Dziękujemy! Zgłoszenie wysłane — oddzwonimy najszybciej jak to możliwe.';
-          form.reset();
-        } else {
-          throw new Error(data.message || 'error');
-        }
-      } catch (err) {
-        status.className = 'zap-form-status err';
-        status.textContent = 'Coś poszło nie tak. Zadzwoń: ' + phone + ' lub spróbuj ponownie.';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = original;
-      }
-    });
-  })();
-</script>
 </Base>
 
 <style is:global>
@@ -317,8 +216,10 @@ body {
   box-shadow: 0 8px 28px rgba(41,52,52,0.18);
 }
 .zap-btn-light:hover { transform: translateY(-2px); }
+.zap-btn-cta { font-size: 17px; padding: 20px 44px; }
+.zap-form-sub-po { margin-top: 24px; margin-bottom: 0; }
 
-/* ─── FORMULARZ "ODDZWONIMY" ─── */
+/* ─── SEKCJA CTA — SYSTEM ZAPISOWY ─── */
 .zap-form {
   background: #B6DEDD;
   padding: 64px 6%;
@@ -352,83 +253,6 @@ body {
   border-bottom: 1.5px solid rgba(255,131,87,0.4);
 }
 .zap-form-sub a:hover { border-bottom-color: #FF8357; }
-.zap-formularz {
-  background: #FFF9F6;
-  border-radius: 22px;
-  padding: 36px 32px;
-  box-shadow: 0 8px 40px rgba(41,52,52,0.10);
-  text-align: left;
-}
-.zap-pole { display: block; margin-bottom: 20px; }
-.zap-pole > span {
-  display: block;
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  color: #293434;
-  margin-bottom: 8px;
-}
-.zap-pole > span i { color: #FF8357; font-style: normal; }
-.zap-pole input,
-.zap-pole select {
-  width: 100%;
-  font-family: 'Space Mono', monospace;
-  font-size: 14px;
-  color: #293434;
-  background: #fff;
-  border: 1.5px solid rgba(41,52,52,0.18);
-  border-radius: 12px;
-  padding: 14px 16px;
-  outline: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
-  -webkit-appearance: none;
-  appearance: none;
-}
-.zap-pole select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%23FF8357' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l3 3 3-3'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 42px;
-  cursor: pointer;
-}
-.zap-pole input:focus,
-.zap-pole select:focus {
-  border-color: #FF8357;
-  box-shadow: 0 0 0 4px rgba(255,131,87,0.15);
-}
-/* honeypot — ukryte pole antyspamowe */
-.zap-hp {
-  position: absolute !important;
-  left: -9999px !important;
-  width: 1px; height: 1px;
-  opacity: 0;
-}
-.zap-submit {
-  width: 100%;
-  background: #FF8357;
-  color: #FFF9F6;
-  font-family: 'Comfortaa', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: 1px;
-  border: none;
-  border-radius: 14px;
-  padding: 18px;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background 0.18s ease, transform 0.18s ease;
-}
-.zap-submit:hover { background: #ff6f3d; transform: translateY(-1px); }
-.zap-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
-.zap-form-status {
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  margin-top: 16px;
-  text-align: center;
-}
-.zap-form-status.ok  { color: #1f7a5c; }
-.zap-form-status.err { color: #c0392b; }
-
 /* ─── SEMESTRY ─── */
 .zap-semestry {
   padding: 64px 6%;
@@ -680,6 +504,12 @@ body {
   margin-bottom: 6px;
 }
 
+.zap-konto-tekst {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #FFF9F6;
+}
 .zap-konto-numer {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
