@@ -1,8 +1,0 @@
-# Cloudflare Workers — Static Assets deployment
-# Build: npm run build (Astro -> dist/), deploy: npx wrangler deploy
-name = "solencl"
-compatibility_date = "2025-05-01"
-
-[assets]
-directory = "./dist"
-not_found_handling = "404-page"
