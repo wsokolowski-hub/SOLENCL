@@ -1,0 +1,77 @@
+/* ============================================================
+   SOLEN SWIM — warstwa animacji (tylko gałąź Next.js)
+   Progressive enhancement: bez JS / z reduced-motion treść jest
+   w pełni widoczna. Animacje włącza dopiero komponent Motion.tsx.
+   ============================================================ */
+
+/* ── SCROLL-REVEAL sekcji ──
+   Ukrywamy sekcje dopiero, gdy Motion doda .motion-on do <main>.
+   Jeśli JS nie wystartuje — nic się nie ukrywa (SEO/no-JS bezpieczne). */
+.reveal-scope.motion-on > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-scope.motion-on > *.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── HOVER / micro-interakcje (dodatkowe, ponad to co robi CSS bazowy) ── */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .karta,
+  .cn-karta,
+  .np-card,
+  .npg-feature,
+  .opinia {
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .karta:hover,
+  .cn-karta:hover,
+  .np-card:hover,
+  .npg-feature:hover,
+  .opinia:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(41, 52, 52, 0.14);
+  }
+}
+
+/* Delikatny „pop" na liczbie podczas odliczania */
+.countup-active {
+  display: inline-block;
+  transform: scale(1.06);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── PRZEJŚCIA MIĘDZY STRONAMI (View Transitions API, cross-document) ──
+   Działa w przeglądarkach Chromium; pozostałe po prostu ignorują. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: solen-vt-out 0.16s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+  ::view-transition-new(root) {
+    animation: solen-vt-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes solen-vt-out {
+    to { opacity: 0; transform: translateY(6px); }
+  }
+  @keyframes solen-vt-in {
+    from { opacity: 0; transform: translateY(10px); }
+  }
+}
+
+/* ── RESPEKTOWANIE reduced-motion — wszystko widoczne, zero ruchu ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-scope.motion-on > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .countup-active { transform: none !important; transition: none !important; }
+}

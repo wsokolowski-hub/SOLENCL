@@ -20,7 +20,9 @@ export default function PageShell({ pageType, faq, breadcrumbs, course, children
     <>
       <SchemaOrg pageType={pageType} faq={faq} breadcrumbs={breadcrumbs} course={course} />
       {breadcrumbs && breadcrumbs.length > 1 && <Breadcrumbs items={breadcrumbs} />}
-      <main id="main">{children}</main>
+      <main id="main" className="reveal-scope">
+        {children}
+      </main>
     </>
   );
 }
